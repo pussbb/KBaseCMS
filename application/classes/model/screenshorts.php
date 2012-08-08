@@ -67,6 +67,6 @@ class Model_Screenshorts extends Model
             'height' => 350,
         )));
         $this->insert(array('width','height','status','type','url_id'));
-        return $this->exec();
+        return $this->save();
     }
 }

@@ -42,7 +42,7 @@ class Model_Sites extends Model
             retrun;
         }
         $this->insert(array('title', 'user_id', 'link', 'category'));
-        $result = $this->exec();
+        $result = $this->save();
         if ( ! $result)
             return $result;
 

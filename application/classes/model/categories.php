@@ -9,7 +9,7 @@ class Model_Categories extends Model
         if ( ! is_numeric($id))
             throw new Kohana_HTTP_Exception_500;
 
-        return DB::delete($this->db_table)->where('id' , '=', $id)->execute();
+        return DB::delete($this->db_table)->filter('id' , '=', $id)->execute();
     }
 
     public function add()
@@ -20,7 +20,7 @@ class Model_Categories extends Model
             return FALSE;
         }
         $this->insert(array('name','user_id','parent_id'));
-        return $this->exec();
+        return $this->save();
     }
 
     public  static function user_collection($user_id)
