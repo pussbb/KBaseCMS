@@ -3,7 +3,8 @@ RewriteEngine On
 
 # Installation directory
 RewriteBase /
-
+SetEnv KOHANA_BASE_URL /
+SetEnv KOHANA_ENV DEVELOPMENT
 # Protect hidden files from being viewed
 <Files .*>
 	Order Deny,Allow
