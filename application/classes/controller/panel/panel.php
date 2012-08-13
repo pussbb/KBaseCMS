@@ -4,7 +4,10 @@ class Controller_Panel_Panel extends Controller_Core {
 
     public function action_index()
     {
-        //var_dump(Model_Users::destroy_where(array('role_id'=>1)));exit;
+        $r = Model_Users::find(4);
+        $r->destroy();
+       /// $r->limit(3);exit;
+       ///var_dump($r);exit;
     }
 
 }
