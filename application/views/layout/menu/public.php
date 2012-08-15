@@ -18,13 +18,13 @@
                         ?></li>
                     <li><?php
                         echo Html::anchor(
-                            URL::site('user/register'),
+                            URL::site('users/register'),
                             __('register')
                         );
                         ?></li>
                     <li><?php
                         echo Html::anchor(
-                            URL::site('user/login'),
+                            URL::site('users/login'),
                             __('login')
                         );
                         ?></li>
