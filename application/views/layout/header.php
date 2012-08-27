@@ -15,7 +15,7 @@ foreach (array('keywords', 'description') as $property) {
     echo '<meta name="'. $property.'" content="' .$property.'"/>';
 }
 
-foreach ($styles as $file => $type) {
+foreach (Media::instance()->styles() as $file => $type) {
     echo HTML::style($file, array('media' => $type)), PHP_EOL;
 }
 $development_mode = isset(Kohana::$environment) && Kohana::$environment == Kohana::DEVELOPMENT;
