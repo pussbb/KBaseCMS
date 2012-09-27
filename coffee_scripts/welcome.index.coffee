@@ -1,6 +1,11 @@
 
+
+
 root = exports ? this
+
 $ ->
+  $('.container').inlineAlert()
+  return
   $('body').addClass 'impress-not-supported'
   root.impress = impress()
 

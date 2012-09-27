@@ -1,16 +1,43 @@
-
-/*
-  script ....
-  based on twitter bootstrap progress bars styles
-*/
-
 (function() {
   var defaultOptions, root;
+
+  defaultOptions = {
+    text: 'Oops some error occured',
+    closable: true,
+    append: false,
+    type: 'alert-error'
+  };
+
+  $(function() {
+    return $.fn.inlineAlert = function(options) {
+      var alert, close;
+      if (options == null) options = {};
+      options = $.extend(defaultOptions, options);
+      alert = $('<div></div>').addClass('alert');
+      alert.addClass(options.type);
+      if (options.closable) {
+        close = $('<a></a>').addClass('close');
+        close.attr('data-dismiss', 'alert');
+        close.text('x');
+        alert.append(close);
+      }
+      alert.append(options.text);
+      if (options.append) {
+        return $(this).append(alert);
+      } else {
+        return $(this).html(alert);
+      }
+    };
+  });
+
+  /*
+    script ....
+    based on twitter bootstrap progress bars styles
+  */
 
   root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
   $(function() {
-    var defaultOptions;
     defaultOptions = {
       clearContent: true,
       active: true,
@@ -39,35 +66,6 @@
         if (currentVal > options.max) currentVal = options.min;
         return progressBar.css('width', "" + currentVal + "%");
       }, options.timeout);
-    };
-  });
-
-  defaultOptions = {
-    text: 'Oops some error occured',
-    closable: true,
-    append: false,
-    type: 'alert-error'
-  };
-
-  $(function() {
-    return $.fn.inlineAlert = function(options) {
-      var alert, close;
-      if (options == null) options = {};
-      options = $.extend(defaultOptions, options);
-      alert = $('<div></div>').addClass('alert');
-      alert.addClass(options.type);
-      if (options.closable) {
-        close = $('<a></a>').addClass('close');
-        close.attr('data-dismiss', 'alert');
-        close.text('x');
-        alert.append(close);
-      }
-      alert.append(options.text);
-      if (options.append) {
-        return $(this).append(alert);
-      } else {
-        return $(this).html(alert);
-      }
     };
   });
 

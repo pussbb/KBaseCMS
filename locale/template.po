@@ -1,0 +1,275 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-20 10:14+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/model/access/rule.php:14
+#: /opt/htdocs/web-speeddial/test.php:35
+msgid "guest"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/model/access/rule.php:15
+msgid "user"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/model/access/rule.php:16
+msgid "admin"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/model/user.php:65
+msgid "user_not_found_or_wrong_password"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/model/user.php:75
+msgid "must_be_valid_email"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/model/user.php:77
+msgid "must_be_your_valid_password"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/controller/core.php:101
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/controller/core.php:115
+msgid "access_deny"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/base/db/validation.php:44
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/base/db/validation.php:78
+msgid "must_not_be_empty"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/base/db/validation.php:47
+msgid "must_be_valid_integer"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/base/db/validation.php:52
+msgid "must_be_between_%1_and_%2"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/base/db/validation.php:55
+msgid "must_be_greater_than_"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/base/db/validation.php:58
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/base/db/validation.php:82
+msgid "must_be_less_than_"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/classes/base/model.php:1390
+msgid "already exists"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/errors/404.php:448
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/errors/default.php:74
+#: /opt/htdocs/web-speeddial/application/views/layout/menu/public.php:12
+msgid "home"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/errors/500.php:6
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/errors/500.php:11
+msgid "houston_we_have_a_problem"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/errors/default.php:5
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/errors/default.php:67
+msgid "oops,_an_error_occurred"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/errors/default.php:78
+msgid "back"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/account_info.php:21
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/login.php:36
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/login.php:62
+#: /opt/htdocs/web-speeddial/application/views/layout/menu/public.php:28
+msgid "login"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/account_info.php:25
+msgid "email"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/register.php:11
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/login.php:9
+#: /opt/htdocs/web-speeddial/application/views/panel/categories/form.php:8
+#: /opt/htdocs/web-speeddial/application/views/panel/sites/form.php:8
+msgid "warning"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/register.php:21
+msgid "registration"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/register.php:26
+msgid "your_login"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/register.php:32
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/login.php:22
+msgid "email_address"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/register.php:34
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/login.php:24
+msgid "valid_email_adrress"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/register.php:39
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/login.php:29
+msgid "password"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/register.php:41
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/register.php:48
+msgid "at_least_6_characters"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/register.php:46
+msgid "password_confirmation"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/modules/Kohana-my-base/views/users/register.php:60
+#: /opt/htdocs/web-speeddial/application/views/layout/menu/public.php:22
+msgid "register"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/classes/model/sites.php:35
+#: /opt/htdocs/web-speeddial/application/views/panel/categories/form.php:28
+#: /opt/htdocs/web-speeddial/application/views/panel/sites/form.php:36
+msgid "must_be_valid_url"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/classes/model/categories.php:19
+msgid "must_be_not_empty"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/classes/model/categories.php:32
+msgid "no_parent"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/classes/controller/demon.php:7
+msgid "hello_world 2"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/panel/index.php:41
+msgid "root"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/panel/index.php:76
+#: /opt/htdocs/web-speeddial/application/views/panel/panel/index.php:127
+msgid "categories"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/panel/index.php:77
+msgid "sites"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/panel/index.php:157
+msgid "in_queue"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/panel/index.php:159
+msgid "in_progress"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/panel/index.php:161
+msgid "fialed"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/categories/form.php:19
+msgid "add_category"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/categories/form.php:23
+msgid "category_name"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/categories/form.php:26
+msgid "type_your_category_name_here"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/categories/form.php:33
+#: /opt/htdocs/web-speeddial/application/views/panel/sites/form.php:41
+msgid "select_a_parent_category"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/categories/form.php:42
+#: /opt/htdocs/web-speeddial/application/views/panel/sites/form.php:50
+msgid "Submit"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/categories/form.php:43
+#: /opt/htdocs/web-speeddial/application/views/panel/sites/form.php:51
+msgid "Cancel"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/sites/form.php:19
+msgid "add_site"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/sites/form.php:22
+msgid "website_title"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/sites/form.php:25
+msgid "type_website_title_here"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/sites/form.php:27
+msgid "live_it_blank_and_it_will_automaticly_fill_whith_our_screenshort_grabber"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/sites/form.php:31
+msgid "website_url"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/panel/sites/form.php:34
+msgid "type_website_url_here"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/application/views/layout/menu/public.php:16
+msgid "about_us"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/system/views/profiler/stats.php:24
+msgid "Benchmark"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/system/views/profiler/stats.php:63
+msgid "Application Execution"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/system/views/kohana/error.php:63
+msgid "PHP internal call"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/system/views/kohana/error.php:67
+msgid "arguments"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/system/views/kohana/error.php:89
+msgid "Environment"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/system/views/kohana/error.php:92
+msgid "Included files"
+msgstr ""
+
+#: /opt/htdocs/web-speeddial/system/views/kohana/error.php:103
+msgid "Loaded extensions"
+msgstr ""

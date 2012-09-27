@@ -1,5 +1,5 @@
 <?php
-
+ echo View::factory('profiler/stats');
 // Unique error identifier
 $error_id = uniqid('error');
 

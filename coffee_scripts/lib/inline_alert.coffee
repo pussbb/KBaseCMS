@@ -6,6 +6,7 @@ defaultOptions = {
   type: 'alert-error'
 }
 $ ->
+#   alert 'dfd'
   $.fn.inlineAlert = (options = {})->
     options = $.extend defaultOptions, options
     alert = $('<div></div>').addClass 'alert'

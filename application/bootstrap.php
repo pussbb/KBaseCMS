@@ -50,10 +50,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 
 // -- Configuration and initialization -----------------------------------------
 
-/**
- * Set the default language
- */
-I18n::lang('en-us');
+
 
 /**
  * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
@@ -83,6 +80,7 @@ Kohana::init(array(
 	'base_url'   => '/',
 	'index_file' => '',
 	'caching' => FALSE,
+	'profile' => FALSE,
 ));
 
 /**
@@ -108,6 +106,11 @@ Kohana::modules(array(
 	'rpc'    => MODPATH.'kohana-RPC',
 	'mybase' => MODPATH.'Kohana-my-base',
 	));
+
+/**
+ * Set the default language
+ */
+I18n::lang('en-us');
 
 Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')->defaults(array(
     'directory' => 'admin',

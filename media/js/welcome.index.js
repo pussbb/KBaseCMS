@@ -1,7 +1,11 @@
 (function() {
   var root;
+
   root = typeof exports !== "undefined" && exports !== null ? exports : this;
+
   $(function() {
+    $('.container').inlineAlert();
+    return;
     $('body').addClass('impress-not-supported');
     root.impress = impress();
     root.auto_slide_control = $('.slide-control button');
@@ -17,10 +21,9 @@
     });
     root.impress.init();
     return setInterval(function() {
-      if (auto_slide_control.hasClass('btn-danger')) {
-        return;
-      }
+      if (auto_slide_control.hasClass('btn-danger')) return;
       return impress.next();
     }, 3500);
   });
+
 }).call(this);

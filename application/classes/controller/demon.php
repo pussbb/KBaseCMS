@@ -4,6 +4,7 @@ class Controller_Demon extends Controller {
 
     public function action_index()
     {///echo phpinfo();exit;
+    tr('hello_world 2');
         $rpc = RPC::factory();
         $methods = array(
             "speeddial.gettask" => array(
@@ -89,7 +90,7 @@ class Controller_Demon extends Controller {
                $type = 'string';//preg_match('/^\d+$/',$val
                if (is_numeric($val))
 		  $type = 'int';
-                    
+
                $data[$key] = new xmlrpcval($item[$key],$type);
            }
            $result[] =  new xmlrpcval($data,'struct');
