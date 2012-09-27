@@ -2,6 +2,6 @@
 
 return array(
 	'cookie' => array(
-		'encrypted' => TRUE,
+		'encrypted' => FALSE,
 	),
 );

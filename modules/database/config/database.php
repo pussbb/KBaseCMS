@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') or die('No direct access allowed.');
+<?php defined('SYSPATH') OR die('No direct access allowed.');
 
 return array
 (
@@ -19,8 +19,8 @@ return array
 			 * Ports and sockets may be appended to the hostname.
 			 */
 			'hostname'   => 'localhost',
-			'database'   => 'speeddial',
-			'username'   => 'root',
+			'database'   => 'kohana',
+			'username'   => FALSE,
 			'password'   => FALSE,
 			'persistent' => FALSE,
 		),
