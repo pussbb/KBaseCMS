@@ -62,18 +62,7 @@ if (isset($_SERVER['KOHANA_ENV']))
 {
 	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 }
-Kohana::modules(array(
-    // 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-     'database'   => MODPATH.'database',   // Database access
-    // 'image'      => MODPATH.'image',      // Image manipulation
-    'rpc'    => MODPATH.'kohana-RPC',
-    'mybase' => MODPATH.'Kohana-my-base',
-    ));
 
-/**
- * Set the default language
- */
-I18n::lang('en-us');
 /**
  * Initialize Kohana, setting the default options.
  *
@@ -94,6 +83,23 @@ Kohana::init(array(
 	'profile' => FALSE,
 ));
 
+/**
+ * Attach a file reader to config. Multiple readers are supported.
+ */
+Kohana::$config->attach(new Config_File);
+
+Kohana::modules(array(
+    // 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+     'database'   => MODPATH.'database',   // Database access
+    // 'image'      => MODPATH.'image',      // Image manipulation
+    'rpc'    => MODPATH.'kohana-RPC',
+    'mybase' => MODPATH.'Kohana-my-base',
+    ));
+
+/**
+ * Set the default language
+ */
+I18n::lang('en-us');
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
