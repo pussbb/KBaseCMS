@@ -62,7 +62,18 @@ if (isset($_SERVER['KOHANA_ENV']))
 {
 	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 }
+Kohana::modules(array(
+    // 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+     'database'   => MODPATH.'database',   // Database access
+    // 'image'      => MODPATH.'image',      // Image manipulation
+    'rpc'    => MODPATH.'kohana-RPC',
+    'mybase' => MODPATH.'Kohana-my-base',
+    ));
 
+/**
+ * Set the default language
+ */
+I18n::lang('en-us');
 /**
  * Initialize Kohana, setting the default options.
  *
@@ -96,38 +107,3 @@ Kohana::$config->attach(new Config_File);
 
 Cookie::$salt = 'c48997015d7b74358cb32e9ad3ae3d762';
 Cookie::$httponly = TRUE;
-/**
- * Enable modules. Modules are referenced by a relative or absolute path.
- */
-Kohana::modules(array(
-	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-	 'database'   => MODPATH.'database',   // Database access
-	// 'image'      => MODPATH.'image',      // Image manipulation
-	'rpc'    => MODPATH.'kohana-RPC',
-	'mybase' => MODPATH.'Kohana-my-base',
-	));
-
-/**
- * Set the default language
- */
-I18n::lang('en-us');
-
-Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')->defaults(array(
-    'directory' => 'admin',
-    'controller' => 'admin',
-    'action'     => 'index',
-));
-
-Route::set('panel', 'panel(/<controller>(/<action>(/<id>)))',array(
-        'id' => '\d+',
-    ))->defaults(array(
-    'directory' => 'panel',
-    'controller' => 'panel',
-    'action'     => 'index',
-));
-
-Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'welcome',
-		'action'     => 'index',
-	));
