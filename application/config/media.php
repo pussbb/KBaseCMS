@@ -15,6 +15,13 @@ return array(
         'js' => array(
             'jquery/jquery.min',
             'bootstrap/bootstrap.min',
+            array(
+                'ui_lib',
+                array(
+                    'lib/pseudo_ajax_load_progress',
+                    'lib/inline_alert',
+                ),
+            ),
         ),
     ),
 );
