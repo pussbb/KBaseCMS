@@ -20,7 +20,6 @@ CREATE TABLE `blog_posts` (
   `category_id` int(11) NOT NULL,
   `keywords` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_blog_posts_author_id` (`author_id`),
   KEY `fk_blog_posts_user` (`author_id`),
   KEY `fk_blog_posts_cat` (`category_id`),
   CONSTRAINT `fk_blog_posts_cat` FOREIGN KEY (`category_id`) REFERENCES `blog_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
