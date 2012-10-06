@@ -16,3 +16,12 @@
         <li><a href="#"><i class="i"></i> Make admin</a></li>
     </ul>
 </div>
+
+<input type="text" value="02-16-2012" id="datepicker">
+<script>
+$(document).ready(function(){
+    $('#datepicker').datepicker({
+    format: 'mm-dd-yyyy'
+});
+});
+</script>
