@@ -50,7 +50,10 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 
 // -- Configuration and initialization -----------------------------------------
 
-
+/**
+ * Set the default language
+ */
+I18n::lang('en-us');
 
 /**
  * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
@@ -83,11 +86,6 @@ Kohana::init(array(
 	'profile' => FALSE,
 ));
 
-/**
- * Attach a file reader to config. Multiple readers are supported.
- */
-Kohana::$config->attach(new Config_File);
-
 Kohana::modules(array(
     // 'cache'      => MODPATH.'cache',      // Caching with multiple backends
      'database'   => MODPATH.'database',   // Database access
@@ -97,18 +95,10 @@ Kohana::modules(array(
     ));
 
 /**
- * Set the default language
- */
-I18n::lang('en-us');
-/**
  * Attach the file write to logging. Multiple writers are supported.
  */
 //Kohana::$log->attach(new Log_File(APPPATH.'logs'));
 
-/**
- * Attach a file reader to config. Multiple readers are supported.
- */
-Kohana::$config->attach(new Config_File);
 
 
 Cookie::$salt = 'c48997015d7b74358cb32e9ad3ae3d762';
