@@ -14,7 +14,7 @@ Route::set('post', '(<lang>)(/)article/<id>.html', array('id' => '[a-zA-Z0-9_/]+
    'action'     => 'index',
 ));
 
-Route::set('page', '(<lang>)(/)<id>', array('id' => '[a-zA-Z0-9\-]+'))
+Route::set('page', '(<lang>)(/)<id>', array('id' => '([\w]+\-[\w]+)+'))
   ->defaults(array(
    'directory' => 'blog',
    'controller' => 'page',
