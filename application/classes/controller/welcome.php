@@ -6,7 +6,7 @@ class Controller_Welcome extends Controller_Core {
 
     public function action_index()
     {$this->fff = "dddd";
-        $this->set_layout('2clomns');
+        $this->set_layout('2cloxmns');
     }
 
     public function action_about_us()

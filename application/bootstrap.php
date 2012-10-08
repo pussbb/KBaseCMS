@@ -92,7 +92,7 @@ Kohana::modules(array(
     // 'image'      => MODPATH.'image',      // Image manipulation
     'rpc'    => MODPATH.'kohana-RPC',
     'mybase' => MODPATH.'Kohana-my-base',
-    'blog' => MODPATH.'blog',
+    'content-management' => MODPATH.'content-management',
     ));
 
 /**

@@ -13,7 +13,6 @@ Route::set('page', '(<lang>)(/)<id>', array(
     'id' => '([\w]+\-[\w]+)+',
     'lang' => Language::uri_check_codes()
   ))->defaults(array(
-   'directory' => 'blog',
    'controller' => 'page',
    'action'     => 'index',
 ));
