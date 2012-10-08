@@ -16,7 +16,7 @@
         <li><a href="#"><i class="i"></i> Make admin</a></li>
     </ul>
 </div>
-
+<?php echo $fff;?>
 <input type="text" value="02-16-2012" id="datepicker">
 <script>
 $(document).ready(function(){

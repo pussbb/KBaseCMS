@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Admin_Admin extends Controller_Core {
+class Controller_Admin_Welcome extends Controller_Core {
 
     private $user = NULL;
     protected $check_access = FALSE;
