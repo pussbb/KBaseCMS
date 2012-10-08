@@ -104,3 +104,13 @@ Kohana::modules(array(
 
 Cookie::$salt = 'c48997015d7b74358cb32e9ad3ae3d762';
 Cookie::$httponly = TRUE;
+
+Route::set('admin', '((<lang>)(/)admin(<controller>)(/<action>(/<id>)))', array(
+  'lang' => Language::uri_check_codes(),
+  ))
+    ->defaults(array(
+        'directory' => 'admin',
+        'lang' => NULL,
+        'controller' => 'welcome',
+        'action'     => 'index',
+    ));

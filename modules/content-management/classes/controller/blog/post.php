@@ -6,7 +6,14 @@ class Controller_Blog_Post extends Controller_Core {
 
     public function action_index()
     {
-        debug($this->request->param('id'), true);
+      try {
+          $model = Model_Blog_Post::find(array(
+            'uri' => $this->request->param('id')
+          ));
+      } catch(Exception $e) {
+          throw new HTTP_Exception_404();
+          
+      }
     }
 
 } // End Welcome

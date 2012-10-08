@@ -9,7 +9,7 @@ Route::set('blog', '(<lang>)(/)blog(/<controller>)(/<action>(/<id>))', array(
    'action'     => 'index',
 ));
 
-Route::set('post', '(<lang>)(/)article/<id>.html', array(
+Route::set('post', '(<lang>)(/)article/<id>', array(
         'id' => '[a-zA-Z0-9_/]+',
         'lang' => Language::uri_check_codes(),
   ))->defaults(array(
