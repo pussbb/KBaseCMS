@@ -10,11 +10,12 @@
         </div>
       </form>
     <?php
-        $categories = Model_Blog_Category::find_all();
+        $categories = Model_Blog_Category::find_all()->records;
+        ///debug(Collection::build_tree($categories, 'id', 2), true);
         echo '<h3>'.tr('Categories').'</h3>';
         echo '<ul>';
-          foreach($categories->records as $category) {
-              echo '<li>'.Html::anchor('blog/category/'.$category->id, $category->name, array(
+          foreach($categories as $category) {
+              echo '<li>'.HTML::anchor('blog/category/'.$category->id, $category->name, array(
                   'title' => $category->description,
               )).'</li>';
           }
