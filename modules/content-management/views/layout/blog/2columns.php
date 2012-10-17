@@ -11,7 +11,7 @@
       </form>
     <?php
         $categories = Model_Blog_Category::find_all()->records;
-        ///debug(Collection::build_tree($categories, 'id', 2), true);
+        //debug(Collection::build_tree($categories), true);
         echo '<h3>'.tr('Categories').'</h3>';
         echo '<ul>';
           foreach($categories as $category) {
