@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="<?echo URL::site();?>">Project name</a>
+            <a class="brand" href="<?echo URL::site('');?>">Project name</a>
             <div class="nav-collapse">
                 <ul class="nav pull-right">
                     <li class="active"><a href="<?echo URL::site();?>"><?php echo __('home');?></a></li>
