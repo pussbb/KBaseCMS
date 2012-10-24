@@ -94,6 +94,7 @@ Kohana::init(array(
 	'index_file' => '',
 	'caching' => FALSE,
 	'profile' => FALSE,
+	'expose' => FALSE,
 ));
 
 Kohana::modules(array(
@@ -114,5 +115,4 @@ Kohana::modules(array(
 
 
 Cookie::$salt = 'c48997015d7b74358cb32e9ad3ae3d762';
-Cookie::$httponly = TRUE;
 
