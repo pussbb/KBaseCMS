@@ -1,1 +1,0 @@
-/opt/projects/php/web-speeddial/modules/Kohana-my-base/coffee_scripts/auth.coffee
