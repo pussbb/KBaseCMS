@@ -8,55 +8,6 @@
             echo '</h1>';
         echo '</div>';
         ?>
-<script>
-$(document).ready(function(){
-    $('.submenu > a').click(function(e)
-    {
-        e.preventDefault();
-        var submenu = $(this).siblings('ul');
-        var li = $(this).parents('li');
-        var submenus = $('#sidebar li.submenu ul');
-        var submenus_parents = $('#sidebar li.submenu');
-        if(li.hasClass('open'))
-        {
-            if(($(window).width() > 768) || ($(window).width() < 479)) {
-                submenu.slideUp();
-            } else {
-                submenu.fadeOut(250);
-            }
-            li.removeClass('open');
-        } else
-        {
-            if(($(window).width() > 768) || ($(window).width() < 479)) {
-                submenus.slideUp();
-                submenu.slideDown();
-            } else {
-                submenus.fadeOut(250);
-                submenu.fadeIn(250);
-            }
-            submenus_parents.removeClass('open');
-            li.addClass('open');
-        }
-    });
-
-    var ul = $('#sidebar > ul');
-
-    $('#sidebar > a').click(function(e)
-    {
-        e.preventDefault();
-        var sidebar = $('#sidebar');
-        if(sidebar.hasClass('open'))
-        {
-            sidebar.removeClass('open');
-            ul.slideUp(250);
-        } else
-        {
-            sidebar.addClass('open');
-            ul.slideDown(250);
-        }
-    });
-});
-</script>
         <div id="user-nav" class="navbar navbar-inverse">
             <ul class="nav btn-group">
                 <li class="btn btn-inverse" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text">Profile</span></a></li>
@@ -74,7 +25,7 @@ $(document).ready(function(){
                 </li>
                 <li class="btn btn-inverse">
                     <?php
-                        echo HTML::anchor('users/logout',
+                        echo HTML::anchor(URL::site('users/logout'),
                             '<i class="icon icon-share-alt"></i> <span class="text">'.tr('Logout').'</span>'
                         );
                     ?>
@@ -89,7 +40,7 @@ $(document).ready(function(){
                 foreach(Admin_Modules::instance()->modules() as $module) {
                     $submenu = Arr::get($module, 'menu');
                     echo '<li '.($submenu?'class="submenu"':'').'>';
-                    echo HTML::anchor('admin/'.Arr::path($module, 'info.uri'),
+                    echo HTML::anchor(URL::site('admin/'.Arr::path($module, 'info.uri')),
                                         '<span>'.Arr::path($module, 'info.name').'</span>');
                         
                         if ($submenu) {
@@ -111,7 +62,6 @@ $(document).ready(function(){
             </ul>
 
         </div>
-        
         <?php
     echo '<div class="container" id="content">';?>
             <div id="content-header">

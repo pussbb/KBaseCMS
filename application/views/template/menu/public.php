@@ -12,20 +12,20 @@
                     <li class="active"><a href="<?echo URL::site();?>"><?php echo __('home');?></a></li>
                     <li><?php
                         echo Html::anchor(
-                            URL::site('welcome/about_us'),
-                            __('about_us')
+                            URL::site('about-us'),
+                            tr('About us')
                         );
                         ?></li>
                     <li><?php
                         echo Html::anchor(
                             URL::site('users/register'),
-                            __('register')
+                            tr('Register')
                         );
                         ?></li>
                     <li><?php
                         echo Html::anchor(
                             URL::site('users/login'),
-                            __('login')
+                            tr('Login')
                         );
                         ?></li>
                 </ul>

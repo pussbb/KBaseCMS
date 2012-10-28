@@ -7,7 +7,10 @@ return array(
             'admin/grey' => '',
         ),
         'js' => array(
-
+            'admin/main' => array(
+              'admin/sidebar',
+              'admin/loader'
+            ),
         ),
     ),
 );

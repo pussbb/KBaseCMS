@@ -12,5 +12,6 @@ class Controller_Template_Admin extends Controller_Core {
     {
       parent::before();
       $this->current_user = Auth::instance()->current_user();
+
     }
 }
