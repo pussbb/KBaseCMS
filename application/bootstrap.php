@@ -101,7 +101,7 @@ Kohana::modules(array(
     // 'cache'      => MODPATH.'cache',      // Caching with multiple backends
     'database'   => MODPATH.'database',   // Database access
     // 'image'      => MODPATH.'image',      // Image manipulation
-
+    'widget' => MODPATH.'widget',
     'mybase' => MODPATH.'Kohana-my-base',
     'content-management' => MODPATH.'content-management',
     'admin' => MODPATH.'admin'

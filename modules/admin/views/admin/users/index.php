@@ -1,5 +1,5 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-
+ob_start();
 echo '<table class="table">';
     echo '<thead>';
       echo '<tr>';
@@ -20,3 +20,7 @@ echo '<table class="table">';
     }
     echo '</tbody>';
 echo '</table>';
+
+$content = ob_get_contents();
+ob_end_clean();
+echo UI_Widget::render(array('title' => 'Users', 'content' => $content));

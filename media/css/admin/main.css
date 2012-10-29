@@ -155,7 +155,6 @@ a:hover {
   background-image: linear-gradient(top, #ffffff 0%, #eeeeee 100%);
   border-top-left-radius: 8px;
   height: 80px;
-  position: abslute;
   width: 100%;
   margin-top: -38px;
   z-index: 20;

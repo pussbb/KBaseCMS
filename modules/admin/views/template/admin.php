@@ -40,8 +40,10 @@
                 foreach(Admin_Modules::instance()->modules() as $module) {
                     $submenu = Arr::get($module, 'menu');
                     echo '<li '.($submenu?'class="submenu"':'').'>';
-                    echo HTML::anchor(URL::site('admin/'.Arr::path($module, 'info.uri')),
-                                        '<span>'.Arr::path($module, 'info.name').'</span>');
+                    $title = '<span>'.Arr::path($module, 'info.name').'</span>';
+                    if ($submenu)
+                       $title .= '<span class="label">'.count($submenu).'</span>';
+                    echo HTML::anchor(URL::site('admin/'.Arr::path($module, 'info.uri')), $title);
                         
                         if ($submenu) {
                         ;

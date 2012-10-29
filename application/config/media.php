@@ -5,6 +5,7 @@ return array(
         'css' => array(
             'bootstrap/bootstrap' => '',
             'main' => '',
+            'ui' => ''
         ),
         'js' => array(
             'jquery/jquery.min',
