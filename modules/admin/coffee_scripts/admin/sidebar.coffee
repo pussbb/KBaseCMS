@@ -1,22 +1,21 @@
 
 $ ->
   sidebar = $('#sidebar')
+  submenus = $('#sidebar li.submenu ul')
+  submenus_parents = $('#sidebar li.submenu')
   ul = $('#sidebar > ul')
-  $('#sidebar > a').click (e)->
+  $('#sidebar ul:first a').click (e)->
     e.preventDefault()
-    if sidebar.hasClass 'open'
-      sidebar.removeClass 'open'
-      ul.slideUp 250
-    else
-      sidebar.addClass 'open'
-      ul.slideDown 250
+    if sidebar.hasClass 'open' then sidebar.removeClass 'open' else sidebar.addClass 'open'
 
-  $('.submenu > a').click (e)->
-    e.preventDefault()
-    submenu = $(this).siblings 'ul'
     li = $(this).parents 'li'
-    submenus = $('#sidebar li.submenu ul')
-    submenus_parents = $('#sidebar li.submenu')
+    $('li.active', ul).removeClass 'active'
+    li.addClass 'active'
+    submenus.hide()
+    submenus_parents.removeClass 'open'
+    submenu = $('ul', li)
+    return if ! submenu.length
+
     if li.hasClass 'open'
       if ($(window).width() > 768) || ($(window).width() < 479)
         submenu.slideUp()

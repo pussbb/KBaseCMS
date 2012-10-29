@@ -41,9 +41,16 @@
                     $submenu = Arr::get($module, 'menu');
                     echo '<li '.($submenu?'class="submenu"':'').'>';
                     $title = '<span>'.Arr::path($module, 'info.name').'</span>';
-                    if ($submenu)
-                       $title .= '<span class="label">'.count($submenu).'</span>';
-                    echo HTML::anchor(URL::site('admin/'.Arr::path($module, 'info.uri')), $title);
+                    $link = '#';
+                    if ($submenu) {
+                        array_unshift($submenu, array('uri' => Arr::path($module, 'info.uri'), 'title' => tr('Dashboard')));
+                        $title .= '<span class="label">'.count($submenu).'</span>';
+                    }
+                    else {
+                        $link = URL::site('admin/'.Arr::path($module, 'info.uri'));
+                    }
+                    
+                    echo HTML::anchor($link, $title);
                         
                         if ($submenu) {
                         ;

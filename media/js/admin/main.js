@@ -2,26 +2,28 @@
 (function() {
 
   $(function() {
-    var sidebar, ul;
+    var sidebar, submenus, submenus_parents, ul;
     sidebar = $('#sidebar');
+    submenus = $('#sidebar li.submenu ul');
+    submenus_parents = $('#sidebar li.submenu');
     ul = $('#sidebar > ul');
-    $('#sidebar > a').click(function(e) {
+    return $('#sidebar ul:first a').click(function(e) {
+      var li, submenu;
       e.preventDefault();
       if (sidebar.hasClass('open')) {
         sidebar.removeClass('open');
-        return ul.slideUp(250);
       } else {
         sidebar.addClass('open');
-        return ul.slideDown(250);
       }
-    });
-    return $('.submenu > a').click(function(e) {
-      var li, submenu, submenus, submenus_parents;
-      e.preventDefault();
-      submenu = $(this).siblings('ul');
       li = $(this).parents('li');
-      submenus = $('#sidebar li.submenu ul');
-      submenus_parents = $('#sidebar li.submenu');
+      $('li.active', ul).removeClass('active');
+      li.addClass('active');
+      submenus.hide();
+      submenus_parents.removeClass('open');
+      submenu = $('ul', li);
+      if (!submenu.length) {
+        return;
+      }
       if (li.hasClass('open')) {
         if (($(window).width() > 768) || ($(window).width() < 479)) {
           submenu.slideUp();
