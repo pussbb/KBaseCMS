@@ -7,7 +7,7 @@
     submenus = $('#sidebar li.submenu ul');
     submenus_parents = $('#sidebar li.submenu');
     ul = $('#sidebar > ul');
-    return $('#sidebar ul:first a').click(function(e) {
+    return $('#sidebar ul:first a').on('click', function(e) {
       var li, submenu;
       e.preventDefault();
       if (sidebar.hasClass('open')) {
@@ -16,10 +16,15 @@
         sidebar.addClass('open');
       }
       li = $(this).parents('li');
+      if (li.closest('li.open').length) {
+        $('li.active', submenus).removeClass('active');
+        li.addClass('active');
+        return;
+      }
       $('li.active', ul).removeClass('active');
+      $('li.open', ul).removeClass('open');
       li.addClass('active');
       submenus.hide();
-      submenus_parents.removeClass('open');
       submenu = $('ul', li);
       if (!submenu.length) {
         return;
@@ -39,7 +44,6 @@
           submenus.fadeOut(250);
           submenu.fadeIn(250);
         }
-        submenus_parents.removeClass('open');
         return li.addClass('open');
       }
     });
@@ -50,6 +54,10 @@
     container = $('.container .container-fluid');
     return $('#sidebar a, ul.nav a').on('click', function(e) {
       var href;
+      console.log($(this).data('click'));
+      if ($(this).data('click')) {
+        return;
+      }
       e.preventDefault();
       href = $(this).attr('href');
       if (/#/.test(href)) {

@@ -18,7 +18,7 @@
     return array(
       'name' => tr('Blog'),
       'description' => tr('some description'),
-      'icon' => NULL,
+      'icon' => '<i class="icon-edit"></i>',
       'uri' => 'blog/'
     );
   }

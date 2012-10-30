@@ -18,7 +18,7 @@
     return array(
       'name' => tr('System'),
       'description' => tr('some description'),
-      'icon' => NULL,
+      'icon' => '<i class="icon-cogs"></i>',
       'uri' => 'system/'
     );
   }

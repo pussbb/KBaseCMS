@@ -18,7 +18,7 @@
     return array(
       'name' => tr('News'),
       'description' => tr('some description'),
-      'icon' => NULL,
+      'icon' => '<i class="icon-rss"></i>',
       'uri' => 'news/'
     );
   }

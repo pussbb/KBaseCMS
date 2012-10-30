@@ -18,7 +18,7 @@
     return array(
       'name' => tr('Users'),
       'description' => tr('some description'),
-      'icon' => NULL,
+      'icon' => '<i class="icon-user"></i>',
       'uri' => 'users/'
     );
   }

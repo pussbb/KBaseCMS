@@ -30,6 +30,16 @@ a:hover {
 #header h1 a {
   display: block;
 }
+.app-mode {
+  position: absolute;
+  z-index: 25;
+  top: 11px;
+  left: 230px;
+}
+.app-mode span {
+  font-size: 16px;
+  padding: 3px 5px;
+}
 /* Top user navigation */
 #user-nav {
   position: absolute;
