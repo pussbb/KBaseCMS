@@ -8,6 +8,7 @@ body {
 	overflow-x: hidden;
     margin-top: -9px;
 }
+
 a:hover {
 	text-decoration: none;
 }
@@ -18,21 +19,19 @@ a:hover {
     position: relative;
     width: 100%;
     z-index: -9;
-}
-
-#header h1 {
-    height: 31px;
-    left: 15px;
-    line-height: 20px;
-    overflow: hidden;
-    position: relative;
-    top: 14px;
-    width: 191px;
-    font-size: 20px;
-}
-
-#header h1 a {
-    display: block;
+    h1 {
+        height: 31px;
+        left: 15px;
+        line-height: 20px;
+        overflow: hidden;
+        position: relative;
+        top: 14px;
+        width: 191px;
+        font-size: 20px;
+    }
+    h1 a {
+         display: block;
+    }
 }
 
 .app-mode {
@@ -40,12 +39,13 @@ a:hover {
     z-index: 25;
     top: 11px;
     left: 230px;
+
+    span {
+        font-size: 16px;
+        padding: 3px 5px;
+    }
 }
 
-.app-mode span {
-    font-size: 16px;
-    padding: 3px 5px;
-}
 /* Top user navigation */
 #user-nav {
     position: absolute;
