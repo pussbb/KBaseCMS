@@ -12,6 +12,7 @@ return array(
             'bootstrap/bootstrap',
             'bootstrap/datepicker',
             'ui_lib' => array(
+                'lib/is',
                 'lib/pseudo_ajax_load_progress',
                 'lib/inline_alert',
             ),

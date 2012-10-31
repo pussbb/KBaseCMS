@@ -50,11 +50,11 @@
   });
 
   $(function() {
-    var container;
+    var container, jxhr;
     container = $('.container .container-fluid');
+    jxhr = null;
     return $('#sidebar a, ul.nav a').on('click', function(e) {
       var href;
-      console.log($(this).data('click'));
       if ($(this).data('click')) {
         return;
       }
