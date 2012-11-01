@@ -26,13 +26,8 @@ abstract class UI {
 
   private function new_model($name)
   {
-        if (! (bool)preg_match('/[Mm]odel/', $name))
-        {
-            $parts = explode('_', $name);
-            array_unshift($parts, 'model');
-            $name = implode('_', array_filter(array_map('ucfirst', $parts)));
-        }
-        return new $name;
+    $model = Helper_Model::class_name($name);
+    return new $model();
   }
 
   public static function render(array $params = array())

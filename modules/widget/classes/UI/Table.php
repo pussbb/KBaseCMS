@@ -16,18 +16,18 @@ class UI_Table extends UI {
     $offset_key = $this->model->module_name().'_offset';
 
     $records = $this->model
-                    ->filter(array(
+                    ->find_all(array(
                         'limit' => Arr::get($_REQUEST, $limit_key, $this->param('limit', $this->model->per_page)),
                         'offset' => Arr::get($_REQUEST, $offset_key, $this->param('offset')),
                         'total_count' => TRUE,
-                    ))
-                    ->find_all();
+                    ));
 
     return array(
         'titles' => Arr::extract($this->model->labels(), $this->param('columns')),
         'columns' => $this->param('columns'),
         'records' => $records->records,
         'total' => $records->count,
+        'actions' => $this->param('actions', array())
     );
   }
 
