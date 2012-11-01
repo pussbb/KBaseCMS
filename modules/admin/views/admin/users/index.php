@@ -5,6 +5,6 @@ echo UI_Widget::render(array(
     'content' => UI_Table::render(array(
         'model'=>'user',
         'columns' => array('id', 'login', 'email'),
-        'actions' => array('destroy', 'view')
+        'actions' => array('destroy', 'view'),
     )),
 ));

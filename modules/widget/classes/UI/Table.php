@@ -11,12 +11,11 @@ class UI_Table extends UI {
 
   private function view_data()
   {
+    $model = $this->model;
+    $limit_key = $model::module_name().'_limit';
+    $offset_key = $model ::module_name().'_offset';
 
-    $limit_key = $this->model->module_name().'_limit';
-    $offset_key = $this->model->module_name().'_offset';
-
-    $records = $this->model
-                    ->find_all(array(
+    $records = $model::find_all(array(
                         'limit' => Arr::get($_REQUEST, $limit_key, $this->param('limit', $this->model->per_page)),
                         'offset' => Arr::get($_REQUEST, $offset_key, $this->param('offset')),
                         'total_count' => TRUE,

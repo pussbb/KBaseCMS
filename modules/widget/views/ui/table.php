@@ -33,4 +33,10 @@ echo '<table class="table table-bordered">';
             echo '</tr>';
         }
     echo '</tbody>';
+    echo '<tfoot>';
+        echo '<tr>';
+          echo '<td colspan="40">'.tr('per page').'</td>';
+        echo '</tr>';
+    echo '</tfoot>';
+    
 echo '</table>';
