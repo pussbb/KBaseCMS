@@ -12,13 +12,6 @@ body {
   background-image: linear-gradient(top, #3f3f3f 0%, #222222 100%);
   border-bottom: 1px solid #555555;
 }
-#search input[type=text],
-#search button {
-  background-color: #222222;
-}
-#search input[type=text]:focus {
-  color: #777777;
-}
 #sidebar > ul {
   border-top: 1px solid #393939;
   border-bottom: 1px solid #4E4E4E;
@@ -57,7 +50,7 @@ body {
   border-bottom: 1px solid #202020;
 }
 #sidebar > ul ul li a:hover,
-#sidebar > ul ul li.active a {
+#sidebar #sidebar > ul ul li.active a {
   color: #CCCCCC;
   background-color: #272727;
 }

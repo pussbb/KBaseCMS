@@ -3,8 +3,6 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
-}
-#authbox {
   display: block;
   min-height: 196px;
   background: #ffffff;
@@ -13,12 +11,6 @@
   overflow: hidden !important;
   text-align: center;
   position: relative;
-}
-.reg-form {
-  width: 55%!important;
-}
-.reg-form .form-horizontal .controls {
-  margin-left: auto;
 }
 #authbox form {
   width: 100%;
@@ -31,16 +23,15 @@
   margin-top: 20px;
   padding: 0 20px;
 }
-.reg-form .help-block {
-  margin-top: 0px !important;
-  text-align: left;
-  padding-left: 39% !important;
-}
 #authbox .form-actions {
   padding: 14px 20px 15px;
+  margin-bottom: 0;
 }
 #authbox .form-actions .pull-left {
   margin-top: 2px;
+}
+#authbox .form-vertical {
+  margin-bottom: 0;
 }
 #authbox form#loginform {
   z-index: 200;
@@ -56,9 +47,16 @@
 #authbox form#recoverform .control-group {
   margin: 23px 0;
 }
-.form-vertical,
-.form-actions {
-  margin-bottom: 0;
+.reg-form {
+  width: 55%!important;
+}
+.reg-form .form-horizontal .controls {
+  margin-left: auto;
+}
+.reg-form .help-block {
+  margin-top: 0px !important;
+  text-align: left;
+  padding-left: 39% !important;
 }
 @media (max-width: 480px) {
   #authbox {

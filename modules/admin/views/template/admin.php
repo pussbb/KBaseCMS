@@ -84,15 +84,11 @@
 
         </div>
         <?php
-    echo '<div class="container" id="content">';?>
-            <div id="content-header">
-
-            </div>
-
-            <div class="container-fluid">
-    <?php
-      echo $content;
-    echo '</div></div>';
+    echo '<div class="container" id="content">';
+            echo '<div class="container-fluid">';
+                echo $content;
+            echo '</div>';
+    echo '</div>';
 
     echo View::factory('template/footer', get_defined_vars())->render();
 

@@ -65,12 +65,17 @@ a:hover {
   display: block;
   font-size: 10px;
 }
+#user-nav > ul > li > a {
+  padding: 5px 10px;
+  display: block;
+  font-size: 10px;
+}
 #user-nav > ul > li > a:hover,
-#user-nav > ul > li.open > a {
+#user-nav #user-nav > ul > li.open > a {
   color: #ffffff;
 }
 #user-nav > ul > li > a:hover > i,
-#user-nav > ul > li.open > a > i {
+#user-nav #user-nav > ul > li.open > a > i {
   opacity: 1;
 }
 #user-nav > ul > li > a > .label {
@@ -78,6 +83,14 @@ a:hover {
   padding: 1px 4px 1px;
   margin: -2px 4px 0;
   display: inline-block;
+}
+#user-nav > ul ul > li > a {
+  text-align: left;
+  text-shadow: 0 1px 0 #ffffff;
+}
+#user-nav > ul ul > li > a {
+  text-align: left;
+  text-shadow: 0 1px 0 #ffffff;
 }
 #user-nav > ul ul > li > a {
   text-align: left;
@@ -116,9 +129,6 @@ a:hover {
 #sidebar > ul > li > a > i {
   margin-right: 10px;
 }
-#sidebar > ul > li.active > a {
-  background: url("./menu-active.png") no-repeat scroll right center transparent !important;
-}
 #sidebar > ul > li > a > .label {
   margin: 0 20px 0 0;
   float: right;
@@ -156,7 +166,7 @@ a:hover {
   width: auto;
   border-top-left-radius: 8px;
 }
-#content-header {
+#content .container-fluid {
   background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#ffffff), to(#eeeeee));
   background-image: -webkit-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
   background-image: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
@@ -164,37 +174,12 @@ a:hover {
   background-image: -o-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
   background-image: linear-gradient(top, #ffffff 0%, #eeeeee 100%);
   border-top-left-radius: 8px;
-  height: 80px;
-  width: 100%;
   margin-top: -38px;
-  z-index: 20;
+  padding-top: 28px;
+  height: 100%;
+  min-height: 200px;
 }
-#content-header h1 {
-  color: #555555;
-  font-size: 28px;
-  font-weight: normal;
-  float: left;
-  text-shadow: 0 1px 0 #ffffff;
-  margin-left: 20px;
-  position: absolute;
-}
-#content-header .btn-group {
-  float: right;
-  right: 20px;
-  position: absolute;
-}
-#content-header h1,
-#content-header .btn-group {
-  margin-top: 20px;
-}
-#content-header .btn-group .btn {
-  padding: 11px 14px 9px;
-}
-#content-header .btn-group .btn .label {
-  position: absolute;
-  top: -7px;
-}
-.container-fluid .row-fluid:first-child {
+#content .container-fluid .row-fluid:first-child {
   margin-top: 20px;
 }
 /* Footer */
@@ -250,39 +235,16 @@ form {
     margin-top: -43px;
     margin-bottom: 43px;
   }
-  .navbar > .nav {
-    float: none;
-  }
   #user-nav > ul {
     left: 50%;
     position: absolute;
   }
+  .navbar > .nav {
+    float: none;
+  }
   #content {
     margin-left: 0 !important;
     border-top-left-radius: 0;
-  }
-  #content-header {
-    margin-top: 0;
-    height: 140px;
-    text-align: center;
-  }
-  #content-header h1,
-  #content-header .btn-group {
-    float: none;
-  }
-  #content-header h1 {
-    display: block;
-    text-align: center;
-    margin-left: auto;
-    margin-top: 0;
-    padding-top: 15px;
-    width: 100%;
-  }
-  #content-header .btn-group {
-    margin-top: 70px;
-    margin-bottom: 0;
-    margin-right: 0;
-    left: 30%;
   }
   #sidebar {
     float: none;
@@ -323,8 +285,10 @@ form {
   #header h1 {
     top: 3px;
   }
-  #sidebar,
   #sidebar > ul {
+    width: 43px;
+  }
+  #sidebar {
     width: 43px;
   }
   #sidebar > ul ul {
