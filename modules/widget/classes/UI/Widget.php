@@ -2,7 +2,7 @@
 
 class UI_Widget extends UI {
 
-  
+
 
   public function _render()
   {

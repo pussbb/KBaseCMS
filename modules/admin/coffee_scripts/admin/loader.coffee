@@ -9,8 +9,14 @@ $ ->
     href = $(this).attr 'href'
     return if /#/.test href
     container.pseudoAjaxLoadingProgress {timeout: 500}
-    $.get( href, (data)->
+
+    if IS.object jxhr
+      jxhr.abort()
+
+    jxhr = $.get( href, (data)->
       container.html data
     )
     .error ()->
       container.inlineAlert {text: 'Could not load page', closable: false}
+    .complete ()->
+      jxhr = null

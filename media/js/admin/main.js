@@ -66,13 +66,18 @@
       container.pseudoAjaxLoadingProgress({
         timeout: 500
       });
-      return $.get(href, function(data) {
+      if (IS.object(jxhr)) {
+        jxhr.abort();
+      }
+      return jxhr = $.get(href, function(data) {
         return container.html(data);
       }).error(function() {
         return container.inlineAlert({
           text: 'Could not load page',
           closable: false
         });
+      }).complete(function() {
+        return jxhr = null;
       });
     });
   });
