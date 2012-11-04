@@ -15,6 +15,7 @@ $ ->
 
     jxhr = $.get( href, (data)->
       container.html data
+      container.children().eq(0).tWidget()
     )
     .error ()->
       container.inlineAlert {text: 'Could not load page', closable: false}

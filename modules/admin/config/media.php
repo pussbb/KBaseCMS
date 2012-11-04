@@ -8,6 +8,7 @@ return array(
         ),
         'js' => array(
             'admin/main' => array(
+              'admin/init',
               'admin/sidebar',
               'admin/loader'
             ),

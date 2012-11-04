@@ -1,10 +1,5 @@
 
-root = exports ? this
 
-ObjProto   = Object.prototype
-ArrayProto = Array.prototype
-toString   = ObjProto.toString
-hasOwn     = ObjProto.hasOwnProperty
 class IS
   @string: (s) ->
     (typeof s is 'string') or s instanceof String

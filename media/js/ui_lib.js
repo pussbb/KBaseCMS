@@ -4,6 +4,10 @@
 
   root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
+  Function.prototype.property = function(prop, desc) {
+    return Object.defineProperty(this.prototype, prop, desc);
+  };
+
   ObjProto = Object.prototype;
 
   ArrayProto = Array.prototype;
@@ -126,6 +130,57 @@
   })();
 
   root.IS = IS;
+
+  $(function() {
+    var TWidget;
+    TWidget = (function() {
+
+      function TWidget(elem, options) {
+        var widgetTitle;
+        this.elem = elem;
+        options = $.extend({}, $.fn.tWidget.defaults, options);
+        widgetTitle = $('<div>').addClass('widget-title');
+        if (options.icon) {
+          widgetTitle.append("<span class=\"icon\">" + options.icon + "</span>");
+        }
+        widgetTitle.append("<h5>" + options.title + "</h5>");
+        elem.wrap('<div class="widget-content" />');
+        this.content = elem.parent();
+        this.content.wrap('<div class="widget-box" />');
+        this.widget = this.content.parent();
+        this.widget.prepend(widgetTitle);
+      }
+
+      TWidget.prototype.remove = function() {
+        this.widget.replaceWith(this.elem);
+        this.elem.data('TWidget', null);
+        return delete this;
+      };
+
+      return TWidget;
+
+    })();
+    $.fn.tWidget = function(options) {
+      return this.each(function(key, value) {
+        var data, self;
+        self = $(this);
+        data = self.data('TWidget');
+        if (!data) {
+          data = new TWidget(self, options);
+          return self.data('TWidget', data);
+        } else {
+          if (IS.string(options)) {
+            return data[options]();
+          }
+        }
+      });
+    };
+    return $.fn.tWidget.defaults = {
+      title: 'widget',
+      url: null,
+      icon: null
+    };
+  });
 
   /*
     script ....

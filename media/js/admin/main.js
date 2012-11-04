@@ -2,6 +2,11 @@
 (function() {
 
   $(function() {
+    var widget;
+    return widget = $('div.some-table').tWidget();
+  });
+
+  $(function() {
     var sidebar, submenus, submenus_parents, ul;
     sidebar = $('#sidebar');
     submenus = $('#sidebar li.submenu ul');
@@ -70,7 +75,8 @@
         jxhr.abort();
       }
       return jxhr = $.get(href, function(data) {
-        return container.html(data);
+        container.html(data);
+        return container.children().eq(0).tWidget();
       }).error(function() {
         return container.inlineAlert({
           text: 'Could not load page',
