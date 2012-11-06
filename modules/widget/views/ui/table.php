@@ -26,7 +26,7 @@ echo '<table class="table table-bordered">';
                 {
                   echo '<td>';
                     foreach($actions as $action) {
-                        echo HTML::anchor(Helper_Model::url($record, $action), $action);
+                        echo HTML::anchor(Helper_Model::url($record, $action), $action, array('data-toggle'=>'confirm'));
                     }
                   echo '</td>';
                 }

@@ -306,7 +306,7 @@
         fn: null
       }
     };
-    return $('a[data-toggle="confirm"]').on('click', function(e) {
+    return $('body').on('click', '[data-toggle="confirm"]', function(e) {
       var self;
       e.preventDefault();
       e.stopImmediatePropagation();

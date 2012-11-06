@@ -39,7 +39,7 @@ $ ->
     },
   }
 
-  $('a[data-toggle="confirm"]').on 'click', (e)->
+  $('body').on 'click','[data-toggle="confirm"]' ,(e)->
     e.preventDefault()
     e.stopImmediatePropagation()
     self = $(this)
