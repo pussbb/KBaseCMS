@@ -26,7 +26,7 @@
                     <a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><span class="text"><?php echo tr('Tools');?></span> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a title="" href="#"><i class="icon-flag"></i><?php echo tr('Languages');?></a></li>
-                        <li><a title="" href="#"><i class="icon-trash"></i><?php echo tr('Clean cache');?></a></li>
+                        <li><a title="" href="<?php echo URL::site('admin/welcome/clean_cache');?>" data-toggle="confirm"><i class="icon-trash"></i><?php echo tr('Clean cache');?></a></li>
                         <li><a title="" href="#"><i class="icon-list-alt"></i><?php echo tr('Logs');?></a></li>
                         <li><a title="" href="#"><i class="icon-magic"></i><?php echo tr('Backup');?></a></li>
                     </ul>

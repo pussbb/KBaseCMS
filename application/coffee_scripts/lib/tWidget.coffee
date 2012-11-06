@@ -8,9 +8,13 @@ $ ->
       if options.icon
         widgetTitle.append "<span class=\"icon\">#{options.icon}</span>"
       widgetTitle.append "<h5>#{options.title}</h5>"
-
-      elem.wrap '<div class="widget-content" />'
-      @content = elem.parent()
+      if options.wrap
+        elem.wrap '<div class="widget-content" />'
+        @content = elem.parent()
+      else
+        elem.append '<div class="widget-content" />'
+        @content = $('div.widget-content', elem)
+      
       @content.wrap '<div class="widget-box" />'
       @widget = @content.parent()
       @widget.prepend widgetTitle
@@ -20,6 +24,11 @@ $ ->
       @elem.data 'TWidget', null
       delete @
 
+    show: ()->
+      widget.show()
+
+    hide: ()->
+      widget.hide()
 
 
   $.fn.tWidget = (options)->
@@ -37,5 +46,6 @@ $ ->
     title: 'widget',
     url: null,
     icon: null,
+    wrap: true
   }
 #   $.fn.tWidget.Constructor = TWidget

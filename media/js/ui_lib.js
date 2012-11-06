@@ -107,10 +107,10 @@
 
     IS.empty = function(container) {
       var x;
-      if (this.array(constainer)) {
+      if (this.array(container)) {
         return container.length === 0;
       }
-      if (this.object(constainer)) {
+      if (this.object(container)) {
         if (this.fn(container.valueOf && this.object(container.valueOf()))) {
           return this.empty(container.valueOf());
         }
@@ -144,8 +144,13 @@
           widgetTitle.append("<span class=\"icon\">" + options.icon + "</span>");
         }
         widgetTitle.append("<h5>" + options.title + "</h5>");
-        elem.wrap('<div class="widget-content" />');
-        this.content = elem.parent();
+        if (options.wrap) {
+          elem.wrap('<div class="widget-content" />');
+          this.content = elem.parent();
+        } else {
+          elem.append('<div class="widget-content" />');
+          this.content = $('div.widget-content', elem);
+        }
         this.content.wrap('<div class="widget-box" />');
         this.widget = this.content.parent();
         this.widget.prepend(widgetTitle);
@@ -155,6 +160,14 @@
         this.widget.replaceWith(this.elem);
         this.elem.data('TWidget', null);
         return delete this;
+      };
+
+      TWidget.prototype.show = function() {
+        return widget.show();
+      };
+
+      TWidget.prototype.hide = function() {
+        return widget.hide();
       };
 
       return TWidget;
@@ -178,8 +191,135 @@
     return $.fn.tWidget.defaults = {
       title: 'widget',
       url: null,
-      icon: null
+      icon: null,
+      wrap: true
     };
+  });
+
+  $(function() {
+    var TDialog;
+    TDialog = (function() {
+
+      function TDialog(elem, options) {
+        var footer;
+        this.elem = elem;
+        options = $.extend({}, $.fn.tDialog.defaults, options);
+        this.modal = $('<div>').attr('id', 'modal-' + new Date().getTime());
+        this.modal.addClass('modal');
+        $('body').append(this.modal);
+        this.modal.append($('<div>').addClass('modal-header').html("<h3>" + options.title + "</h3>"));
+        this.content = $('<div>').addClass('modal-body');
+        this.modal.append(this.content);
+        if (!IS.empty(options.content)) {
+          this.content.html(options.content);
+        }
+        this.footer = $('<div>').addClass('modal-footer');
+        if (IS.array(options.buttons)) {
+          footer = this.footer;
+          $(options.buttons).each(function() {
+            var button, onclick;
+            button = $('<button>').addClass('btn').text(this.title);
+            onclick = this.fn;
+            button.on('click', function() {
+              return onclick();
+            });
+            return footer.append(button);
+          });
+        }
+        this.modal.append(this.footer);
+        this.modal.modal('show');
+      }
+
+      TDialog.prototype.close = function() {
+        this.modal.modal('hide');
+        this.elem.data('tDialog', null);
+        this.modal.remove();
+        return delete this;
+      };
+
+      return TDialog;
+
+    })();
+    $.fn.tDialog = function(options) {
+      return this.each(function(key, value) {
+        var data, self;
+        self = $(this);
+        data = self.data('tDialog');
+        if (!data) {
+          data = new TDialog(self, options);
+          return self.data('tDialog', data);
+        } else {
+          if (IS.string(options)) {
+            return data[options]();
+          }
+        }
+      });
+    };
+    return $.fn.tDialog.defaults = {
+      title: 'widget',
+      content: null,
+      url: null,
+      buttons: []
+    };
+  });
+
+  $(function() {
+    $.fn.tConfirm = function(options) {
+      return this.each(function(key, value) {
+        var self;
+        self = $(this);
+        options = $.extend(true, $.fn.tConfirm.defaults, options);
+        return self.tDialog({
+          title: options.title,
+          content: options.content,
+          buttons: [
+            {
+              title: options.confirm.title,
+              fn: function() {
+                if (IS.fn(options.confirm.fn)) {
+                  options.confirm.fn(self);
+                }
+                return self.tDialog('close');
+              }
+            }, {
+              title: options.reject.title,
+              fn: function() {
+                self.tDialog('close');
+                if (IS.fn(options.reject.fn)) {
+                  return options.reject.fn(self);
+                }
+              }
+            }
+          ]
+        });
+      });
+    };
+    $.fn.tConfirm.defaults = {
+      title: 'confirm dialog',
+      content: 'Are you sure to do it?',
+      confirm: {
+        title: 'Yes',
+        fn: null
+      },
+      reject: {
+        title: 'No',
+        fn: null
+      }
+    };
+    return $('a[data-toggle="confirm"]').on('click', function(e) {
+      var self;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      self = $(this);
+      return $(this).tConfirm({
+        title: self.html(),
+        confirm: {
+          fn: function() {
+            return $.get(self.attr('href'));
+          }
+        }
+      });
+    });
   });
 
   /*

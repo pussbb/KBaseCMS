@@ -7,4 +7,10 @@ class Controller_Admin_Welcome extends Controller_Template_Admin {
 
     }
 
+
+    public function action_clean_cache()
+    {
+        Dir::rmdir(Kohana::$cache_dir, FALSE);
+        return $this->render_nothing();
+    }
 }

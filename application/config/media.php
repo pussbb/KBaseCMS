@@ -15,6 +15,8 @@ return array(
                 'lib/init',
                 'lib/is',
                 'lib/tWidget',
+                'lib/tDialog',
+                'lib/tConfirm',
                 'lib/pseudo_ajax_load_progress',
                 'lib/inline_alert',
             ),

@@ -51,8 +51,8 @@ class IS
     v? and v isnt (0)
 
   @empty: (container)->
-    return container.length is 0 if @array constainer
-    if @object constainer
+    return container.length is 0 if @array container
+    if @object container
       return @empty container.valueOf() if @fn container.valueOf and @object container.valueOf()
       return false for x of container when hasOwn.call container, x
       return true
