@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-29 18:57+0200\n"
+"POT-Creation-Date: 2012-11-12 19:04+0200\n"
 "PO-Revision-Date: 2012-10-29 19:15+0200\n"
 "Last-Translator: pussbb\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -14,235 +14,308 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
-"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 1.5\n"
 
-#: /opt/projects/php/web-speeddial/application/views/template/menu/public.php:16
-msgid "About us"
-msgstr "О нас"
-
-#: /opt/projects/php/web-speeddial/application/views/template/menu/public.php:22
-#, fuzzy
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/register.php:59
-msgid "Register"
-msgstr "Регистрация"
-
-#: /opt/projects/php/web-speeddial/application/views/template/menu/public.php:28
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/account_info.php:21
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/login.php:30
-msgid "Login"
-msgstr "Войти"
-
-#: /opt/projects/php/web-speeddial/modules/admin/classes/Helper/Admin/Modules/System.php:19
-msgid "System"
-msgstr "Система"
-
-#: /opt/projects/php/web-speeddial/modules/admin/classes/Helper/Admin/Modules/System.php:20
-#: /opt/projects/php/web-speeddial/modules/admin/classes/Helper/Admin/Modules/Users.php:20
-#: /opt/projects/php/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/News.php:20
-#: /opt/projects/php/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/Blog.php:20
-msgid "some description"
-msgstr "некоторое описание"
-
-#: /opt/projects/php/web-speeddial/modules/admin/classes/Helper/Admin/Modules/System.php:30
-msgid "General Info"
-msgstr "Общая информация"
-
-#: /opt/projects/php/web-speeddial/modules/admin/classes/Helper/Admin/Modules/System.php:34
-msgid "Media"
-msgstr "Медиа"
-
-#: /opt/projects/php/web-speeddial/modules/admin/classes/Helper/Admin/Modules/Users.php:19
+#: /var/www/web-speeddial/modules/admin/classes/Helper/Admin/Modules/Users.php:19
 msgid "Users"
 msgstr "Пользователи"
 
-#: /opt/projects/php/web-speeddial/modules/admin/views/template/admin.php:7
+#: /var/www/web-speeddial/modules/admin/classes/Helper/Admin/Modules/Users.php:20
+#: /var/www/web-speeddial/modules/admin/classes/Helper/Admin/Modules/System.php:20
+#: /var/www/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/Blog.php:20
+#: /var/www/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/News.php:20
+msgid "some description"
+msgstr "некоторое описание"
+
+#: /var/www/web-speeddial/modules/admin/classes/Helper/Admin/Modules/System.php:19
+msgid "System"
+msgstr "Система"
+
+#: /var/www/web-speeddial/modules/admin/classes/Helper/Admin/Modules/System.php:30
+msgid "General Info"
+msgstr "Общая информация"
+
+#: /var/www/web-speeddial/modules/admin/classes/Helper/Admin/Modules/System.php:34
+msgid "Media"
+msgstr "Медиа"
+
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:7
 msgid "Admin area"
 msgstr "Админка"
 
-#: /opt/projects/php/web-speeddial/modules/admin/views/template/admin.php:15
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:11
+msgid "Mode:"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:13
+msgid "Production"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:14
+msgid "Staging"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:15
+#, fuzzy
+msgid "Testing"
+msgstr "Настройки"
+
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:16
+msgid "Development"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:26
 msgid "Tools"
 msgstr "Утилиты"
 
-#: /opt/projects/php/web-speeddial/modules/admin/views/template/admin.php:17
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:28
 msgid "Languages"
 msgstr "Языки"
 
-#: /opt/projects/php/web-speeddial/modules/admin/views/template/admin.php:18
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:29
 msgid "Clean cache"
 msgstr "Очистить кеш"
 
-#: /opt/projects/php/web-speeddial/modules/admin/views/template/admin.php:19
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:30
 msgid "Logs"
 msgstr "Логи"
 
-#: /opt/projects/php/web-speeddial/modules/admin/views/template/admin.php:20
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:31
 msgid "Backup"
 msgstr "Резервная копия"
 
-#: /opt/projects/php/web-speeddial/modules/admin/views/template/admin.php:24
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:35
 msgid "Settings"
 msgstr "Настройки"
 
-#: /opt/projects/php/web-speeddial/modules/admin/views/template/admin.php:29
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:40
 msgid "Logout"
 msgstr "Выйти "
 
-#: /opt/projects/php/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/News.php:19
-msgid "News"
-msgstr "Новости"
+#: /var/www/web-speeddial/modules/admin/views/template/admin.php:58
+msgid "Dashboard"
+msgstr ""
 
-#: /opt/projects/php/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/Blog.php:19
+#: /var/www/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/Blog.php:19
 msgid "Blog"
 msgstr "Блог"
 
-#: /opt/projects/php/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/Blog.php:30
-#: /opt/projects/php/web-speeddial/modules/content-management/views/layout/blog/2columns.php:15
+#: /var/www/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/Blog.php:30
+#: /var/www/web-speeddial/modules/content-management/views/layout/blog/2columns.php:15
 msgid "Categories"
 msgstr "Категории"
 
-#: /opt/projects/php/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/Blog.php:34
+#: /var/www/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/Blog.php:34
 msgid "Articles"
 msgstr "Статьи"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Controller/Base/Core.php:125
+#: /var/www/web-speeddial/modules/content-management/classes/Helper/Admin/Modules/News.php:19
+msgid "News"
+msgstr "Новости"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Controller/Base/Core.php:125
 msgid "Access deny"
 msgstr "Доступ запрещен"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:44
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:78
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Model/Access/Rule.php:14
+msgid "guest"
+msgstr "гость"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Model/Access/Rule.php:15
+msgid "user"
+msgstr "пользователь"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Model/Access/Rule.php:16
+msgid "admin"
+msgstr "администратор"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Model/User.php:40
+msgid "ID"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Model/User.php:41
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/login.php:30
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/account_info.php:21
+#: /var/www/web-speeddial/application/views/template/menu/public.php:28
+msgid "Login"
+msgstr "Войти"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Model/User.php:42
+#, fuzzy
+msgid "E-mail"
+msgstr "Email"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Model/User.php:74
+msgid "User not found or wrong password"
+msgstr "Пользователь не найден или неверный пароль"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Model/User.php:84
+msgid "Must be valid email"
+msgstr "Email не правильный"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Model/User.php:86
+msgid "Must be your valid password"
+msgstr "Ваш правильный пароль"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:44
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:78
 msgid "Must not be empty"
 msgstr "Не должно быть пустым"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:47
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:47
 msgid "Must be valid integer"
 msgstr "Надо циферку"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:52
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:52
 #, php-format
 msgid "Must be between %d and %d"
 msgstr "Должно быть между %d и %d"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:55
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:55
 #, php-format
 msgid "Must be greater than %d"
 msgstr "Должно быть больше чем %d"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:58
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:82
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:58
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Base/Db/Validation.php:82
 #, php-format
 msgid "Must be less than %d"
 msgstr "Должно быть меньше чем %d"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Base/Model.php:1382
+#: /var/www/web-speeddial/modules/Kohana-my-base/classes/Base/Model.php:1385
 msgid "already exists"
 msgstr "уже существует "
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Model/User.php:65
-msgid "User not found or wrong password"
-msgstr "Пользователь не найден или неверный пароль"
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/recovery.php:11
+msgid "Enter your e-mail address below and we will send you instructions how to recover a password."
+msgstr "Введите ваш адрес электронной почти внизу и мы вышлем Вам инструкции по восстановлению пароля "
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Model/User.php:75
-msgid "Must be valid email"
-msgstr "Email не правильный"
-
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Model/User.php:77
-msgid "Must be your valid password"
-msgstr "Ваш правильный пароль"
-
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Model/Access/Rule.php:14
-msgid "guest"
-msgstr "гость"
-
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Model/Access/Rule.php:15
-msgid "user"
-msgstr "пользователь"
-
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/classes/Model/Access/Rule.php:16
-msgid "admin"
-msgstr "администратор"
-
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/pretty_form/twitter_bootstrap/form_actions_login.php:4
-msgid "Lost password?"
-msgstr "Забыли пароль?"
-
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/pretty_form/twitter_bootstrap/form_actions_recovery.php:4
-msgid "Back to login"
-msgstr "Вернуться на вход"
-
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/account_info.php:25
-msgid "Email"
-msgstr "Email"
-
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/login.php:11
-msgid "Enter username and password to continue."
-msgstr "Введите имя пользователя и пароль, чтоб продолжить"
-
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/auth.php:11
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/register.php:11
-msgid "Warning"
-msgstr "Внимание"
-
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/recovery.php:11
-msgid ""
-"Enter your e-mail address below and we will send you instructions how to "
-"recover a password."
-msgstr ""
-"Введите ваш адрес электронной почти внизу и мы вышлем Вам инструкции по "
-"восстановлению пароля "
-
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/recovery.php:23
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/recovery.php:23
 msgid "Recover"
 msgstr "Восстановить"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/register.php:21
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/login.php:11
+msgid "Enter username and password to continue."
+msgstr "Введите имя пользователя и пароль, чтоб продолжить"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/register.php:11
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/auth.php:11
+msgid "Warning"
+msgstr "Внимание"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/register.php:21
 msgid "Registration"
 msgstr "Регистрация"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/register.php:24
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/register.php:24
 msgid "Nickname"
 msgstr "Никнейм"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/register.php:28
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/register.php:28
 msgid "Your nickname"
 msgstr "Ваш никнейм"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/register.php:35
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/register.php:35
 msgid "Email address"
 msgstr "Email"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/register.php:41
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/register.php:41
 msgid "Password"
 msgstr "Пароль"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/register.php:45
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/register.php:45
 msgid "Must be at least 6 characters long"
 msgstr "Должен быть длиной минимум 6 символов"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/register.php:50
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/register.php:50
 msgid "Password confirmation"
 msgstr "Подтверждение пароля"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/users/register.php:54
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/register.php:54
 msgid "Must be the same as password"
 msgstr "Должен быть такой же как и пароль"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/errors/default.php:5
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/errors/default.php:67
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/register.php:59
+#: /var/www/web-speeddial/application/views/template/menu/public.php:22
+#, fuzzy
+msgid "Register"
+msgstr "Регистрация"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/users/account_info.php:25
+msgid "Email"
+msgstr "Email"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/pretty_form/twitter_bootstrap/form_actions_recovery.php:4
+msgid "Back to login"
+msgstr "Вернуться на вход"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/pretty_form/twitter_bootstrap/form_actions_login.php:4
+msgid "Lost password?"
+msgstr "Забыли пароль?"
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:4
+msgid "source code translations"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:9
+msgid "load translations from sources"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:18
+msgid "compile translations"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:28
+msgid "show all"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:33
+msgid "move not translated up"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:34
+msgid "translated"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:35
+msgid "not translated"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:43
+msgid "identifier"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:71
+msgid "edit"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/errors/default.php:5
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/errors/default.php:67
 msgid "Oops, an error occurred"
 msgstr "Ой, ошибочка"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/errors/default.php:74
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/errors/404.php:448
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/errors/default.php:74
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/errors/404.php:448
 msgid "home"
 msgstr "Начальная"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/errors/default.php:78
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/errors/default.php:78
 msgid "back"
 msgstr "назад"
 
-#: /opt/projects/php/web-speeddial/modules/Kohana-my-base/views/errors/500.php:3
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/errors/500.php:3
 msgid "Houston we have a problem"
 msgstr "Хьюстон у проблемы"
 
+#: /var/www/web-speeddial/modules/widget/views/ui/table.php:14
+msgid "Actions"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/widget/views/ui/table.php:38
+msgid "per page"
+msgstr ""
+
+#: /var/www/web-speeddial/application/views/template/menu/public.php:16
+msgid "About us"
+msgstr "О нас"
