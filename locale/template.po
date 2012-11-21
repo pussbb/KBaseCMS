@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-12 19:12+0200\n"
+"POT-Creation-Date: 2012-11-16 17:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,6 +38,51 @@ msgstr ""
 
 #: /var/www/web-speeddial/modules/admin/classes/Helper/Admin/Modules/System.php:34
 msgid "Media"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/admin/translations/index.php:5
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:4
+msgid "source code translations"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/admin/translations/index.php:10
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:9
+msgid "load translations from sources"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/admin/translations/index.php:19
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:18
+msgid "compile translations"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/admin/translations/index.php:29
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:28
+msgid "show all"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/admin/translations/index.php:34
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:33
+msgid "move not translated up"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/admin/translations/index.php:35
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:34
+msgid "translated"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/admin/translations/index.php:36
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:35
+msgid "not translated"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/admin/translations/index.php:44
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:43
+msgid "identifier"
+msgstr ""
+
+#: /var/www/web-speeddial/modules/admin/views/admin/translations/index.php:72
+#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:71
+msgid "edit"
 msgstr ""
 
 #: /var/www/web-speeddial/modules/admin/views/template/admin.php:7
@@ -249,42 +294,6 @@ msgstr ""
 
 #: /var/www/web-speeddial/modules/Kohana-my-base/views/pretty_form/twitter_bootstrap/form_actions_login.php:4
 msgid "Lost password?"
-msgstr ""
-
-#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:4
-msgid "source code translations"
-msgstr ""
-
-#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:9
-msgid "load translations from sources"
-msgstr ""
-
-#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:18
-msgid "compile translations"
-msgstr ""
-
-#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:28
-msgid "show all"
-msgstr ""
-
-#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:33
-msgid "move not translated up"
-msgstr ""
-
-#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:34
-msgid "translated"
-msgstr ""
-
-#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:35
-msgid "not translated"
-msgstr ""
-
-#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:43
-msgid "identifier"
-msgstr ""
-
-#: /var/www/web-speeddial/modules/Kohana-my-base/views/translations/index.php:71
-msgid "edit"
 msgstr ""
 
 #: /var/www/web-speeddial/modules/Kohana-my-base/views/errors/default.php:5

@@ -15,19 +15,29 @@
                             URL::site('about-us'),
                             tr('About us')
                         );
-                        ?></li>
+                        ?>
+                    </li>
                     <li><?php
                         echo Html::anchor(
                             URL::site('users/register'),
                             tr('Register')
                         );
-                        ?></li>
+                        ?>
+                    </li>
                     <li><?php
                         echo Html::anchor(
                             URL::site('users/login'),
                             tr('Login')
                         );
-                        ?></li>
+                        ?>
+                    </li>
+                    <li><?php
+                        echo Html::anchor(
+                            URL::site('panel/'),
+                            tr('Panel')
+                        );
+                        ?>
+                    </li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
