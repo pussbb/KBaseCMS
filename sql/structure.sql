@@ -23,6 +23,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `categories`
+--
+
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+--
+-- Структура таблицы `screenshorts`
+--
+
+CREATE TABLE IF NOT EXISTS `screenshorts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `file` text,
+  `site_id` int(255) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `width` int(11) DEFAULT NULL,
+  `height` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `ext` varchar(45) DEFAULT 'png',
+  `grab_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
 -- Структура таблицы `sites`
 --
 
@@ -34,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `sites` (
   `category_id` int(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
