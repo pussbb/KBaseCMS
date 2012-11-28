@@ -38,5 +38,5 @@ echo '<table class="table table-bordered">';
           echo '<td colspan="40">'.tr('per page').'</td>';
         echo '</tr>';
     echo '</tfoot>';
-    
+
 echo '</table>';

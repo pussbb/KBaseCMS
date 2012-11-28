@@ -14,7 +14,21 @@ $ ->
             fn: ()->
               if IS.fn options.confirm.fn
                 options.confirm.fn(self)
-              self.tDialog 'close'
+              self.tDialog 'close' if ! self.attr 'href'
+              self.tDialog 'showProccess'
+              self.tDialog 'hideButtons'
+              $.ajax {
+                url: self.attr('href'),
+                type: 'DELETE',
+                #data: self.data() || {},
+                success: (data)->
+                  if ! IS.empty data
+                    self.tDialog 'hideProccess', 'Opps some error ocured'
+                  self.tDialog 'close'
+                error: ()->
+                  self.tDialog 'hideProccess', 'Opps some error ocured'
+              }
+
           },
           {
             title: options.reject.title
@@ -25,7 +39,7 @@ $ ->
           }
         ]
       }
-  
+
   $.fn.tConfirm.defaults = {
     title: 'confirm dialog',
     content: 'Are you sure to do it?',
@@ -39,14 +53,10 @@ $ ->
     },
   }
 
-  $('body').on 'click','[data-toggle="confirm"]' ,(e)->
-    e.preventDefault()
+  $(document).on 'click', '[data-toggle="confirm"]', {}, (e)->
     e.stopImmediatePropagation()
+    e.preventDefault()
     self = $(this)
-    $(this).tConfirm {
+    self.tConfirm {
       title: self.html()
-      confirm: {
-        fn: ()->
-          $.get self.attr 'href'
-      }
     }

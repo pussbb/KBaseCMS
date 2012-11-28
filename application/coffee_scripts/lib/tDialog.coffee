@@ -7,12 +7,27 @@ $ ->
       @modal = $('<div>').attr 'id', 'modal-'+ new Date().getTime()
       @modal.addClass 'modal'
       $('body').append @modal
-      @modal.append $('<div>').addClass('modal-header').html("<h3>#{options.title}</h3>")
+      modalHeader = $('<div>').addClass('modal-header')
+
+      modalHeader.append $('<button>')
+                    .attr('type', 'button')
+                    .addClass('close')
+                    .attr('area-hidden', 'true')
+                    .text('x')
+      modalHeader.append "<h3>#{options.title}</h3>"
+      @modal.append modalHeader
+
+      modalHeader.on 'click', 'button.close', { originElem: @elem}, (e)->
+        e.data.originElem.tDialog 'close'
+
+      modalHeader = null
       @content = $('<div>').addClass 'modal-body'
       @modal.append @content
+
       if ! IS.empty options.content
         @content.html options.content
       @footer = $('<div>').addClass 'modal-footer'
+
       if IS.array options.buttons
         footer = @footer
         $(options.buttons).each ()->
@@ -23,6 +38,7 @@ $ ->
           footer.append button
       @modal.append @footer
       @modal.modal 'show'
+      options = null
 
     close: ()->
       @modal.modal 'hide'
@@ -30,8 +46,24 @@ $ ->
       @modal.remove()
       delete @
 
+    hideButtons: ()->
+     @footer.hide()
 
-  $.fn.tDialog = (options)->
+    showButtons: ()->
+      @footer.show()
+
+    showProccess: ()->
+      @contentHtml = @content.html()
+      @content.pseudoAjaxLoadingProgress {timeout: 500}
+
+    hideProccess: (data = null)->
+      if ! IS.empty data
+        @content.html data
+      else
+        @conten.html @contentHtml
+        @contentHtml = null
+
+  $.fn.tDialog = (options, optionData = null)->
     this.each (key, value)->
       self = $(this)
       data = self.data 'tDialog'
@@ -40,7 +72,7 @@ $ ->
         self.data 'tDialog', data
       else
         if IS.string options
-          data[options]()
+          data[options](optionData)
 
   $.fn.tDialog.defaults = {
     title: 'widget',

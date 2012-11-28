@@ -2,7 +2,7 @@
 $ ->
   container = $('.container .container-fluid')
   jxhr = null
-  $('#sidebar a, ul.nav a').on 'click', (e)->
+  $('#sidebar a, ul.nav a[data-toggle!="confirm"]').on 'click', (e)->
 
     return if $(this).data 'click'
     e.preventDefault()

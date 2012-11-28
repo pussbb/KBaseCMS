@@ -201,13 +201,22 @@
     TDialog = (function() {
 
       function TDialog(elem, options) {
-        var footer;
+        var footer, modalHeader;
         this.elem = elem;
         options = $.extend({}, $.fn.tDialog.defaults, options);
         this.modal = $('<div>').attr('id', 'modal-' + new Date().getTime());
         this.modal.addClass('modal');
         $('body').append(this.modal);
-        this.modal.append($('<div>').addClass('modal-header').html("<h3>" + options.title + "</h3>"));
+        modalHeader = $('<div>').addClass('modal-header');
+        modalHeader.append($('<button>').attr('type', 'button').addClass('close').attr('area-hidden', 'true').text('x'));
+        modalHeader.append("<h3>" + options.title + "</h3>");
+        this.modal.append(modalHeader);
+        modalHeader.on('click', 'button.close', {
+          originElem: this.elem
+        }, function(e) {
+          return e.data.originElem.tDialog('close');
+        });
+        modalHeader = null;
         this.content = $('<div>').addClass('modal-body');
         this.modal.append(this.content);
         if (!IS.empty(options.content)) {
@@ -228,6 +237,7 @@
         }
         this.modal.append(this.footer);
         this.modal.modal('show');
+        options = null;
       }
 
       TDialog.prototype.close = function() {
@@ -237,10 +247,40 @@
         return delete this;
       };
 
+      TDialog.prototype.hideButtons = function() {
+        return this.footer.hide();
+      };
+
+      TDialog.prototype.showButtons = function() {
+        return this.footer.show();
+      };
+
+      TDialog.prototype.showProccess = function() {
+        this.contentHtml = this.content.html();
+        return this.content.pseudoAjaxLoadingProgress({
+          timeout: 500
+        });
+      };
+
+      TDialog.prototype.hideProccess = function(data) {
+        if (data == null) {
+          data = null;
+        }
+        if (!IS.empty(data)) {
+          return this.content.html(data);
+        } else {
+          this.conten.html(this.contentHtml);
+          return this.contentHtml = null;
+        }
+      };
+
       return TDialog;
 
     })();
-    $.fn.tDialog = function(options) {
+    $.fn.tDialog = function(options, optionData) {
+      if (optionData == null) {
+        optionData = null;
+      }
       return this.each(function(key, value) {
         var data, self;
         self = $(this);
@@ -250,7 +290,7 @@
           return self.data('tDialog', data);
         } else {
           if (IS.string(options)) {
-            return data[options]();
+            return data[options](optionData);
           }
         }
       });
@@ -279,7 +319,24 @@
                 if (IS.fn(options.confirm.fn)) {
                   options.confirm.fn(self);
                 }
-                return self.tDialog('close');
+                if (!self.attr('href')) {
+                  self.tDialog('close');
+                }
+                self.tDialog('showProccess');
+                self.tDialog('hideButtons');
+                return $.ajax({
+                  url: self.attr('href'),
+                  type: 'DELETE',
+                  success: function(data) {
+                    if (!IS.empty(data)) {
+                      self.tDialog('hideProccess', 'Opps some error ocured');
+                    }
+                    return self.tDialog('close');
+                  },
+                  error: function() {
+                    return self.tDialog('hideProccess', 'Opps some error ocured');
+                  }
+                });
               }
             }, {
               title: options.reject.title,
@@ -306,18 +363,13 @@
         fn: null
       }
     };
-    return $('body').on('click', '[data-toggle="confirm"]', function(e) {
+    return $(document).on('click', '[data-toggle="confirm"]', {}, function(e) {
       var self;
-      e.preventDefault();
       e.stopImmediatePropagation();
+      e.preventDefault();
       self = $(this);
-      return $(this).tConfirm({
-        title: self.html(),
-        confirm: {
-          fn: function() {
-            return $.get(self.attr('href'));
-          }
-        }
+      return self.tConfirm({
+        title: self.html()
       });
     });
   });

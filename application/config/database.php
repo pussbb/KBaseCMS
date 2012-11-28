@@ -21,7 +21,7 @@ return array
             'hostname'   => 'localhost',
             'database'   => 'speeddial',
             'username'   => 'root',
-            'password'   => '312m16',
+            'password'   => 'root',
             'persistent' => FALSE,
         ),
         'table_prefix' => '',

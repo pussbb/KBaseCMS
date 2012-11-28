@@ -58,7 +58,7 @@
     var container, jxhr;
     container = $('.container .container-fluid');
     jxhr = null;
-    return $('#sidebar a, ul.nav a').on('click', function(e) {
+    return $('#sidebar a, ul.nav a[data-toggle!="confirm"]').on('click', function(e) {
       var href;
       if ($(this).data('click')) {
         return;
