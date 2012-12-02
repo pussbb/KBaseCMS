@@ -58,25 +58,16 @@
     var container, jxhr;
     container = $('.container .container-fluid');
     jxhr = null;
-    return $('#sidebar a, ul.nav a[data-toggle!="confirm"]').on('click', function(e) {
-      var href;
-      if ($(this).data('click')) {
-        return;
-      }
+    return $('body').on('click', 'a[href!="#"][data-toggle!="confirm"][!data-click]', function(e) {
       e.preventDefault();
-      href = $(this).attr('href');
-      if (/#/.test(href)) {
-        return;
-      }
       container.pseudoAjaxLoadingProgress({
         timeout: 500
       });
       if (IS.object(jxhr)) {
         jxhr.abort();
       }
-      return jxhr = $.get(href, function(data) {
-        container.html(data);
-        return container.children().eq(0).tWidget();
+      return jxhr = $.get($(this).attr('href'), function(data) {
+        return container.html(data);
       }).error(function() {
         return container.inlineAlert({
           text: 'Could not load page',

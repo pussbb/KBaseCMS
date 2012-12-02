@@ -12,7 +12,7 @@ class Controller_Blog_Post extends Controller_Core {
           ));
       } catch(Exception $e) {
           throw new HTTP_Exception_404();
-          
+
       }
     }
 

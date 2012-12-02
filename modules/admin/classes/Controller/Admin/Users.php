@@ -8,4 +8,13 @@ class Controller_Admin_Users extends Controller_Template_Admin {
         $this->render_partial();
     }
 
+
+    public function action_destroy()
+    {
+        if ( ! $this->is_delete())
+            throw new HTTP_Exception_403(tr('Access deny'));
+
+        Model_User::destroy($this->request->param('id'));
+        $this->render_nothing();
+    }
 }

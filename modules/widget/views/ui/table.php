@@ -26,16 +26,24 @@ echo '<table class="table table-bordered">';
                 {
                   echo '<td>';
                     foreach($actions as $action) {
-                        echo HTML::anchor(Helper_Model::url($record, $action), $action, array('data-toggle'=>'confirm'));
+                        echo Helper_Actions::action($record, $action);
                     }
                   echo '</td>';
                 }
             echo '</tr>';
         }
+        if ( ! $records)
+        {
+            echo '<tr class="alert alert-info">';
+                echo '<td COLSPAN="'.(count($columns)+1).'">';
+                    echo tr('Nothing to display');
+                echo '</td>';
+            echo '</tr>';
+        }
     echo '</tbody>';
     echo '<tfoot>';
         echo '<tr>';
-          echo '<td colspan="40">'.tr('per page').'</td>';
+          echo '<td colspan="40">'.tr('Per page: ').$per_page.'</td>';
         echo '</tr>';
     echo '</tfoot>';
 

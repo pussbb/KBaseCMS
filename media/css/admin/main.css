@@ -10,6 +10,12 @@ body {
 a:hover {
   text-decoration: none;
 }
+a.action {
+  margin: 0px 4px;
+}
+.table th {
+  text-align: center;
+}
 /* Header */
 #header {
   height: 77px;

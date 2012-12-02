@@ -26,6 +26,7 @@ class UI_Table extends UI {
         'columns' => $this->param('columns'),
         'records' => $records->records,
         'total' => $records->count,
+        'per_page' => $records->per_page,
         'actions' => $this->param('actions', array())
     );
   }

@@ -58,5 +58,6 @@ $ ->
     e.preventDefault()
     self = $(this)
     self.tConfirm {
-      title: self.html()
+      title: self.data('title') || self.html()
+      content: self.data('content') || $.fn.tConfirm.defaults.content
     }
