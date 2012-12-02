@@ -328,10 +328,15 @@
                   url: self.attr('href'),
                   type: 'DELETE',
                   success: function(data) {
+                    var parent;
                     if (!IS.empty(data)) {
                       self.tDialog('hideProccess', 'Opps some error ocured');
                     }
-                    return self.tDialog('close');
+                    self.tDialog('close');
+                    parent = self.parent('td');
+                    if (parent.length) {
+                      return parent.closest('tr').remove();
+                    }
                   },
                   error: function() {
                     return self.tDialog('hideProccess', 'Opps some error ocured');
@@ -432,7 +437,8 @@
     text: 'Oops some error occured',
     closable: true,
     append: false,
-    type: 'alert-error'
+    type: 'alert-error',
+    onClose: null
   };
 
   $(function() {
@@ -452,10 +458,93 @@
       }
       alert.append(options.text);
       if (options.append) {
-        return $(this).append(alert);
+        $(this).append(alert);
       } else {
-        return $(this).html(alert);
+        $(this).html(alert);
       }
+      if (IS.fn(options.onClose)) {
+        return close.click(options.onClose);
+      }
+    };
+  });
+
+  $(function() {
+    var formControl;
+    formControl = (function() {
+
+      function formControl(form, options) {
+        var self;
+        this.form = form;
+        this.cancelButton = $('button.cancel-btn', this.form);
+        if (!this.cancelButton.length) {
+          this.cancelButton = $('<button>').addClass('btn btn-warning cancel-btn');
+          this.cancelButton.attr('type', 'button').text('Cancel');
+          $('.form-actions', this.form).append(this.cancelButton);
+        }
+        self = this;
+        this.cancelButton.click(function(e) {
+          e.preventDefault();
+          if (IS.fn(options.onCancel)) {
+            options.onCancel(this.form);
+          }
+          return self.destroy();
+        });
+        $('button[type="submit"]', this.form).click(function(e) {
+          var _ref;
+          e.preventDefault();
+          return $.ajax({
+            url: $(this.form).attr('action'),
+            type: ((_ref = $(this.form).attr('method')) != null ? _ref.toUpperCase() : void 0) || 'POST',
+            data: $(this.form).serialize(),
+            success: function(data) {
+              if (!data) {
+                if (IS.fn(options.onSuccess)) {
+                  return options.onSuccess($(this.form));
+                }
+              } else {
+                if (IS.fn(options.onLoad)) {
+                  return options.onLoad($(this.form));
+                }
+              }
+            },
+            error: function() {
+              if (IS.fn(options.onLoad)) {
+                return options.onLoad($(this.form));
+              }
+            }
+          });
+        });
+      }
+
+      formControl.prototype.destroy = function() {
+        this.cancelButton = null;
+        this.form = null;
+        return delete this;
+      };
+
+      return formControl;
+
+    })();
+    $.fn.formControll = function(options) {
+      return this.each(function(key, value) {
+        var data, self;
+        self = $(this);
+        data = self.data('formControl');
+        if (!data) {
+          data = new formControl(self, options);
+          return self.data('formControl', data);
+        } else {
+          if (IS.string(options)) {
+            return data[options]();
+          }
+        }
+      });
+    };
+    return $.fn.formControll.defaults = {
+      onCancel: null,
+      onSubmit: null,
+      onSuccess: null,
+      onLoad: null
     };
   });
 

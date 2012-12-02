@@ -86,7 +86,12 @@
         <?php
     echo '<div class="container" id="content">';
             echo '<div class="container-fluid">';
+                echo '<div class="request-info"></div>';
+                echo '<div class="form-container"></div>';
+                echo '<div class="fluid-content">';
                 echo $content;
+                echo '</div>';
+                echo '<div class="details-container"></div>';
             echo '</div>';
     echo '</div>';
 

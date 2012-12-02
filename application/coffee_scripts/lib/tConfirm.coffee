@@ -25,6 +25,10 @@ $ ->
                   if ! IS.empty data
                     self.tDialog 'hideProccess', 'Opps some error ocured'
                   self.tDialog 'close'
+                  parent = self.parent('td')
+                  if parent.length
+                    parent.closest('tr').remove()
+
                 error: ()->
                   self.tDialog 'hideProccess', 'Opps some error ocured'
               }

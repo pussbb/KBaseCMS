@@ -3,7 +3,8 @@ defaultOptions = {
   text: 'Oops some error occured',
   closable: true,
   append: false,
-  type: 'alert-error'
+  type: 'alert-error',
+  onClose: null
 }
 $ ->
 #   alert 'dfd'
@@ -21,3 +22,5 @@ $ ->
       $(this).append alert
     else
       $(this).html alert
+    if IS.fn options.onClose
+      close.click options.onClose

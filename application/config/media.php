@@ -19,6 +19,7 @@ return array(
                 'lib/tConfirm',
                 'lib/pseudo_ajax_load_progress',
                 'lib/inline_alert',
+                'lib/formControl'
             ),
         ),
     ),

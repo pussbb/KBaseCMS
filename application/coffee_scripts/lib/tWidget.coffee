@@ -14,7 +14,7 @@ $ ->
       else
         elem.append '<div class="widget-content" />'
         @content = $('div.widget-content', elem)
-      
+
       @content.wrap '<div class="widget-box" />'
       @widget = @content.parent()
       @widget.prepend widgetTitle
@@ -38,7 +38,7 @@ $ ->
       if ! data
         data = new TWidget self, options
         self.data 'TWidget', data
-      else 
+      else
         if IS.string options
           data[options]()
 
