@@ -1,8 +1,10 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
+$uri_check_codes = Language::uri_check_codes();
+
 Route::set('blog', '(<lang>)(/)blog(/<controller>)(/<action>(/<id>))', array(
         'id' => '[a-zA-Z0-9_/]+',
-        'lang' => Language::uri_check_codes(),
+        'lang' => $uri_check_codes,
   ))->defaults(array(
    'directory' => 'blog',
    'controller' => 'welcome',
@@ -11,7 +13,7 @@ Route::set('blog', '(<lang>)(/)blog(/<controller>)(/<action>(/<id>))', array(
 
 Route::set('post', '(<lang>)(/)article/<id>', array(
         'id' => '[a-zA-Z0-9_/]+',
-        'lang' => Language::uri_check_codes(),
+        'lang' => $uri_check_codes,
   ))->defaults(array(
    'directory' => 'blog',
    'controller' => 'post',
@@ -20,7 +22,7 @@ Route::set('post', '(<lang>)(/)article/<id>', array(
 
 Route::set('page', '(<lang>)(/)<id>', array(
     'id' => '([\w]+\-[\w]+)+',
-    'lang' => Language::uri_check_codes()
+    'lang' => $uri_check_codes
   ))->defaults(array(
    'controller' => 'page',
    'action'     => 'index',
