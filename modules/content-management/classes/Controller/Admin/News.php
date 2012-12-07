@@ -44,4 +44,13 @@ class Controller_Admin_News extends Controller_Template_Admin {
         Model_News::destroy($this->request->param('id'));
         $this->render_nothing();
     }
+
+    public function action_details()
+    {
+        $this->news = Model_News::find($this->request->param('id'));
+        if ($this->request->is_ajax())
+            return $this->render_partial('admin/news/details');
+        else
+            return $this->set_filename('admin/news/details');
+    }
 } // End Welcome
