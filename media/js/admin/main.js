@@ -55,12 +55,13 @@
   });
 
   $(function() {
-    var container, content, detailsContainer, formContainer, jxhr, requestInfo;
+    var container, content, contentLinkElement, detailsContainer, formContainer, jxhr, requestInfo;
     container = $('.container > .container-fluid');
     content = $(' > div.fluid-content', container);
     requestInfo = $(' > div.request-info', container);
     detailsContainer = $(' > .details-container', container);
     formContainer = $(' > .form-container', container);
+    contentLinkElement = null;
     jxhr = null;
     $('body').on('click', 'a.details-close', function(e) {
       detailsContainer.html('');
@@ -84,9 +85,15 @@
         requestInfo.hide().html();
         if ($this.hasClass('action_new' || $this.hasClass('action_edit'))) {
           formContainer.show().html(data);
-          $('form', formContainer).formControll({
+          formContainer.formControll({
             onCancel: function() {
+              formContainer.formControll('destroy');
               formContainer.hide().html('');
+              return content.show();
+            },
+            onSuccess: function() {
+              formContainer.formControll('destroy');
+              contentLinkElement.trigger('click');
               return content.show();
             }
           });
@@ -96,6 +103,7 @@
           detailsContainer.show().html('<a href="#" class="details-close btn btn-info">Back</a>').append(data);
           return;
         }
+        contentLinkElement = $this;
         return content.show().html(data);
       }).error(function() {
         return requestInfo.inlineAlert({

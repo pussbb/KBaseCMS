@@ -472,44 +472,41 @@
     var formControl;
     formControl = (function() {
 
-      function formControl(form, options) {
-        var self;
-        this.form = form;
-        this.cancelButton = $('button.cancel-btn', this.form);
-        if (!this.cancelButton.length) {
-          this.cancelButton = $('<button>').addClass('btn btn-warning cancel-btn');
-          this.cancelButton.attr('type', 'button').text('Cancel');
-          $('.form-actions', this.form).append(this.cancelButton);
-        }
-        self = this;
-        this.cancelButton.click(function(e) {
+      function formControl(formContainer, options) {
+        this.formContainer = formContainer;
+        this.init();
+        this.formContainer.on('click', 'button.cancel-btn', function(e) {
           e.preventDefault();
           if (IS.fn(options.onCancel)) {
-            options.onCancel(this.form);
+            return options.onCancel(this.formContainer);
           }
-          return self.destroy();
         });
-        $('button[type="submit"]', this.form).click(function(e) {
-          var _ref;
+        $(this.formContainer).on('click', 'button[type="submit"]', {
+          "formContainer": this.formContainer
+        }, function(e) {
+          var form, _ref;
           e.preventDefault();
+          form = $('form:first', formContainer);
           return $.ajax({
-            url: $(this.form).attr('action'),
-            type: ((_ref = $(this.form).attr('method')) != null ? _ref.toUpperCase() : void 0) || 'POST',
-            data: $(this.form).serialize(),
+            url: form.attr('action'),
+            type: ((_ref = form.attr('method')) != null ? _ref.toUpperCase() : void 0) || 'POST',
+            data: form.serialize(),
             success: function(data) {
-              if (!data) {
+              if (!data.length) {
                 if (IS.fn(options.onSuccess)) {
-                  return options.onSuccess($(this.form));
+                  return options.onSuccess(formContainer);
                 }
               } else {
+                formContainer.html(data);
+                formContainer.formControll('init');
                 if (IS.fn(options.onLoad)) {
-                  return options.onLoad($(this.form));
+                  return options.onLoad(formContainer);
                 }
               }
             },
             error: function() {
               if (IS.fn(options.onLoad)) {
-                return options.onLoad($(this.form));
+                return options.onLoad(formContainer);
               }
             }
           });
@@ -517,9 +514,21 @@
       }
 
       formControl.prototype.destroy = function() {
+        $(this.formContainer).off('click', 'button.cancel-btn');
         this.cancelButton = null;
-        this.form = null;
+        $(this.formContainer).off('click', 'button[type="submit"]');
+        this.formContainer.data('formControl', null);
+        this.formContainer = null;
         return delete this;
+      };
+
+      formControl.prototype.init = function() {
+        this.cancelButton = $('button.cancel-btn', this.formContainer);
+        if (!this.cancelButton.length) {
+          this.cancelButton = $('<button>').addClass('btn btn-warning cancel-btn');
+          this.cancelButton.attr('type', 'button').text('Cancel');
+          return $('.form-actions', this.formContainer).append(this.cancelButton);
+        }
       };
 
       return formControl;
@@ -527,12 +536,12 @@
     })();
     $.fn.formControll = function(options) {
       return this.each(function(key, value) {
-        var data, self;
-        self = $(this);
-        data = self.data('formControl');
+        var $this, data;
+        $this = $(this);
+        data = $this.data('formControl');
         if (!data) {
-          data = new formControl(self, options);
-          return self.data('formControl', data);
+          data = new formControl($this, options);
+          return $this.data('formControl', data);
         } else {
           if (IS.string(options)) {
             return data[options]();

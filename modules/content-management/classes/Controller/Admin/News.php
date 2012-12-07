@@ -25,7 +25,7 @@ class Controller_Admin_News extends Controller_Template_Admin {
         }
         $this->model->author_id = 0;//Auth::instance()->current_user()->id;
         $this->model->created_at = strtotime('now');
-        if ( ! $this->model->save()) {debug($this->model);
+        if ( ! $this->model->save()) {
 
             if ($this->request->is_ajax())
                 return $this->render_partial('admin/news/form');

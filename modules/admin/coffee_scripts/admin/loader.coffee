@@ -5,7 +5,7 @@ $ ->
   requestInfo = $(' > div.request-info', container)
   detailsContainer = $(' > .details-container', container)
   formContainer = $(' > .form-container', container)
-
+  contentLinkElement = null
   jxhr = null
 
   $('body').on 'click', 'a.details-close', (e)->
@@ -28,9 +28,14 @@ $ ->
       requestInfo.hide().html()
       if $this.hasClass 'action_new' or $this.hasClass 'action_edit'
         formContainer.show().html data
-        $('form', formContainer).formControll {
+        formContainer.formControll {
           onCancel: ()->
+            formContainer.formControll 'destroy'
             formContainer.hide().html ''
+            content.show()
+          onSuccess: ()->
+            formContainer.formControll 'destroy'
+            contentLinkElement.trigger 'click'
             content.show()
         }
         return
@@ -40,6 +45,7 @@ $ ->
             .html('<a href="#" class="details-close btn btn-info">Back</a>')
             .append data
         return
+      contentLinkElement = $this
       content.show().html data
     )
     .error ()->
