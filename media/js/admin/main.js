@@ -62,7 +62,12 @@
     detailsContainer = $(' > .details-container', container);
     formContainer = $(' > .form-container', container);
     jxhr = null;
-    return $('body').on('click', 'a[href!="#"][data-toggle!="confirm"][!data-click][!data-dismiss]', function(e) {
+    $('body').on('click', 'a.details-close', function(e) {
+      detailsContainer.html('');
+      detailsContainer.hide();
+      return content.show();
+    });
+    return $('body').on('click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]', function(e) {
       var $this;
       e.preventDefault();
       $this = $(this);
@@ -88,7 +93,7 @@
           return;
         }
         if ($this.hasClass('action_details')) {
-          detailsContainer.show().html(data);
+          detailsContainer.show().html('<a href="#" class="details-close btn btn-info">Back</a>').append(data);
           return;
         }
         return content.show().html(data);

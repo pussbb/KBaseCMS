@@ -8,7 +8,12 @@ $ ->
 
   jxhr = null
 
-  $('body').on 'click', 'a[href!="#"][data-toggle!="confirm"][!data-click][!data-dismiss]',(e)->
+  $('body').on 'click', 'a.details-close', (e)->
+    detailsContainer.html ''
+    detailsContainer.hide()
+    content.show()
+
+  $('body').on 'click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]', (e)->
     e.preventDefault()
     $this = $(this)
     content.hide()
@@ -30,7 +35,10 @@ $ ->
         }
         return
       if $this.hasClass 'action_details'
-        detailsContainer.show().html data
+        detailsContainer
+            .show()
+            .html('<a href="#" class="details-close btn btn-info">Back</a>')
+            .append data
         return
       content.show().html data
     )
