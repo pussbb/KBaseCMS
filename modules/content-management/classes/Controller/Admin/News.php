@@ -23,7 +23,7 @@ class Controller_Admin_News extends Controller_Template_Admin {
         foreach(array('title','content') as $field){
             $this->model->$field = Arr::get($_REQUEST, $field);
         }
-        $this->model->author_id = 0;//Auth::instance()->current_user()->id;
+        $this->model->author_id = Auth::instance()->current_user()->id;
         $this->model->created_at = strtotime('now');
         if ( ! $this->model->save()) {
 

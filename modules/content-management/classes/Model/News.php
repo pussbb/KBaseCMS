@@ -10,6 +10,7 @@ class Model_News extends Model
             'author' => array(
                 Model::HAS_ONE,
                 'Model_User',
+                'id',
                 'author_id',
             ),
         );
