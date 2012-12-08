@@ -208,7 +208,7 @@
         this.modal.addClass('modal');
         $('body').append(this.modal);
         modalHeader = $('<div>').addClass('modal-header');
-        modalHeader.append($('<button>').attr('type', 'button').addClass('close').attr('area-hidden', 'true').text('x'));
+        modalHeader.append($('<button>').attr('type', 'button').hide().addClass('close').attr('area-hidden', 'true').text('x'));
         modalHeader.append("<h3>" + options.title + "</h3>");
         this.modal.append(modalHeader);
         modalHeader.on('click', 'button.close', {
@@ -267,11 +267,12 @@
           data = null;
         }
         if (!IS.empty(data)) {
-          return this.content.html(data);
+          this.content.html(data);
         } else {
           this.conten.html(this.contentHtml);
-          return this.contentHtml = null;
+          this.contentHtml = null;
         }
+        return $('button.close:first', this.modal).show();
       };
 
       return TDialog;
@@ -333,9 +334,15 @@
                       self.tDialog('hideProccess', 'Opps some error ocured');
                     }
                     self.tDialog('close');
-                    parent = self.parent('td');
-                    if (parent.length) {
-                      return parent.closest('tr').remove();
+                    parent = self.parent();
+                    switch (new String(parent.prop("tagName")).toLowerCase()) {
+                      case 'td':
+                        return parent.closest('tr').remove();
+                      case 'li':
+                        if (parent.hasClass('can_remove')) {
+                          return parent.remove();
+                        }
+                        break;
                     }
                   },
                   error: function() {

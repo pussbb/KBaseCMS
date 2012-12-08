@@ -94,7 +94,7 @@ Kohana::init(array(
 	'index_file' => '',
 	'caching' => FALSE,
 	'profile' => FALSE,
-	'expose' => FALSE,
+	'expose' => TRUE,
 ));
 
 Kohana::modules(array(
@@ -110,7 +110,7 @@ Kohana::modules(array(
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
-//Kohana::$log->attach(new Log_File(APPPATH.'logs'));
+///Kohana::$log->attach(new Log_File(APPPATH.'logs'));
 
 
 

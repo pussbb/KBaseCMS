@@ -13,10 +13,4 @@ class Controller_Admin_Welcome extends Controller_Template_Admin {
         return $this->render_nothing();
     }
 
-    public function action_logs()
-    {
-        $this->file = $this->request->param('id');
-        if ($this->request->is_ajax())
-            $this->render_partial();
-    }
 }

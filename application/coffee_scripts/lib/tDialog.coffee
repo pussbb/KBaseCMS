@@ -11,6 +11,7 @@ $ ->
 
       modalHeader.append $('<button>')
                     .attr('type', 'button')
+                    .hide()
                     .addClass('close')
                     .attr('area-hidden', 'true')
                     .text('x')
@@ -62,6 +63,7 @@ $ ->
       else
         @conten.html @contentHtml
         @contentHtml = null
+      $('button.close:first', @modal).show()
 
   $.fn.tDialog = (options, optionData = null)->
     this.each (key, value)->

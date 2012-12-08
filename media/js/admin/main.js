@@ -3,7 +3,10 @@
 
   $(function() {
     var widget;
-    return widget = $('div.some-table').tWidget();
+    widget = $('div.some-table').tWidget();
+    return $('body').on('mouseover mouseenter', '[rel="tooltip"]', function() {
+      return $(this).tooltip('show');
+    });
   });
 
   $(function() {

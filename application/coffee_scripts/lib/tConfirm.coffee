@@ -25,9 +25,12 @@ $ ->
                   if ! IS.empty data
                     self.tDialog 'hideProccess', 'Opps some error ocured'
                   self.tDialog 'close'
-                  parent = self.parent('td')
-                  if parent.length
-                    parent.closest('tr').remove()
+                  parent = self.parent()
+
+                  switch new String(parent.prop("tagName")).toLowerCase()
+                    when 'td' then parent.closest('tr').remove()
+                    when 'li' then if parent.hasClass 'can_remove' then parent.remove()
+                    else
 
                 error: ()->
                   self.tDialog 'hideProccess', 'Opps some error ocured'
