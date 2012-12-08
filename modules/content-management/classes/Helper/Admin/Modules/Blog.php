@@ -28,11 +28,11 @@
     return array(
         'categories' => array(
             'title' => tr('Categories'),
-            'uri' => 'blog_categories/',
+            'uri' => 'blog/categories/',
         ),
         'articles' => array(
             'title' => tr('Articles'),
-            'uri' => 'blog_arcticles/',
+            'uri' => 'blog/arcticles/',
         ),
     );
   }
