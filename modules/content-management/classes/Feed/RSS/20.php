@@ -7,7 +7,7 @@ class Feed_RSS_20 extends Feed {
         return 'application/rss+xml';
     }
 
-    protected function init()
+    protected function start_document()
     {
         $this->startElement('rss');
         $this->writeAttribute('version', '2.0');
@@ -28,20 +28,20 @@ class Feed_RSS_20 extends Feed {
     {
         $this->startElement('item');
             $this->writeElement('title', $item->title);
-            $this->writeElement('link', Helper_Model::url($item,''));
+            $this->writeElement('link', Helper_Model::url($item,'view'));
             $this->startElement('description');
                 $this->writeCData($item->content);
             $this->endElement();
             $this->startElement('guid');
                 $this->writeAttribute('isPermaLink', 'true');
-                $this->text(Helper_Model::url($item,''));
+                $this->text(Helper_Model::url($item,'view'));
             $this->endElement();
             $this->writeElement('pubDate', Date::format($item->created_at, "D, d M Y H:i:s e"));
             $this->writeElement('author', $item->author->login.' ('.$item->author->email.')');
         $this->endElement();
     }
 
-    protected function _render()
+    protected function _close_document()
     {
          // End channel
         $this->endElement();

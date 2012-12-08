@@ -8,17 +8,17 @@ abstract class Feed extends XMLWriter  {
         $this->setIndent(true);
         $this->setIndentString(' ');
         $this->startDocument('1.0', 'UTF-8');
-        $this->init();
+
     }
 
-    public static function factory($type = "rss/2.0")
+    public static function factory($type)
     {
         $klass = "Feed_".str_replace(array('.','/'),array('','_'),strtoupper($type));
         return new $klass;
     }
 
-    abstract protected function _render();
-    abstract protected function init();
+    abstract protected function _close_document();
+    abstract protected function start_document();
     abstract protected function append_item($item);
     abstract public function mime_type();
 
@@ -29,11 +29,12 @@ abstract class Feed extends XMLWriter  {
 
     public function render()
     {
+        $this->start_document();
         foreach($this->get_items() as $item)
         {
             $this->append_item($item);
         }
-        $this->_render();
+        $this->_close_document();
         return $this->outputMemory(TRUE);
     }
 }

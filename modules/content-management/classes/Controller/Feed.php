@@ -4,10 +4,13 @@ class Controller_Feed extends Controller {
 
     public function action_rss()
     {
-        $feed = Feed::factory();
-        $this->response
-            ->headers('Content-Type', $feed->mime_type())
-            ->body($feed->render());
+        $this->feed = Feed::factory('rss/2.0');
     }
 
+    public function after()
+    {
+        $this->response
+            ->headers('Content-Type', $this->feed->mime_type())
+            ->body($this->feed->render());
+    }
 }
