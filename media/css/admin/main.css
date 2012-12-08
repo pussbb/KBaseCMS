@@ -188,6 +188,10 @@ a.action {
 #content .container-fluid .row-fluid:first-child {
   margin-top: 20px;
 }
+#content a.details-close {
+  display: table;
+  margin: -10px 0 10px;
+}
 /* Footer */
 #footer {
   text-align: center;

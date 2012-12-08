@@ -17,4 +17,11 @@ class Controller_Admin_Users extends Controller_Template_Admin {
         Model_User::destroy($this->request->param('id'));
         $this->render_nothing();
     }
+
+    public function action_details()
+    {
+        $this->user = Model_User::find($this->request->param('id'));
+        if ($this->request->is_ajax())
+            $this->render_partial();
+    }
 }

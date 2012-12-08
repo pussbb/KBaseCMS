@@ -2,7 +2,7 @@
 
 class Controller_Template_Admin extends Controller_Core {
 
-    protected $check_access = FALSE;
+    protected $check_access = TRUE;
 
     public $template = 'template/admin';
 
