@@ -20,7 +20,7 @@ class Controller_Admin_News extends Controller_Template_Admin {
     public function action_update()
     {
         $this->model = new Model_News();
-        foreach(array('title','content') as $field){
+        foreach(array('title','content', 'link') as $field){
             $this->model->$field = Arr::get($_REQUEST, $field);
         }
         $this->model->author_id = Auth::instance()->current_user()->id;

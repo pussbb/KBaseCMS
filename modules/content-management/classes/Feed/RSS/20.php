@@ -28,7 +28,7 @@ class Feed_RSS_20 extends Feed {
     {
         $this->startElement('item');
             $this->writeElement('title', $item->title);
-            $this->writeElement('link', Helper_Model::url($item,'view'));
+            $this->writeElement('link', $item->link?:Helper_Model::url($item,'view'));
             $this->startElement('description');
                 $this->writeCData($item->content);
             $this->endElement();

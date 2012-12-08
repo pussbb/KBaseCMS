@@ -5,5 +5,6 @@ echo '<hr>';
 echo tr('Publish date:').$news->created_at;
 echo '<hr>';
 echo '<p>';
+    echo $news->link.'<br>';
     echo $news->content;
 echo '</p>';
