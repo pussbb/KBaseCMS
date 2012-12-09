@@ -15,6 +15,7 @@ $form = new Pretty_Form(array(
     'errors' => $model->errors(),
     'template' => 'twitter_bootstrap',
 ));
+
 echo $form->open( URL::site('admin/blog_categories/update'));
 
 echo $form->input(array(
@@ -28,13 +29,16 @@ echo $form->textarea(array(
     'label' => tr('Description'),
     'attr' => array( 'class' => 'span6'),
 ));
-;
+
+$categories = Collection::for_select(Model_Blog_Category::find_all()->records, 'name') ;
+Arr::unshift($categories, NULL, tr('No parent'));
 
 echo $form->select(array(
     'name' => 'parent_id',
     'label' => tr('Parent'),
     'attr' => array( 'class' => 'span6'),
-),Collection::for_select(Model_Blog_Category::find_all()->records, 'name') );
+    'buttons' => $categories
+));
 echo $form->form_actions(array(
     'buttons' => array(
         array('submit', tr('Save'), array( 'class' => 'btn btn-primary', 'type' => 'submit'))
