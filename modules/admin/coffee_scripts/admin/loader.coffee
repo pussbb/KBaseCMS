@@ -49,6 +49,10 @@ $ ->
       content.show().html data
     )
     .error ()->
+      if jxhr.status is 403
+        location.reload()
+        return
+
       requestInfo.inlineAlert {
         text: 'Could not load page',
         closable: true,
