@@ -42,7 +42,7 @@ class Controller_Admin_Blog_Categories extends Controller_Template_Admin {
 
         Model_Blog_Category::destroy(array(
             'id' => $this->request->param('id'),
-            'parent_id' => $this->request->param('id')
+            '|| parent_id' => $this->request->param('id')
         ));
         $this->render_nothing();
     }
