@@ -1,8 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Blog_Post extends Controller_Core {
-
-    protected  $check_access = FALSE;
+class Controller_Blog_Post extends Controller_Template_Blog {
 
     public function action_index()
     {

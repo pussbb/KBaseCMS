@@ -66,12 +66,16 @@
     formContainer = $(' > .form-container', container);
     contentLinkElement = null;
     jxhr = null;
+    $(container).on('click', 'ul.nav.nav-tabs a', function(e) {
+      e.preventDefault();
+      return $(this).tab('show');
+    });
     $('body').on('click', 'a.details-close', function(e) {
       detailsContainer.html('');
       detailsContainer.hide();
       return content.show();
     });
-    return $('body').on('click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]', function(e) {
+    return $('body').on('click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]:not([href^="#"])', function(e) {
       var $this;
       e.preventDefault();
       $this = $(this);
@@ -124,7 +128,10 @@
           }
         });
       }).complete(function() {
-        return jxhr = null;
+        jxhr = null;
+        return $('ul.nav.nav-tabs a:first', container).each(function() {
+          return $(this).tab('show');
+        });
       });
     });
   });

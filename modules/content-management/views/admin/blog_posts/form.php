@@ -2,6 +2,7 @@
 
 
 $general = Arr::get($model->errors(), 'general');
+$general = Arr::get($model->errors(), 'general');
 
 if ( $general)
 {
@@ -16,7 +17,7 @@ $form = new Pretty_Form(array(
     'errors' => $model->errors(),
     'template' => 'twitter_bootstrap',
 ));
-echo $form->open( URL::site('admin/news/update'));
+echo $form->open( URL::site('admin/blog_posts/update'));
 
 echo $form->input(array(
     'name' => 'title',
@@ -25,17 +26,35 @@ echo $form->input(array(
 ));
 
 echo $form->input(array(
-    'name' => 'link',
-    'label' => tr('Link'),
+    'name' => 'keywords',
+    'label' => tr('Keywords'),
     'attr' => array( 'class' => 'span6' ),
 ));
 
-echo $form->textarea(array(
-    'name' => 'content',
-    'label' => tr('Content'),
-    'attr' => array( 'class' => 'span6'),
-));
 
+$langs = Model_Language::find_all()->records;
+echo '<ul class="nav nav-tabs" >';
+    foreach($langs as $lang)
+    {
+        echo '<li>';
+            echo HTML::anchor('#'.$lang->code, $lang->name);
+        echo '</li>';
+    }
+echo '</ul>';
+echo '<div class="tab-content">';
+    foreach($langs as $lang) {
+        echo '<div class="tab-pane" id="'.$lang->code.'">';
+            echo $form->textarea(array(
+                'name' => 'content['.$lang->code.']',
+                'attr' => array( 'class' => 'span6'),
+            ));
+        echo '</div>';
+    }
+
+echo '</div>';
+?>
+
+<?php
 echo $form->form_actions(array(
     'buttons' => array(
         array('submit', tr('Save'), array( 'class' => 'btn btn-primary', 'type' => 'submit'))

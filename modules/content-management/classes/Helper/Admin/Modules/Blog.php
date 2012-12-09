@@ -32,7 +32,7 @@
         ),
         'articles' => array(
             'title' => tr('Articles'),
-            'uri' => 'blog/arcticles/',
+            'uri' => 'blog/articles/',
         ),
     );
   }
