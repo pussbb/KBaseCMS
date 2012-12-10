@@ -8,7 +8,6 @@ $ ->
         e.preventDefault()
         options.onCancel @formContainer if IS.fn options.onCancel
 
-
       $(@formContainer).on 'click', 'button[type="submit"]', {"formContainer": @formContainer}, (e)->
         e.preventDefault()
         form = $('form:first', formContainer)
@@ -24,9 +23,10 @@ $ ->
               formContainer.formControll 'init'
               options.onLoad(formContainer) if IS.fn options.onLoad
           error: ()->
+            formContainer.formControll 'init'
             options.onLoad(formContainer) if IS.fn options.onLoad
-    destroy: ()->
 
+    destroy: ()->
       $(@formContainer).off 'click', 'button.cancel-btn'
       @cancelButton = null
       $(@formContainer).off 'click', 'button[type="submit"]'

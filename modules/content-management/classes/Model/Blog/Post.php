@@ -25,4 +25,12 @@ class Model_Blog_Post extends Model
         );
     }
 
+    public function labels()
+    {
+        return array(
+            'id' => tr('ID'),
+            'title' => tr('Title'),
+            'created_at' => tr('Created at'),
+        );
+    }
 }

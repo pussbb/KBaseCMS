@@ -8,12 +8,16 @@ $ ->
   contentLinkElement = null
   jxhr = null
 
+  $(container).on 'click', 'ul.nav.nav-tabs a', (e)->
+    e.preventDefault()
+    $(this).tab 'show'
+
   $('body').on 'click', 'a.details-close', (e)->
     detailsContainer.html ''
     detailsContainer.hide()
     content.show()
 
-  $('body').on 'click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]', (e)->
+  $('body').on 'click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]:not([href^="#"])', (e)->
     e.preventDefault()
     $this = $(this)
     content.hide()
@@ -49,6 +53,10 @@ $ ->
       content.show().html data
     )
     .error ()->
+      if jxhr.status is 403
+        location.reload()
+        return
+
       requestInfo.inlineAlert {
         text: 'Could not load page',
         closable: true,
@@ -60,3 +68,5 @@ $ ->
       }
     .complete ()->
       jxhr = null
+      $('ul.nav.nav-tabs a:first', container).each ()->
+        $(this).tab 'show'

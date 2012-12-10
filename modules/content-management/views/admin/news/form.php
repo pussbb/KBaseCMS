@@ -22,14 +22,12 @@ echo $form->input(array(
     'name' => 'title',
     'label' => tr('Title'),
     'attr' => array( 'class' => 'span6' ),
-    'info' => tr('Title')
 ));
 
 echo $form->input(array(
     'name' => 'link',
     'label' => tr('Link'),
     'attr' => array( 'class' => 'span6' ),
-    'info' => tr('Link')
 ));
 
 echo $form->textarea(array(
