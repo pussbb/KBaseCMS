@@ -1,7 +1,8 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Model_Blog_Content extends Model
+class Model_Blog_Post_Comment extends Model
 {
+    protected $order = array('created_at', 'DESC');
 
     public function relations()
     {
@@ -11,10 +12,10 @@ class Model_Blog_Content extends Model
                 'Model_Blog_Post',
                 'post_id',
             ),
-            'language' => array(
-                Model::HAS_MANY,
-                'Model_Language',
-                'language_id',
+            'author' => array(
+                Model::HAS_ONE,
+                'Model_User',
+                'author_id',
             ),
         );
     }

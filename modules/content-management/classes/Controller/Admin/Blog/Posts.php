@@ -19,6 +19,34 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
 
     public function action_update()
     {
+        $this->model = new Model_Blog_Post(array(
+            'uri' => Arr::get($_REQUEST, 'uri'),
+            'author_id' => Auth::instance()->current_user()->id,
+            'created_at' => strtotime('now'),
+            'category_id' => Arr::get($_REQUEST, 'category_id'),
+        ));
+        
+        if ($this->model->save())
+        {
+            foreach(Arr::get($_REQUEST, 'post') as $lang_id => $content)
+            {
+                $content_model = new Model_Blog_Post_Content(array(
+                    'language_id' => $lang_id,
+                    'brief' => $content['content'],
+                    'content' => $content['content'],
+                    'title' => $content['title'],
+                    'keywords' => $content['keywords'],
+                    'post_id' => $this->model->id,
+                ));
+                $content_model->save();
+            }
+            if ($this->request->is_ajax())
+                return $this->render_nothing();
+            self::redirect(URL::site('admin'));
+        }
+        if ($this->request->is_ajax())
+            return $this->render_partial('admin/blog_posts/form');
+        $this->render_nothing();
     }
 
     public function action_destroy()

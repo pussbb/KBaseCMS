@@ -10,16 +10,18 @@ class Model_Blog_Post extends Model
             'author' => array(
                 Model::HAS_ONE,
                 'Model_User',
+                'id',
                 'author_id',
             ),
             'comments' => array(
                 Model::HAS_MANY,
-                'Model_Blog_Comment',
+                'Model_Blog_Post_Comment',
+                'id',
                 'post_id',
             ),
             'contents' => array(
                 Model::HAS_MANY,
-                'Model_Blog_Content',
+                'Model_Blog_Post_Content',
                 'post_id',
             ),
         );

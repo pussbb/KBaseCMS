@@ -3,7 +3,7 @@
 echo '<table class="table table-bordered">';
     echo '<thead>';
       echo '<tr>';
-      foreach($titles as $title) {
+      foreach(Arr::flatten($titles) as $title) {
           echo '<th>';
             echo $title;
           echo '</th>';
@@ -20,7 +20,7 @@ echo '<table class="table table-bordered">';
         foreach($records as $record) {
             echo '<tr>';
                 foreach($columns as $column) {
-                    echo '<td>'.$record->$column.'</td>';
+                    echo '<td>'.Collection::property($record, $column).'</td>';
                 }
                 if($actions)
                 {

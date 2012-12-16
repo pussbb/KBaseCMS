@@ -20,15 +20,18 @@ $form = new Pretty_Form(array(
 echo $form->open( URL::site('admin/blog_posts/update'));
 
 echo $form->input(array(
-    'name' => 'title',
-    'label' => tr('Title'),
+    'name' => 'uri',
+    'label' => tr('Uri'),
     'attr' => array( 'class' => 'span6' ),
 ));
 
-echo $form->input(array(
-    'name' => 'keywords',
-    'label' => tr('Keywords'),
-    'attr' => array( 'class' => 'span6' ),
+$categories = Collection::for_select(Model_Blog_Category::find_all()->records, 'name') ;
+
+echo $form->select(array(
+    'name' => 'category_id',
+    'label' => tr('Category'),
+    'attr' => array( 'class' => 'span6'),
+    'buttons' => $categories
 ));
 
 
@@ -44,9 +47,19 @@ echo '</ul>';
 echo '<div class="tab-content">';
     foreach($langs as $lang) {
         echo '<div class="tab-pane" id="'.$lang->code.'">';
+            echo $form->input(array(
+                'name' => "post[$lang->id][title]",
+                'label' => tr('Title'),
+                'attr' => array( 'class' => 'span6' ),
+            ));
             echo $form->textarea(array(
-                'name' => 'content['.$lang->code.']',
+                'name' => "post[$lang->id][content]",
                 'attr' => array( 'class' => 'span6'),
+            ));
+            echo $form->input(array(
+                'name' => "post[$lang->id][keywords]",
+                'label' => tr('Keywords'),
+                'attr' => array( 'class' => 'span6' ),
             ));
         echo '</div>';
     }
