@@ -28,11 +28,11 @@
     return array(
         'general' => array(
             'title' => tr('General Info'),
-            'uri' => 'system_general_info/',
+            'uri' => 'system/info/',
         ),
         'categories' => array(
             'title' => tr('Media'),
-            'uri' => 'system_media/',
+            'uri' => 'system/media/',
         ),
 
     );
