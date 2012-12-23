@@ -75,7 +75,7 @@
       detailsContainer.hide();
       return content.show();
     });
-    return $('body').on('click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]:not([href^="#"])', function(e) {
+    return $('body').on('click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]:not([href^="#"]):not([target="_blank"])', function(e) {
       var $this;
       e.preventDefault();
       $this = $(this);

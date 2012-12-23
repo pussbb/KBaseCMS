@@ -4,3 +4,6 @@
 [submodule "modules/Kohana-my-base"]
 	path = modules/Kohana-my-base
 	url = git@github.com:pussbb/Kohana-my-base.git
+[submodule "modules/content-management/vendor/codemirror"]
+	path = modules/content-management/vendor/codemirror
+	url = http://marijnhaverbeke.nl/git/codemirror
