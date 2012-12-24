@@ -37,21 +37,41 @@ class Controller_Admin_Pages extends Controller_Template_Admin {
             $this->errors['filename'] = tr('Page name must be not empty');
             return;
         }
+        $pages_path = APPPATH.'views'.DIRECTORY_SEPARATOR.'pages'.DIRECTORY_SEPARATOR;
         switch($this->type) {
             case 'file':
                 $file = $this->find_page($this->page);
                 if ( ! $file ) {
-                    $file = APPPATH.'views'.DIRECTORY_SEPARATOR.'pages'.DIRECTORY_SEPARATOR.$name.'.php';
+                    $file = $pages_path.$name.'.php';
                 }
                 try {
-                    file_put_contents($file, Arr::get($_REQUEST, 'file'));
+                    file_put_contents($file, Arr::get($_REQUEST, 'content'));
                 }
                 catch(Exception $e) {
                     $this->errors['general'] = $e->getMessage();
                 }
                 break;
             case 'folder':
-                ////Dir::rmdir($this->find_page($this->page, 'folder'));
+                $file = $this->find_page($this->page);
+                if ( ! $file ) {
+                    $file = $pages_path.$name;
+                }
+                $file .= DIRECTORY_SEPARATOR;
+                try {
+                    Dir::create_if_need($file);
+                }
+                catch(Exception $e) {
+                    $this->errors['general'] = $e->getMessage();
+                }
+                foreach(Arr::get($_REQUEST, 'content') as $lang => $content)
+                {
+                    try {
+                        file_put_contents($file.$lang.'.php', $content);
+                    }
+                    catch(Exception $e) {
+                        $this->errors['general'] = $e->getMessage();
+                    }
+                }
                 break;
             default:
                 throw new Kohana_Exception('Unknown page type');

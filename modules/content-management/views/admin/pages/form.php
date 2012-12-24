@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 $general = Arr::get($errors, 'general');
-var_dump($errors);
+
 if ( $general)
 {
     echo '<div class="alert alert-error">

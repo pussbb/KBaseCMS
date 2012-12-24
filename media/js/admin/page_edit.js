@@ -3,8 +3,9 @@
 
   $(function() {
     return formContainer.on('form_loaded', function(e) {
-      return $('textarea.code', formContainer).each(function() {
-        return CodeMirror.fromTextArea(this, {
+      $('textarea.code', formContainer).each(function() {
+        var editor;
+        editor = CodeMirror.fromTextArea(this, {
           lineNumbers: true,
           lineWrapping: true,
           autofocus: true,
@@ -13,7 +14,20 @@
           tabSize: 4,
           indentUnit: 4,
           indentWithTabs: true,
-          autoCloseTags: true
+          autoCloseTags: true,
+          tabMode: "indent"
+        });
+        return $(this).data('editor', editor);
+      });
+      return $('[type="submit"]', formContainer).click(function() {
+        return $('textarea.code', formContainer).each(function() {
+          var editor;
+          editor = $(this).data('editor');
+          if (!editor) {
+            return;
+          }
+          $(this).val(editor.getValue());
+          return editor = null;
         });
       });
     });
