@@ -8,6 +8,7 @@ return array(
         ),
         'js' => array(
             'codemirror/codemirror-min.full',
+            'admin/page_edit',
         ),
     ),
 );

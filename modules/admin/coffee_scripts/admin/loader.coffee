@@ -1,10 +1,6 @@
 
 $ ->
-  container = $('.container > .container-fluid')
-  content = $(' > div.fluid-content', container)
-  requestInfo = $(' > div.request-info', container)
-  detailsContainer = $(' > .details-container', container)
-  formContainer = $(' > .form-container', container)
+
   contentLinkElement = null
   jxhr = null
 
@@ -30,8 +26,9 @@ $ ->
 
     jxhr = $.get( $(this).attr('href'), (data)->
       requestInfo.hide().html()
-      if $this.hasClass 'action_new' or $this.hasClass 'action_edit'
+      if $this.attr('class')?.match /action_[new|edit]/
         formContainer.show().html data
+        formContainer.trigger 'form_loaded'
         formContainer.formControll {
           onCancel: ()->
             formContainer.formControll 'destroy'
@@ -41,6 +38,8 @@ $ ->
             formContainer.formControll 'destroy'
             contentLinkElement.trigger 'click'
             content.show()
+          onLoad: ()->
+            formContainer.trigger 'form_loaded'
         }
         return
       if $this.hasClass 'action_details'

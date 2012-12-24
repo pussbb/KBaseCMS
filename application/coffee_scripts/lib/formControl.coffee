@@ -25,6 +25,9 @@ $ ->
           error: ()->
             formContainer.formControll 'init'
             options.onLoad(formContainer) if IS.fn options.onLoad
+          complete: ()->
+            formContainer.formControll 'init'
+            options.onLoad(formContainer) if IS.fn options.onLoad
 
     destroy: ()->
       $(@formContainer).off 'click', 'button.cancel-btn'

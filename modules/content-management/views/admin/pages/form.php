@@ -1,20 +1,19 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-?>
-   <script>
-/*CodeMirror.commands.autocomplete = function(cm) {
-    CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
-}*/
-var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-        lineNumbers: true,
-        mode: 'php',
-        theme: 'monokai',
-        autoCloseTags: true,
-        lineWrapping: true,
-        extraKeys: {"Ctrl-Space": "autocomplete"}
-      });
-</script>
-<?php
+
+$general = Arr::get($errors, 'general');
+var_dump($errors);
+if ( $general)
+{
+    echo '<div class="alert alert-error">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+                <h4 class="alert-heading">'.tr('Warning').'!</h4>
+                '.$general.'
+                </div>';
+}
+
+
 $form = new Pretty_Form(array(
+    'errors' => $errors,
     'template' => 'twitter_bootstrap',
 ));
 
@@ -24,8 +23,8 @@ $file = NULL;
 
 if ( ! $page) {
     echo $form->input(array(
-        'name' => 'name',
-        'label' => tr('name'),
+        'name' => 'filename',
+        'label' => tr('Page name'),
         'attr' => array( 'class' => 'span6' ),
     ));
 
@@ -33,10 +32,10 @@ if ( ! $page) {
 
 if ($type === 'file') {
     echo $form->textarea(array(
-        'name' => 'file',
+        'name' => 'content',
         'value' => $page ? file_get_contents($page) : NULL,
         'label' => tr('Content'),
-        'attr' => array( 'class' => 'span6 code', 'id' => 'code'),
+        'attr' => array( 'class' => 'input-xxlarge code', 'id' => 'code'),
     ));
 }
 else {
@@ -54,10 +53,10 @@ else {
             echo '<div class="tab-pane" id="'.$lang->code.'">';
             $file = $page.DIRECTORY_SEPARATOR.$lang->code.'.php';
             echo $form->textarea(array(
-                'name' => 'file['.$lang->code.']',
+                'name' => 'content['.$lang->code.']',
                 'value' => file_exists($file) ? file_get_contents($file) : NULL,
                 'label' => tr('Content'),
-                'attr' => array( 'class' => 'inputxxxxlarge code'),
+                'attr' => array( 'class' => 'input-xxlarge code'),
             ));
             echo '</div>';
         }

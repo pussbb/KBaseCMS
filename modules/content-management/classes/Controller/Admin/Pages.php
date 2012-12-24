@@ -7,6 +7,7 @@ class Controller_Admin_Pages extends Controller_Template_Admin {
         parent::before();
         $this->type = Arr::get($_REQUEST, 'type', 'file');
         $this->page = Arr::get($_REQUEST, 'page');
+        $this->errors = array();
     }
 
     public function action_index()
@@ -30,16 +31,24 @@ class Controller_Admin_Pages extends Controller_Template_Admin {
             $this->render_partial();
     }
 
-    public function action_update()
+    private function save_page($name = NULL)
     {
-        $name = Arr::get($_REQUEST, 'name', 'no-name');
+        if ( ! $this->page && ! $name){
+            $this->errors['filename'] = tr('Page name must be not empty');
+            return;
+        }
         switch($this->type) {
             case 'file':
                 $file = $this->find_page($this->page);
                 if ( ! $file ) {
                     $file = APPPATH.'views'.DIRECTORY_SEPARATOR.'pages'.DIRECTORY_SEPARATOR.$name.'.php';
                 }
-                file_put_contents($file, Arr::get($_REQUEST, 'file'));
+                try {
+                    file_put_contents($file, Arr::get($_REQUEST, 'file'));
+                }
+                catch(Exception $e) {
+                    $this->errors['general'] = $e->getMessage();
+                }
                 break;
             case 'folder':
                 ////Dir::rmdir($this->find_page($this->page, 'folder'));
@@ -48,7 +57,21 @@ class Controller_Admin_Pages extends Controller_Template_Admin {
                 throw new Kohana_Exception('Unknown page type');
                 break;
         }
-        $this->render_nothing();
+    }
+
+    public function action_update()
+    {
+        $name = Arr::get($_REQUEST, 'filename');
+        $this->set_filename('admin/pages/form');
+        $this->save_page($name);
+        if ($this->errors) {
+            if ($this->request->is_ajax())
+                return $this->render_partial();
+            return;
+        }
+
+        if ($this->request->is_ajax())
+            return $this->render_nothing();
     }
 
     public function action_destroy()
