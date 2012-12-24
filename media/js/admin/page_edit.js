@@ -19,14 +19,17 @@
         });
         return $(this).data('editor', editor);
       });
+      $('.nav-tabs', formContainer).on('shown', function(e) {
+        var codeMirror, editor;
+        editor = $('div.tab-pane.active textarea.code').data('editor');
+        codeMirror = $('div.tab-pane.active .CodeMirror');
+        return editor != null ? editor.setSize(codeMirror.width(), codeMirror.height()) : void 0;
+      });
       return $('[type="submit"]', formContainer).click(function() {
         return $('textarea.code', formContainer).each(function() {
           var editor;
           editor = $(this).data('editor');
-          if (!editor) {
-            return;
-          }
-          $(this).val(editor.getValue());
+          editor.save();
           return editor = null;
         });
       });

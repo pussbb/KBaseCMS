@@ -16,11 +16,16 @@ $ ->
       }
       $(this).data 'editor', editor
 
+    $('.nav-tabs', formContainer).on 'shown', (e)->
+      editor = $('div.tab-pane.active textarea.code').data 'editor'
+      codeMirror = $('div.tab-pane.active .CodeMirror')
+      editor?.setSize codeMirror.width(), codeMirror.height()
+
+
     $('[type="submit"]', formContainer).click ()->
       $('textarea.code', formContainer).each ()->
         editor = $(this).data 'editor'
-        return if ! editor
-        $(this).val editor.getValue()
+        editor.save()
         editor = null
 
 
