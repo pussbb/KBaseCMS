@@ -26,6 +26,7 @@ $ ->
       $('textarea.code', formContainer).each ()->
         editor = $(this).data 'editor'
         editor.save()
+        $('.nav-tabs', formContainer).off 'shown'
         editor = null
 
 

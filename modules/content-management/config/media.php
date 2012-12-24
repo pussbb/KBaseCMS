@@ -8,7 +8,9 @@ return array(
         ),
         'js' => array(
             'codemirror/codemirror-min.full',
+            'ckeditor/ckeditor',
             'admin/page_edit',
+            'admin/post_edit'
         ),
     ),
 );

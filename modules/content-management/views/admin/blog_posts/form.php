@@ -54,7 +54,7 @@ echo '<div class="tab-content">';
             ));
             echo $form->textarea(array(
                 'name' => "post[$lang->id][content]",
-                'attr' => array( 'class' => 'span6'),
+                'attr' => array( 'class' => 'span6 editor'),
             ));
             echo $form->input(array(
                 'name' => "post[$lang->id][keywords]",

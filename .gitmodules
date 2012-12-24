@@ -7,3 +7,6 @@
 [submodule "modules/content-management/vendor/codemirror"]
 	path = modules/content-management/vendor/codemirror
 	url = http://marijnhaverbeke.nl/git/codemirror
+[submodule "vendor/i18next"]
+	path = vendor/i18next
+	url = https://github.com/jamuhl/i18next

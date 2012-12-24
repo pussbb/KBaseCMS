@@ -13,7 +13,7 @@ $ ->
     detailsContainer.hide()
     content.show()
 
-  $('body').on 'click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]:not([href^="#"]):not([target="_blank"])', (e)->
+  $('body').on 'click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]:not([href^="javascript"]):not([href^="#"]):not([target="_blank"])', (e)->
     e.preventDefault()
     $this = $(this)
     content.hide()
