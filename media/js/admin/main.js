@@ -109,6 +109,7 @@
               return content.show();
             },
             onLoad: function() {
+              $('ul.nav-tabs a:first', formContainer).tab('show');
               return formContainer.trigger('form_loaded');
             }
           });

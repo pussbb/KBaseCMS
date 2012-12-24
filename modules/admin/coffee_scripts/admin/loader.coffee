@@ -39,6 +39,7 @@ $ ->
             contentLinkElement.trigger 'click'
             content.show()
           onLoad: ()->
+            $('ul.nav-tabs a:first',formContainer).tab 'show'
             formContainer.trigger 'form_loaded'
         }
         return
