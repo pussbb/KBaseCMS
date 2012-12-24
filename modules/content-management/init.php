@@ -28,5 +28,6 @@ Route::set('page', '(<lang>)(/)<id>', array(
    'action'     => 'index',
 ));
 
+Admin_Modules::instance()->register('pages', realpath(__FILE__).DIRECTORY_SEPARATOR);
 Admin_Modules::instance()->register('blog', realpath(__FILE__).DIRECTORY_SEPARATOR);
 Admin_Modules::instance()->register('news', realpath(__FILE__).DIRECTORY_SEPARATOR);
