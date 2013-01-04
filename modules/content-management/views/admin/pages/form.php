@@ -25,7 +25,7 @@ if ( ! $page) {
     echo $form->input(array(
         'name' => 'filename',
         'label' => tr('Page name'),
-        'attr' => array( 'class' => 'span6' ),
+        'attr' => array( 'class' => 'span6 page-uri' ),
     ));
 
 }
@@ -62,10 +62,6 @@ else {
         }
     echo '</div>';
 }
-
-
-
-
 
 echo $form->form_actions(array(
     'buttons' => array(
