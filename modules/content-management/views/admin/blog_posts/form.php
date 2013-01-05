@@ -2,7 +2,6 @@
 
 
 $general = Arr::get($model->errors(), 'general');
-$general = Arr::get($model->errors(), 'general');
 
 if ( $general)
 {
@@ -22,7 +21,7 @@ echo $form->open( URL::site('admin/blog_posts/update'));
 echo $form->input(array(
     'name' => 'uri',
     'label' => tr('Uri'),
-    'attr' => array( 'class' => 'span6' ),
+    'attr' => array( 'class' => 'span6 page-uri' ),
 ));
 
 $categories = Collection::for_select(Model_Blog_Category::find_all()->records, 'name') ;

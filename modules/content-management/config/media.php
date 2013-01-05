@@ -9,8 +9,12 @@ return array(
         'js' => array(
             'codemirror/codemirror-min.full',
             'ckeditor/ckeditor',
-            'admin/page_edit',
-            'admin/post_edit'
+            'admin/content' => array(
+                'admin/common',
+                'admin/page_edit',
+                'admin/post_edit'
+            )
+
         ),
     ),
 );
