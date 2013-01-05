@@ -1,4 +1,9 @@
 
+ckeditor_config = {
+  language: document.documentElement.lang || 'en',
+  width: '76%'
+}
+
 $ ->
 
   $('body .container').on 'click', '.cke_contents a', (e)->
@@ -8,9 +13,7 @@ $ ->
 
   formContainer.on 'form_loaded', (e)->
     $('textarea.editor', formContainer).each ()->
-      editor = CKEDITOR.replace this, {
-        language: 'ru'
-      }
+      editor = CKEDITOR.replace this, ckeditor_config
       $(this).data 'editor', editor
 
     $('[type="submit"]', formContainer).click ()->

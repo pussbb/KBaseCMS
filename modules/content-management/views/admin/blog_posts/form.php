@@ -51,15 +51,16 @@ echo '<div class="tab-content">';
                 'label' => tr('Title'),
                 'attr' => array( 'class' => 'span6' ),
             ));
-            echo $form->textarea(array(
-                'name' => "post[$lang->id][content]",
-                'attr' => array( 'class' => 'span6 editor'),
-            ));
             echo $form->input(array(
                 'name' => "post[$lang->id][keywords]",
                 'label' => tr('Keywords'),
                 'attr' => array( 'class' => 'span6' ),
             ));
+            echo $form->textarea(array(
+                'name' => "post[$lang->id][content]",
+                'attr' => array( 'class' => 'editor'),
+            ));
+
         echo '</div>';
     }
 
