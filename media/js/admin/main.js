@@ -85,6 +85,11 @@
       content.hide();
       detailsContainer.hide();
       formContainer.hide();
+      if (!formContainer.is(':empty')) {
+        console.log('destroy');
+        formContainer.formControll('destroy');
+        formContainer.hide().html('');
+      }
       requestInfo.show().pseudoAjaxLoadingProgress({
         timeout: 500
       });

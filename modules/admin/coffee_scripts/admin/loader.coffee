@@ -19,6 +19,9 @@ $ ->
     content.hide()
     detailsContainer.hide()
     formContainer.hide()
+    if ! formContainer.is ':empty'
+        formContainer.formControll 'destroy'
+        formContainer.hide().html ''
     requestInfo.show().pseudoAjaxLoadingProgress {timeout: 500}
 
     if IS.object jxhr
