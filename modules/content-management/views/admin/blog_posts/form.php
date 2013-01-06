@@ -1,21 +1,11 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-
-$general = Arr::get($model->errors(), 'general');
-
-if ( $general)
-{
-    echo '<div class="alert alert-error">
-        <a class="close" data-dismiss="alert" href="#">×</a>
-                <h4 class="alert-heading">'.tr('Warning').'!</h4>
-                '.$general.'
-                </div>';
-}
-
 $form = new Pretty_Form(array(
     'errors' => $model->errors(),
     'template' => 'twitter_bootstrap',
 ));
+
+echo $form->general_error();
 echo $form->open( URL::site('admin/blog_posts/update'));
 
 echo $form->input(array(
