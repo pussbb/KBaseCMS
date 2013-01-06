@@ -13,7 +13,7 @@
       if (/--/.test($(this).val() + char)) {
         return false;
       }
-      return /[a-z\-]/.test(String.fromCharCode(e.which));
+      return /[a-z0-9\-]/.test(String.fromCharCode(e.which));
     });
     return $('body').on('paste', 'input.page-uri', function(e) {
       return e.preventDefault();
@@ -23,8 +23,11 @@
   $(function() {
     return formContainer.on('form_loaded', function(e) {
       $('textarea.code', formContainer).each(function() {
-        var editor;
-        editor = CodeMirror.fromTextArea(this, {
+        var codeEditor;
+        if ($(this).data('codeEditor')) {
+          return;
+        }
+        codeEditor = CodeMirror.fromTextArea(this, {
           lineNumbers: true,
           lineWrapping: true,
           autofocus: true,
@@ -36,21 +39,21 @@
           autoCloseTags: true,
           tabMode: "indent"
         });
-        return $(this).data('editor', editor);
+        return $(this).data('codeEditor', codeEditor);
       });
       $('.nav-tabs', formContainer).on('shown', function(e) {
-        var codeMirror, editor;
-        editor = $('div.tab-pane.active textarea.code').data('editor');
+        var codeEditor, codeMirror;
+        codeEditor = $('div.tab-pane.active textarea.code').data('codeEditor');
         codeMirror = $('div.tab-pane.active .CodeMirror');
-        return editor != null ? editor.setSize(codeMirror.width(), codeMirror.height()) : void 0;
+        return codeEditor != null ? codeEditor.setSize(codeMirror.width(), codeMirror.height()) : void 0;
       });
       return $('[type="submit"]', formContainer).click(function() {
         return $('textarea.code', formContainer).each(function() {
-          var editor;
-          editor = $(this).data('editor');
-          editor.save();
+          var codeEditor;
+          codeEditor = $(this).data('codeEditor');
+          codeEditor.save();
           $('.nav-tabs', formContainer).off('shown');
-          return editor = null;
+          return codeEditor = null;
         });
       });
     });
@@ -58,7 +61,10 @@
 
   ckeditor_config = {
     language: document.documentElement.lang || 'en',
-    width: '76%'
+    width: '76%',
+    height: 500,
+    autoGrow_maxHeight: 300,
+    autoGrow_minHeight: 100
   };
 
   $(function() {

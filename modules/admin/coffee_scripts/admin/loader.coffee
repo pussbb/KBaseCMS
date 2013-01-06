@@ -39,6 +39,7 @@ $ ->
             content.show()
           onSuccess: ()->
             formContainer.formControll 'destroy'
+            formContainer.hide().html ''
             contentLinkElement.trigger 'click'
             content.show()
           onLoad: ()->

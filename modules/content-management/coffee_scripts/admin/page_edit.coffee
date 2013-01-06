@@ -3,7 +3,8 @@ $ ->
 
   formContainer.on 'form_loaded', (e)->
     $('textarea.code', formContainer).each ()->
-      editor = CodeMirror.fromTextArea this, {
+      return if $(this).data 'codeEditor'
+      codeEditor = CodeMirror.fromTextArea this, {
         lineNumbers: true,
         lineWrapping: true,
         autofocus: true,
@@ -15,20 +16,20 @@ $ ->
         autoCloseTags: true,
         tabMode: "indent"
       }
-      $(this).data 'editor', editor
+      $(this).data 'codeEditor', codeEditor
 
     $('.nav-tabs', formContainer).on 'shown', (e)->
-      editor = $('div.tab-pane.active textarea.code').data 'editor'
+      codeEditor = $('div.tab-pane.active textarea.code').data 'codeEditor'
       codeMirror = $('div.tab-pane.active .CodeMirror')
-      editor?.setSize codeMirror.width(), codeMirror.height()
+      codeEditor?.setSize codeMirror.width(), codeMirror.height()
 
 
     $('[type="submit"]', formContainer).click ()->
       $('textarea.code', formContainer).each ()->
-        editor = $(this).data 'editor'
-        editor.save()
+        codeEditor = $(this).data 'codeEditor'
+        codeEditor.save()
         $('.nav-tabs', formContainer).off 'shown'
-        editor = null
+        codeEditor = null
 
 
 

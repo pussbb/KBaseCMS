@@ -109,6 +109,7 @@
             },
             onSuccess: function() {
               formContainer.formControll('destroy');
+              formContainer.hide().html('');
               contentLinkElement.trigger('click');
               return content.show();
             },
