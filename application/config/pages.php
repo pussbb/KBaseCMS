@@ -28,10 +28,4 @@ return array (
     'keywords' => 'fsdfsdf',
     'description' => 'sdfsdf',
   ),
-  'sdsadsad-gfghfgh' => 
-  array (
-    'title' => 'asd',
-    'keywords' => 'asdas',
-    'description' => '',
-  ),
 );
