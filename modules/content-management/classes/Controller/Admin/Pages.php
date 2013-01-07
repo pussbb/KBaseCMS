@@ -44,6 +44,11 @@ class Controller_Admin_Pages extends Controller_Template_Admin {
             $this->errors['filename'] = tr('Page name must be not empty');
             return;
         }
+        if ( count(explode('-', $this->page)) < 2) {
+            $this->errors['filename'] = tr('Page name must in format "here-page-of-something"');
+            return;
+        }
+
         $pages_path = APPPATH.'views'.DIRECTORY_SEPARATOR.'pages'.DIRECTORY_SEPARATOR;
 
         switch($this->type) {
@@ -143,6 +148,10 @@ class Controller_Admin_Pages extends Controller_Template_Admin {
             default:
                 throw new Kohana_Exception('Unknown page type');
                 break;
+        }
+        if (isset($this->pages_config[$this->page])) {
+            unset($this->pages_config[$this->page]);
+            $this->save_config((array)$this->pages_config);
         }
         $this->render_nothing();
     }
