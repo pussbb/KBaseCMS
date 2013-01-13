@@ -10,7 +10,7 @@ function print_tree($collection)
     foreach($collection as $key => $category) {
         echo '<li class="can_remove">';
         $object = $category['object'];;
-        echo $object->name. Helper_Actions::destroy($object);
+        echo $object->name. Helper_Actions::destroy($object).Helper_Actions::edit($object);
         $childs = Arr::get($category, 'childs');
         if ($childs)
         {
@@ -25,7 +25,7 @@ echo '<ul>';
     foreach($categories as $key => $category) {
         echo '<li class="can_remove">';
         $object = $category['object'];
-        echo $object->name. Helper_Actions::destroy($object);
+        echo $object->name. Helper_Actions::destroy($object).Helper_Actions::edit($object);
         $childs = Arr::get($category, 'childs');
         if ($childs)
         {

@@ -14,7 +14,7 @@ class Helper_Actions {
                 return self::create($model, $attr);
                 break;
             case 'edit':
-                return self::create($model, $attr);
+                return self::edit($model, $attr);
                 break;
             case 'view':
             case 'details':

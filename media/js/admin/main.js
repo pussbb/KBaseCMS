@@ -82,6 +82,9 @@
       var $this;
       e.preventDefault();
       $this = $(this);
+      if (!$this.prop('href')) {
+        return;
+      }
       content.hide();
       detailsContainer.hide();
       formContainer.hide();

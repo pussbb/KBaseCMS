@@ -16,6 +16,7 @@ $ ->
   $('body').on 'click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]:not([href^="javascript"]):not([href^="#"]):not([target="_blank"])', (e)->
     e.preventDefault()
     $this = $(this)
+    return if ! $this.prop 'href'
     content.hide()
     detailsContainer.hide()
     formContainer.hide()

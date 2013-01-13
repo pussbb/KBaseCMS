@@ -2,9 +2,9 @@
 ckeditor_config = {
   language: document.documentElement.lang || 'en',
   width: '76%',
-  height: 500,
+  height: 800,
   autoGrow_maxHeight: 300,
-  autoGrow_minHeight: 100
+  autoGrow_minHeight: 500
 }
 
 $ ->

@@ -17,6 +17,16 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
             $this->render_partial();
     }
 
+
+    public function action_edit()
+    {
+        $this->model = Model_Blog_Post::find(array(
+            'id' => $this->request->param('id'),
+            'with' => 'contents'
+        ));
+        debug($this->model, true);
+    }
+
     public function action_update()
     {
         $this->model = new Model_Blog_Post(array(
@@ -25,7 +35,7 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
             'created_at' => strtotime('now'),
             'category_id' => Arr::get($_REQUEST, 'category_id'),
         ));
-        
+
         if ($this->model->save())
         {
             foreach(Arr::get($_REQUEST, 'post') as $lang_id => $content)
