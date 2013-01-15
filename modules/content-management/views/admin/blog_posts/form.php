@@ -10,6 +10,7 @@ echo $form->open( URL::site('admin/blog_posts/update'));
 
 echo $form->input(array(
     'name' => 'uri',
+    'value' => Object::property($model, 'uri'),
     'label' => tr('Uri'),
     'attr' => array( 'class' => 'span6 page-uri' ),
 ));
@@ -18,11 +19,13 @@ $categories = Collection::for_select(Model_Blog_Category::find_all()->records, '
 
 echo $form->select(array(
     'name' => 'category_id',
+    'value' => Object::property($model, 'category_id'),
     'label' => tr('Category'),
     'attr' => array( 'class' => 'span6'),
     'buttons' => $categories
 ));
 
+$content = Object::property($model, 'contents', array());
 
 $langs = Model_Language::find_all()->records;
 echo '<ul class="nav nav-tabs" >';

@@ -4,17 +4,12 @@ class Controller_Admin_News extends Controller_Template_Admin {
 
     public function action_index()
     {
-      if ($this->request->is_ajax())
-        $this->render_partial();
     }
 
     public function action_new()
     {
         $this->model = new Model_News();
-        if ($this->request->is_ajax())
-            $this->render_partial('admin/news/form');
-        else
-            $this->set_filename('admin/news/form');
+        $this->set_filename('admin/news/form');
     }
 
     public function action_update()
@@ -26,12 +21,7 @@ class Controller_Admin_News extends Controller_Template_Admin {
         $this->model->author_id = Auth::instance()->current_user()->id;
         $this->model->created_at = strtotime('now');
         if ( ! $this->model->save()) {
-
-            if ($this->request->is_ajax())
-                return $this->render_partial('admin/news/form');
-            else
                 return $this->set_filename('admin/news/form');
-
         }
         $this->render_nothing();
     }
@@ -48,9 +38,6 @@ class Controller_Admin_News extends Controller_Template_Admin {
     public function action_details()
     {
         $this->news = Model_News::find($this->request->param('id'));
-        if ($this->request->is_ajax())
-            return $this->render_partial('admin/news/details');
-        else
-            return $this->set_filename('admin/news/details');
+        return $this->set_filename('admin/news/details');
     }
 } // End Welcome

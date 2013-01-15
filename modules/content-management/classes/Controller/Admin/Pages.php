@@ -19,23 +19,17 @@ class Controller_Admin_Pages extends Controller_Template_Admin {
 
     public function action_index()
     {
-        if ($this->request->is_ajax())
-            $this->render_partial();
     }
 
     public function action_new()
     {
         $this->set_filename('admin/pages/form');
-        if ($this->request->is_ajax())
-            $this->render_partial();
     }
 
     public function action_edit()
     {
         $this->set_filename('admin/pages/form');
         $this->absoluteFilePath = $this->find_page($this->page, $this->type);
-        if ($this->request->is_ajax())
-            $this->render_partial();
     }
 
     private function save_page()
@@ -123,11 +117,8 @@ class Controller_Admin_Pages extends Controller_Template_Admin {
         $name = Arr::get($_REQUEST, 'filename');
         $this->set_filename('admin/pages/form');
         $this->save_page();
-        if ($this->errors) {
-            if ($this->request->is_ajax())
-                return $this->render_partial();
+        if ( ! empty($this->errors))
             return;
-        }
 
         if ($this->request->is_ajax())
             return $this->render_nothing();

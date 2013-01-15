@@ -4,15 +4,11 @@ class Controller_Admin_Logs extends Controller_Template_Admin {
 
     public function action_index()
     {
-        if ($this->request->is_ajax())
-            $this->render_partial();
     }
 
     public function action_view()
     {
         $this->file = $this->request->param('id');
-        if ($this->request->is_ajax())
-            $this->render_partial();
     }
 
     public function action_destroy()

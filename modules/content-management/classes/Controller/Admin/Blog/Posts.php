@@ -5,16 +5,12 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
     public function action_index()
     {
         $this->set_filename('admin/blog/articles');
-        if ($this->request->is_ajax())
-            $this->render_partial();
     }
 
     public function action_new()
     {
         $this->model = new Model_Blog_Post;
         $this->set_filename('admin/blog_posts/form');
-        if ($this->request->is_ajax())
-            $this->render_partial();
     }
 
 
@@ -24,7 +20,7 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
             'id' => $this->request->param('id'),
             'with' => 'contents'
         ));
-        debug($this->model, true);
+        $this->set_filename('admin/blog_posts/form');
     }
 
     public function action_update()
@@ -54,9 +50,6 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
                 return $this->render_nothing();
             self::redirect(URL::site('admin'));
         }
-        if ($this->request->is_ajax())
-            return $this->render_partial('admin/blog_posts/form');
-        $this->render_nothing();
     }
 
     public function action_destroy()

@@ -5,5 +5,5 @@ echo '<br/><br/>';
 echo  UI_Table_Posts::render(array(
     'model'=> 'blog_post',
     'columns' => array('id', 'uri', 'created_at'),
-    'actions' => array('destroy',  'edit', 'view', ),
+    'actions' => array('destroy',  'edit',  ),
 ));

@@ -4,8 +4,6 @@ class Controller_Admin_Users extends Controller_Template_Admin {
 
     public function action_index()
     {
-      if ($this->request->is_ajax())
-        $this->render_partial();
     }
 
 
@@ -21,7 +19,5 @@ class Controller_Admin_Users extends Controller_Template_Admin {
     public function action_details()
     {
         $this->user = Model_User::find($this->request->param('id'));
-        if ($this->request->is_ajax())
-            $this->render_partial();
     }
 }

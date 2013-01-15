@@ -5,16 +5,12 @@ class Controller_Admin_Blog_Categories extends Controller_Template_Admin {
     public function action_index()
     {
         $this->set_filename('admin/blog/categories');
-        if ($this->request->is_ajax())
-            $this->render_partial();
     }
 
     public function action_new()
     {
         $this->model = new Model_Blog_Category;
         $this->set_filename('admin/blog_categories/form');
-        if ($this->request->is_ajax())
-            $this->render_partial();
     }
 
 
@@ -22,8 +18,6 @@ class Controller_Admin_Blog_Categories extends Controller_Template_Admin {
     {
         $this->model = Model_Blog_Category::find($this->request->param('id'));
         $this->set_filename('admin/blog_categories/form');
-        if ($this->request->is_ajax())
-            $this->render_partial();
     }
 
     public function action_update()
@@ -34,17 +28,10 @@ class Controller_Admin_Blog_Categories extends Controller_Template_Admin {
         }
         $id = Arr::get($_REQUEST, 'id');
         if ($id)
-        {
             $this->model->id = $id;
-        }
 
         if ( ! $this->model->save() ) {
-
-            if ($this->request->is_ajax())
-                return $this->render_partial('admin/blog_categories/form');
-            else
-                return $this->set_filename('admin/blog_categories/form');
-
+            return $this->set_filename('admin/blog_categories/form');
         }
         $this->render_nothing();
     }
