@@ -122,6 +122,8 @@ class Controller_Admin_Pages extends Controller_Template_Admin {
 
         if ($this->request->is_ajax())
             return $this->render_nothing();
+
+        self::redirect(URL::site('admin/pages'));
     }
 
     public function action_destroy()

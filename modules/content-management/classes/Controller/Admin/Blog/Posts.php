@@ -16,11 +16,11 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
 
     public function action_edit()
     {
+        $this->set_filename('admin/blog_posts/form');
         $this->model = Model_Blog_Post::find(array(
             'id' => $this->request->param('id'),
             'with' => 'contents'
         ));
-        $this->set_filename('admin/blog_posts/form');
     }
 
     public function action_update()
@@ -29,11 +29,16 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
             'uri' => Arr::get($_REQUEST, 'uri'),
             'author_id' => Auth::instance()->current_user()->id,
             'created_at' => strtotime('now'),
-            'category_id' => Arr::get($_REQUEST, 'category_id'),
+            'category_id' => Arr::get($_REQUEST, 'category_id')
         ));
+
+        $id = Arr::get($_REQUEST, 'id');
+        if ($id)
+            $this->model->id = $id;
 
         if ($this->model->save())
         {
+//             $contents = array();
             foreach(Arr::get($_REQUEST, 'post') as $lang_id => $content)
             {
                 $content_model = new Model_Blog_Post_Content(array(
@@ -44,11 +49,15 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
                     'keywords' => $content['keywords'],
                     'post_id' => $this->model->id,
                 ));
+
+                if ($content['id'])
+                    $content_model->id = $content['id'];
                 $content_model->save();
+//                 $contents[] = $content_model;
             }
             if ($this->request->is_ajax())
                 return $this->render_nothing();
-            self::redirect(URL::site('admin'));
+            self::redirect(URL::site('admin/blog_posts'));
         }
     }
 

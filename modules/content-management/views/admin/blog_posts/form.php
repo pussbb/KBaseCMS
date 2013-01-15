@@ -25,7 +25,14 @@ echo $form->select(array(
     'buttons' => $categories
 ));
 
-$content = Object::property($model, 'contents', array());
+$content = Object::property($model, 'contents');
+$contents = array();
+if ($content) {
+    for($i = 0; $i < count($content); $i++) {
+        $item = $content[$i];
+        $contents[$item->language_id] = $item;
+    }
+}
 
 $langs = Model_Language::find_all()->records;
 echo '<ul class="nav nav-tabs" >';
@@ -39,24 +46,32 @@ echo '</ul>';
 echo '<div class="tab-content">';
     foreach($langs as $lang) {
         echo '<div class="tab-pane" id="'.$lang->code.'">';
+            $post = Arr::get($contents, $lang->id, array());
+            if ($post) {
+                $post = $post->as_array();
+            }
             echo $form->input(array(
                 'name' => "post[$lang->id][title]",
+                'value' => Arr::get($post, 'title'),
                 'label' => tr('Title'),
                 'attr' => array( 'class' => 'span6' ),
             ));
             echo $form->input(array(
                 'name' => "post[$lang->id][keywords]",
+                'value' => Arr::get($post, 'keywords'),
                 'label' => tr('Keywords'),
                 'attr' => array( 'class' => 'span6' ),
             ));
             echo $form->textarea(array(
                 'name' => "post[$lang->id][content]",
+                'value' => Arr::get($post, 'content'),
                 'attr' => array( 'class' => 'editor'),
             ));
-
+            echo $form->hidden("post[$lang->id][id]", Arr::get($post, 'id'));
         echo '</div>';
     }
 
+echo $form->hidden("id", Object::property($model, 'id'));
 echo '</div>';
 ?>
 
