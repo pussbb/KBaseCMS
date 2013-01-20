@@ -33,7 +33,7 @@ echo $form->select(array(
     'buttons' => $categories
 ));
 
-echo $form->hidden('id',Object::property($model, 'id'));
+echo $form->hidden('id', Object::property($model, 'id'));
 
 echo $form->form_actions(array(
     'buttons' => array(
