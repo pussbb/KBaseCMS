@@ -43,7 +43,7 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
             {
                 $content_model = new Model_Blog_Post_Content(array(
                     'language_id' => $lang_id,
-                    'brief' => $content['content'],
+                    'brief' => Text::truncate($content['content']),
                     'content' => $content['content'],
                     'title' => $content['title'],
                     'keywords' => $content['keywords'],
@@ -53,6 +53,7 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
                 if ($content['id'])
                     $content_model->id = $content['id'];
                 $content_model->save();
+                var_dump($content_model->errors());;
 //                 $contents[] = $content_model;
             }
             if ($this->request->is_ajax())

@@ -1,5 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-debug($article);
+///debug($article);
 
 
-echo $article->content;
+echo $article->brief;
+echo '<br><hr><br>';
+// echo $article->content;
