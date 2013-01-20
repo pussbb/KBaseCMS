@@ -6,38 +6,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="<?echo URL::site('');?>">Project name</a>
             <div class="nav-collapse">
-                <ul class="nav pull-right">
-                    <li class="active"><a href="<?echo URL::site();?>"><?php echo __('home');?></a></li>
-                    <li><?php
+                <ul class="nav pull-left">
+                <?php
+                    $links = array(
+                        'about-us' => tr('About us'),
+                        'users/register' => tr('Register'),
+                        'users/login' => tr('Login'),
+                        'blog' => tr('Blog'),
+                        'news' => tr('News'),
+                    );
+                    foreach($links as $uri => $label){
+
+                        echo '<li>';
                         echo Html::anchor(
-                            URL::site('about-us'),
-                            tr('About us')
+                            URL::site($uri),
+                            $label
                         );
-                        ?>
-                    </li>
-                    <li><?php
-                        echo Html::anchor(
-                            URL::site('users/register'),
-                            tr('Register')
-                        );
-                        ?>
-                    </li>
-                    <li><?php
-                        echo Html::anchor(
-                            URL::site('users/login'),
-                            tr('Login')
-                        );
-                        ?>
-                    </li>
-                    <li><?php
-                        echo Html::anchor(
-                            URL::site('panel/'),
-                            tr('Panel')
-                        );
-                        ?>
-                    </li>
+                        echo '</li>';
+                    }
+                ?>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

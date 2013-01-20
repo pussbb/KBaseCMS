@@ -1,16 +1,48 @@
 body {
-    /*
-    min-height: 340px;
-    background: rgb(215, 215, 215);
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
-    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));*/
-    background-color: #444444;
+  background: url(../images/darkdenim3.png) repeat;
+  color: #C6C6C6;
 }
-
-.navbar-inner{
+.navbar-inner {
   border-radius: 0px ;
+}
+.navbar {
+  margin-bottom: 60px;
+}
+.navbar .nav > li > a,
+.navbar a.brand {
+  text-shadow: none;
+  color: white;
+}
+.navbar .nav > li > a:hover,
+.navbar .nav > li > a:focus,
+.navbar a.brand:hover,
+.navbar a.brand:focus,
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:focus,
+.navbar .nav > .active > a:hover {
+  background-color: #79A60E;
+  color: white;
+}
+.navbar .navbar-inner {
+  width: 99%;
+  min-height: 40px;
+  background-color: #2c2c2c;
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -ms-linear-gradient(top, #333333, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(top, #333333, #222222);
+  background-repeat: repeat-x;
+  opacity: 0.9;
+  -moz-opacity: 0.9;
+  position: fixed;
+  top: 0;
+  text-align: center;
+  z-index: 1000;
+  -webkit-box-shadow: 0px 0px 8px 0px #000;
+  -moz-box-shadow: 0px 0px 8px 0px #000;
+  box-shadow: 0px 0px 8px 0px #000;
+  border: 0px;
+  border-bottom: 1px solid #8b8989;
 }
