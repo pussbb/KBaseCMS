@@ -12,6 +12,7 @@ body {
 .navbar a.brand {
   text-shadow: none;
   color: white;
+  line-height: 25px;
 }
 .navbar .nav > li > a:hover,
 .navbar .nav > li > a:focus,
@@ -22,6 +23,27 @@ body {
 .navbar .nav > .active > a:hover {
   background-color: #79A60E;
   color: white;
+}
+.navbar .nav > li.icons > a {
+  padding: 5px;
+  -webkit-filter: grayscale(70%);
+  -moz-filter: grayscale(70%);
+  -ms-filter: grayscale(70%);
+  -o-filter: grayscale(70%);
+  filter: grayscale(70%);
+  filter: url(../imges/grayscale.svg);
+  filter: gray;
+}
+.navbar .nav > li.icons > a:focus,
+.navbar .nav > li.icons > a:hover {
+  background-color: transparent;
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  -ms-filter: grayscale(0%);
+  -o-filter: grayscale(0%);
+  filter: grayscale(0%);
+  filter: url(../imges/grayscale.svg);
+  filter: gray;
 }
 .navbar .navbar-inner {
   width: 99%;

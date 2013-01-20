@@ -30,6 +30,12 @@
                     $links = array(
                         'users/logout' => tr('Logout'),
                     );
+                    $request_uri = Request::current()->uri();
+                    $langs
+                    foreach(Language::available() as $lang) {
+
+                    }
+
                     foreach($links as $uri => $label){
                         echo '<li>';
                         echo Html::anchor(

@@ -4,6 +4,16 @@ body {
     color: #C6C6C6;
 }
 
+.grayscale (@grayscale: 100%) {
+    -webkit-filter: grayscale(@grayscale);
+    -moz-filter: grayscale(@grayscale);
+    -ms-filter: grayscale(@grayscale);
+    -o-filter: grayscale(@grayscale);
+    filter: grayscale(@grayscale);
+    filter: url(../imges/grayscale.svg);
+    filter: gray;
+}
+
 .navbar-inner {
   border-radius: 0px ;
 }
@@ -15,7 +25,9 @@ body {
     a.brand{
         text-shadow: none;
         color: white;
+        line-height: 25px;
     }
+
     .nav > li > a:hover,
     .nav > li > a:focus,
     a.brand:hover,
@@ -26,6 +38,20 @@ body {
         background-color: #79A60E;
         color: white;
     }
+
+    .nav > li.icons > a {
+        padding: 5px;
+        .grayscale(70%);
+    }
+    .nav > li.icons > a:focus,
+    .nav > li.icons > a:hover {
+        background-color: transparent;
+        .grayscale(0%);
+    }
+
+//     .nav > li.icons > a img {
+//         .grayscale
+//     }
 
     .navbar-inner {
         width: 99%;

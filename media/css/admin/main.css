@@ -6,6 +6,7 @@
 body {
   overflow-x: hidden;
   margin-top: -9px;
+  background: #444444;
 }
 a:hover {
   text-decoration: none;

@@ -10,14 +10,52 @@
                 <ul class="nav pull-left">
                 <?php
                     $links = array(
-                        'about-us' => tr('About us'),
-                        'users/register' => tr('Register'),
-                        'users/login' => tr('Login'),
                         'blog' => tr('Blog'),
                         'news' => tr('News'),
+                        'about-us' => tr('About us'),
                     );
                     foreach($links as $uri => $label){
 
+                        echo '<li>';
+                        echo Html::anchor(
+                            URL::site($uri),
+                            $label
+                        );
+                        echo '</li>';
+                    }
+                ?>
+                </ul>
+                <ul class="nav pull-right">
+                <?php
+                    if (! Auth::instance()->logged_in()) {
+                        $links = array(
+                            'users/logout' => tr('Logout'),
+                        );
+                    }
+                    else {
+                        $links = array(
+                            'users/register' => tr('Register'),
+                            'users/login' => tr('Login')
+                        );
+                    }
+                    $request_uri = preg_replace(Language::uri_check_codes(), '', Request::current()->uri());
+                    $langs = array();
+                    foreach(Language::available() as $lang) {
+                        $label = HTML::image('images/langs/'.$lang->code.'.png', array(
+                            'alt' => $lang->name,
+                            'width' => 32,
+                            'height' => 32,
+                        ));
+                        $uri = Text::reduce_slashes($lang->code.$request_uri.URL::query());
+                        echo '<li class="icons">';
+                            echo Html::anchor(
+                                URL::_site($uri),
+                                $label
+                            );
+                        echo '</li>';
+                    }
+
+                    foreach($links as $uri => $label){
                         echo '<li>';
                         echo Html::anchor(
                             URL::site($uri),
