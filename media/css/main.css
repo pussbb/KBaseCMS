@@ -5,26 +5,26 @@ body {
 .navbar-inner {
   border-radius: 0px ;
 }
-.navbar {
+.navbar.site-bar {
   margin-bottom: 60px;
 }
-.navbar .nav > li > a,
-.navbar a.brand {
+.navbar.site-bar .nav > li > a,
+.navbar.site-bar a.brand {
   text-shadow: none;
   color: white;
   line-height: 25px;
 }
-.navbar .nav > li > a:hover,
-.navbar .nav > li > a:focus,
-.navbar a.brand:hover,
-.navbar a.brand:focus,
-.navbar .nav > .active > a,
-.navbar .nav > .active > a:focus,
-.navbar .nav > .active > a:hover {
+.navbar.site-bar .nav > li > a:hover,
+.navbar.site-bar .nav > li > a:focus,
+.navbar.site-bar a.brand:hover,
+.navbar.site-bar a.brand:focus,
+.navbar.site-bar .nav > .active > a,
+.navbar.site-bar .nav > .active > a:focus,
+.navbar.site-bar .nav > .active > a:hover {
   background-color: #79A60E;
   color: white;
 }
-.navbar .nav > li.icons > a {
+.navbar.site-bar .nav > li.icons > a {
   padding: 5px;
   -webkit-filter: grayscale(70%);
   -moz-filter: grayscale(70%);
@@ -34,8 +34,8 @@ body {
   filter: url(../imges/grayscale.svg);
   filter: gray;
 }
-.navbar .nav > li.icons > a:focus,
-.navbar .nav > li.icons > a:hover {
+.navbar.site-bar .nav > li.icons > a:focus,
+.navbar.site-bar .nav > li.icons > a:hover {
   background-color: transparent;
   -webkit-filter: grayscale(0%);
   -moz-filter: grayscale(0%);
@@ -45,7 +45,7 @@ body {
   filter: url(../imges/grayscale.svg);
   filter: gray;
 }
-.navbar .navbar-inner {
+.navbar.site-bar .navbar-inner {
   width: 99%;
   min-height: 40px;
   background-color: #2c2c2c;
