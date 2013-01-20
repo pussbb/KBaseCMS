@@ -1,3 +1,4 @@
+<?php defined('SYSPATH') or die('No direct script access.');?>
 <div class="btn-group">
   <a class="btn" href="#"><i class="icon-align-left"></i></a>
   <a class="btn" href="#"><i class="icon-align-center"></i></a>
@@ -25,3 +26,6 @@ $(document).ready(function(){
 });
 });
 </script>
+<hr>
+<hr class="double">
+<hr class="grey">

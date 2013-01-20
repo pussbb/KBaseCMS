@@ -10,6 +10,7 @@
                 <ul class="nav pull-left">
                 <?php
                     $links = array(
+                        '' => tr('Home'),
                         'blog' => tr('Blog'),
                         'news' => tr('News'),
                         'about-us' => tr('About us'),
@@ -27,7 +28,7 @@
                 </ul>
                 <ul class="nav pull-right">
                 <?php
-                    if (! Auth::instance()->logged_in()) {
+                    if (Auth::instance()->logged_in()) {
                         $links = array(
                             'users/logout' => tr('Logout'),
                         );
