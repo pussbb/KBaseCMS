@@ -42,7 +42,6 @@
                     echo '<li class="can_remove">';
                     $object = $category['object'];
                     echo HTML::anchor(URL::site('blog/categories/index/'.$object->id), $object->name);
-
                     $childs = Arr::get($category, 'childs');
                     if ($childs)
                     {

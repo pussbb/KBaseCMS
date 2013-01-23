@@ -10,9 +10,6 @@ body {
   /* bottom = footer height */
 
 }
-.container a {
-  color: #C6C6C6;
-}
 .container a:hover,
 .container a:focus {
   text-decoration: none;
@@ -115,6 +112,10 @@ hr.grey {
   line-height: 1.6;
   font-size: 16px;
   border-radius: 5px;
+}
+.post a,
+.sidebar a {
+  color: #C6C6C6;
 }
 .post header h1 a,
 .sidebar header h1 a {

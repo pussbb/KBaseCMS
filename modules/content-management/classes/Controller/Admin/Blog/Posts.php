@@ -53,7 +53,7 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
                 if ($content['id'])
                     $content_model->id = $content['id'];
                 $content_model->save();
-                var_dump($content_model->errors());;
+//                 var_dump($content_model->errors());;
 //                 $contents[] = $content_model;
             }
             if ($this->request->is_ajax())

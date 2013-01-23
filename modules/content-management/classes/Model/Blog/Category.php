@@ -11,6 +11,11 @@ class Model_Blog_Category extends Model
                 'Model_Blog_Post',
                 'category_id',
             ),
+            'articles_count' => array(
+                Model::STAT,
+                'Model_Blog_Post',
+                'category_id',
+            ),
         );
     }
 
