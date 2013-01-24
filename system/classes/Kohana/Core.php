@@ -1008,19 +1008,19 @@ class Kohana_Core {
 			return;
 		}
 
-// 		try
-// 		{
+		try
+		{
 			if (Kohana::$caching === TRUE AND Kohana::$_files_changed === TRUE)
 			{
 				// Write the file path cache
 				Kohana::cache('Kohana::find_file()', Kohana::$_files);
 			}
-// 		}
-// 		catch (Exception $e)
-// 		{
+		}
+		catch (Exception $e)
+		{
 			// Pass the exception to the handler
-///			Kohana_Exception::handler($e);
-// 		}
+			Kohana_Exception::handler($e);
+		}
 
 		if (Kohana::$errors AND $error = error_get_last() AND in_array($error['type'], Kohana::$shutdown_errors))
 		{
@@ -1028,7 +1028,7 @@ class Kohana_Core {
 			ob_get_level() AND ob_clean();
 
 			// Fake an exception for nice debugging
-			throw new ErrorException($error['message'], $error['type'], 0, $error['file'], $error['line']);
+			Kohana_Exception::handler(new ErrorException($error['message'], $error['type'], 0, $error['file'], $error['line']));
 
 			// Shutdown now to avoid a "death loop"
 			exit(1);

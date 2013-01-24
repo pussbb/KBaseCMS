@@ -30,7 +30,8 @@ $ ->
 
     jxhr = $.get( $(this).attr('href'), (data)->
       requestInfo.hide().html()
-      if $this.attr('class')?.match /action_[new|edit]/
+
+      if $this.attr('class')?.match /action_(new|edit)/
         formContainer.show().html data
         formContainer.trigger 'form_loaded'
         formContainer.formControll {

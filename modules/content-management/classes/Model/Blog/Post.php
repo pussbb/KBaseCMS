@@ -16,7 +16,6 @@ class Model_Blog_Post extends Model
             'comments' => array(
                 Model::HAS_MANY,
                 'Model_Blog_Post_Comment',
-                'id',
                 'post_id',
             ),
             'contents' => array(

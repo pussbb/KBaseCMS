@@ -101,7 +101,7 @@
       return jxhr = $.get($(this).attr('href'), function(data) {
         var _ref;
         requestInfo.hide().html();
-        if ((_ref = $this.attr('class')) != null ? _ref.match(/action_[new|edit]/) : void 0) {
+        if ((_ref = $this.attr('class')) != null ? _ref.match(/action_(new|edit)/) : void 0) {
           formContainer.show().html(data);
           formContainer.trigger('form_loaded');
           formContainer.formControll({
