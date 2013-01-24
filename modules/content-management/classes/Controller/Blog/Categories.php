@@ -9,10 +9,12 @@ class Controller_Blog_Categories extends Controller_Template_Blog {
                 'id' => $this->request->param('id'),
                 '|| parent_id' => $this->request->param('id'),
         ));
+
         $this->articles = Helper_Blog::find_by(array(
             'category_id' => $category_sql,
         ));
-       /// debug($this->articles, true);
+
+        $this->set_filename('blog/articles_collection');
     }
 
-} 
+}

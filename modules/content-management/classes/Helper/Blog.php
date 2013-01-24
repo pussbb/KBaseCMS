@@ -2,19 +2,17 @@
 
 class Helper_Blog {
 
-    private static $default_filter = array('with' => array('author', 'contents'));
+    private static $default_filter = array('with' => array('author', 'contents'), 'total_count' => TRUE);
 
-    public static function recent($limit = 15)
+    public static $count = NULL;
+
+    private static $limit = NULL;
+
+    private static $offset = NULL;
+
+    public static function recent($limit = 1)
     {
-        $records = Model_Blog_Post::find_all(array(
-            'with' => array('author', 'contents'),
-            'limit' => 15,
-        ))->records;
-
-        foreach($records as $key => $item) {
-            $records[$key] = self::article_tr($item);
-        }
-        return $records;
+        return self::find_by(array(), $limit);
     }
 
     private static function article_tr($article)
@@ -34,16 +32,28 @@ class Helper_Blog {
         return $article;
     }
 
-    public static function find_by($filter)
+    public static function find_by($filter, $limit = 15)
     {
-        $limit = Arr::get($_REQUEST, 'articles_count');
-        $offset = Arr::get($_REQUEST, 'articles_count');
+        $limit = Arr::get($_REQUEST, 'alimit', $limit);
+        $offset = Arr::get($_REQUEST, 'apage', 1);
+
+        self::$limit =  $limit ? intval($limit) : 15;
+        self::$offset =  $offset ? intval($offset) : NULL;
+        $offset = ( self::$offset - 1) * self::$limit ;
+
+        if ($offset < 0)
+            $offset = NULL;
+
         $filter = array_merge($filter, array(
-            'limit' => $limit ? intval($limit) : 15,
-            'offset' => $offset ? intval($offset) : NULL,
-        ),self::$default_filter);
-        $records =  Model_Blog_Post::find_all($filter)->records;
-        foreach($records as $key => $item) {
+            'limit' => self::$limit,
+            'offset' => $offset
+        ), self::$default_filter);
+
+        $result = Model_Blog_Post::find_all($filter);
+        self::$count = $result->count;
+
+        $records = array();
+        foreach($result->records as $key => $item) {
             $records[$key] = self::article_tr($item);
         }
         return $records;
@@ -53,5 +63,30 @@ class Helper_Blog {
     {
         $filter = array_merge($filter, self::$default_filter);
         return self::article_tr( Model_Blog_Post::find($filter));
+    }
+
+    public static  function previous_posts()
+    {
+        $offset = self::$offset;
+        $count = (($offset-1)*self::$limit)+self::$limit;
+        if ($count >= self::$count || self::$count == 0)
+            return;
+        echo HTML::anchor(
+            Request::current()->uri().URL::query(array('apage' => ++$offset, 'alimit' => self::$limit)),
+            tr('Previous posts'),
+            array('class' => 'read-more btn btn-inverse btn-small')
+        );
+    }
+
+    public static  function next_posts()
+    {
+        $offset = self::$offset;
+        if (--$offset <= 0)
+            return;
+        echo HTML::anchor(
+            Request::current()->uri().URL::query(array('apage' => $offset, 'alimit' => self::$limit)),
+            tr('Next posts'),
+            array('class' => 'read-more btn btn-inverse btn-small pull-right')
+        );
     }
  }

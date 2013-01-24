@@ -1,11 +1,11 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-foreach(Helper_Blog::recent() as $post)
+foreach($articles as $post)
 {
     echo '<section class="post">';
         echo '<header>';
             echo '<h1>';
-                echo HTML::anchor('article/'.$post->uri, $post->title);
+                echo HTML::anchor('article/'.$post->uri,$post->title);
             echo '<i class="icon-file pull-right"></i>';
             echo '</h1>';
             echo '<blockquote><small>';
@@ -32,3 +32,9 @@ foreach(Helper_Blog::recent() as $post)
 
     echo '</section>';
 }
+
+
+echo '<nav>';
+    echo Helper_Blog::previous_posts();
+    echo Helper_Blog::next_posts();
+echo '</nav>';
