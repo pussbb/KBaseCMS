@@ -34,8 +34,8 @@ class Helper_Blog {
 
     public static function find_by($filter, $limit = 15)
     {
-        $limit = Arr::get($_REQUEST, 'alimit', $limit);
-        $offset = Arr::get($_REQUEST, 'apage', 1);
+        $limit = Arr::get($_REQUEST, 'limit', $limit);
+        $offset = Arr::get($_REQUEST, 'page', 1);
 
         self::$limit =  $limit ? intval($limit) : 15;
         self::$offset =  $offset ? intval($offset) : NULL;
@@ -71,8 +71,8 @@ class Helper_Blog {
         $count = (($offset-1)*self::$limit)+self::$limit;
         if ($count >= self::$count || self::$count == 0)
             return;
-        echo HTML::anchor(
-            Request::current()->uri().URL::query(array('apage' => ++$offset, 'alimit' => self::$limit)),
+        return HTML::anchor(
+            Request::current()->uri().URL::query(array('page' => ++$offset, 'limit' => self::url_limit_value())),
             tr('Previous posts'),
             array('class' => 'read-more btn btn-inverse btn-small')
         );
@@ -83,10 +83,19 @@ class Helper_Blog {
         $offset = self::$offset;
         if (--$offset <= 0)
             return;
-        echo HTML::anchor(
-            Request::current()->uri().URL::query(array('apage' => $offset, 'alimit' => self::$limit)),
+
+        if ($offset == 0)
+            $offset = NULL;
+
+        return HTML::anchor(
+            Request::current()->uri().URL::query(array('page' => $offset, 'limit' => self::url_limit_value())),
             tr('Next posts'),
             array('class' => 'read-more btn btn-inverse btn-small pull-right')
         );
+    }
+
+    private static function url_limit_value()
+    {
+        return isset($_REQUEST['limit'])?self::$limit : NULL;
     }
  }
