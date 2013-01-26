@@ -2,7 +2,6 @@
 
 class Controller_Blog_Archive extends Controller_Template_Blog {
 
-
     public function action_index()
     {
         $year = $this->request->param('year');

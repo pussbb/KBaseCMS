@@ -19,13 +19,14 @@ echo '<section>';
         else
             $tree[$year][$month] = ++$tree[$year][$month];
     }
-    ksort($tree);
-    echo '<ul class="recent">';
+    $tree = Arr::merge($tree, array('2012' => array('01' => 2)));
+    arsort($tree);
+    echo '<ul class="recent archive-list">';
     foreach($tree as $year => $months) {
         echo '<li>';
             echo '<i class="icon-caret-right"></i>';
             echo HTML::anchor(URL::site('/blog/'.$year), $year);
-            echo '<ol>';
+            echo '<ol class="hidden">';
                 foreach($months as $month => $count) {
                     echo '<li>';
                     echo '<i class="icon-caret-right"></i>';

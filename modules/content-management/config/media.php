@@ -14,7 +14,14 @@ return array(
                 'admin/page_edit',
                 'admin/post_edit'
             )
-
         ),
     ),
+    'blog' => array(
+        'css' => array(),
+        'js' => array(
+            'blog/main' => array(
+                'blog/archive.block'
+            )
+        )
+    )
 );
