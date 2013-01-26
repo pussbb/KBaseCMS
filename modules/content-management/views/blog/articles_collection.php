@@ -8,13 +8,6 @@ foreach($articles as $post)
                 echo HTML::anchor('article/'.$post->uri,$post->title);
             echo '<i class="icon-file pull-right"></i>';
             echo '</h1>';
-            echo '<blockquote><small>';
-                echo '<strong><i class="icon-calendar"></i></strong>&nbsp;';
-                echo Date::format($post->created_at);
-                echo '&nbsp;|&nbsp;';
-                echo '<strong><i class="icon-user"></i></strong>&nbsp;';
-                echo $post->author->login;
-            echo '</small></blockquote>';
         echo '</header>';
 
         echo '<article>';
@@ -25,11 +18,7 @@ foreach($articles as $post)
                 array('class' => 'read-more btn btn-inverse btn-small')
             );
         echo '</article>';
-
-        echo '<footer>';
-                echo '<hr class="grey">';
-        echo '</footer>';
-
+        echo View::factory('blog/post/footer', array('post' => $post));
     echo '</section>';
 }
 

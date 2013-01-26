@@ -18,11 +18,22 @@ class Model_Blog_Post extends Model
                 'Model_Blog_Post_Comment',
                 'post_id',
             ),
+            'total_comments' => array(
+                Model::STAT,
+                'Model_Blog_Post_Comment',
+                'post_id',
+            ),
             'contents' => array(
                 Model::HAS_MANY,
                 'Model_Blog_Post_Content',
                 'post_id',
             ),
+            'category' => array(
+                Model::BELONGS_TO,
+                'Model_Blog_Category',
+                'id',
+                'category_id'
+            )
         );
     }
 

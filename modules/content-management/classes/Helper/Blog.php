@@ -2,7 +2,7 @@
 
 class Helper_Blog {
 
-    private static $default_filter = array('with' => array('author', 'contents'), 'total_count' => TRUE);
+    private static $default_filter = array('with' => array('author', 'contents', 'category', 'total_comments'), 'total_count' => TRUE);
 
     public static $count = NULL;
 
@@ -10,7 +10,7 @@ class Helper_Blog {
 
     private static $offset = NULL;
 
-    public static function recent($limit = 1)
+    public static function recent($limit = 10)
     {
         return self::find_by(array(), $limit);
     }
