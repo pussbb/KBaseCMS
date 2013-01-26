@@ -10,6 +10,9 @@ body {
   /* bottom = footer height */
 
 }
+.hidden {
+  display: none;
+}
 .container a:hover,
 .container a:focus {
   text-decoration: none;

@@ -12,6 +12,7 @@
         echo View::factory('layout/blog/block/categories');
         echo View::factory('layout/blog/block/latest_articles');
         echo View::factory('layout/blog/block/latest_comments');
+        echo View::factory('layout/blog/block/archive');
     ?>
   </div>
 </div>

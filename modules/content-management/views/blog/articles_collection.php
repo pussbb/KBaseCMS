@@ -12,7 +12,7 @@ foreach($articles as $post)
 
         echo '<article>';
             echo $post->brief;
-            echo '<br>'.HTML::anchor(
+            echo HTML::anchor(
                 'article/'.$post->uri,
                 tr('Read more'),
                 array('class' => 'read-more btn btn-inverse btn-small')

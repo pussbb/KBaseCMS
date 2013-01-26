@@ -11,6 +11,17 @@ Route::set('blog', '(<lang>)(/)blog(/<controller>)(/<action>(/<id>))', array(
    'action'     => 'index',
 ));
 
+Route::set('archive_blog', 'blog/<year>(/<month>)', array(
+        'year' => '\d{4}',
+        'month' => '\d{1,2}',
+        'lang' => $uri_check_codes,
+  ))->defaults(array(
+   'directory' => 'blog',
+   'controller' => 'archive',
+   'action'     => 'index',
+));
+
+
 Route::set('post', '(<lang>)(/)article/<id>', array(
         'id' => '[a-zA-Z0-9_/]+',
         'lang' => $uri_check_codes,
