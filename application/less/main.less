@@ -32,17 +32,20 @@ ol li {
 hr {
     border-bottom: 1px solid #CCC;
 }
-
 hr.double {
     border: 1px solid #CCC;
     border-right-width: 0px;
     border-left-width: 0px;
     height: 2px;
 }
-
 hr.grey {
     border: 1px solid #666;
 }
+
+hr.dotted {
+    border-style: dotted;
+}
+
 
 .grayscale (@grayscale: 100%) {
     -webkit-filter: grayscale(@grayscale);
@@ -142,6 +145,32 @@ hr.grey {
         color: #79A60E;
     }
 
+}
+
+.sidebar {
+    .recent {
+        a {
+            color: #79A60E;
+        }
+
+        a:hover,
+        a:focus {
+            color: #999;
+        }
+        .post-date {
+            font-style: italic;
+            display: block;/*
+            margin-top: 3px;
+            margin-bottom: 8px;*/
+            color: #999;
+        }
+        p {
+            margin: 0px;
+        }
+    }
+    hr {
+        margin: 3px 0;
+    }
 }
 
 article {

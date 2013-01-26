@@ -34,6 +34,9 @@ hr.double {
 hr.grey {
   border: 1px solid #666;
 }
+hr.dotted {
+  border-style: dotted;
+}
 .navbar-inner {
   border-radius: 0px ;
 }
@@ -126,6 +129,28 @@ hr.grey {
 .post header h1 a:focus,
 .sidebar header h1 a:focus {
   color: #79A60E;
+}
+.sidebar .recent a {
+  color: #79A60E;
+}
+.sidebar .recent a:hover,
+.sidebar .recent a:focus {
+  color: #999;
+}
+.sidebar .recent .post-date {
+  font-style: italic;
+  display: block;
+  /*
+            margin-top: 3px;
+            margin-bottom: 8px;*/
+
+  color: #999;
+}
+.sidebar .recent p {
+  margin: 0px;
+}
+.sidebar hr {
+  margin: 3px 0;
 }
 article a.read-more {
   margin-top: 10px;
