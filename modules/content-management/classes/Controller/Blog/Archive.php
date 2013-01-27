@@ -6,6 +6,10 @@ class Controller_Blog_Archive extends Controller_Template_Blog {
     {
         $year = $this->request->param('year');
         $month = $this->request->param('month');
+
+        if ( ! $year && ! $month )
+            return $this->index();
+
         if ($month)
             $expression = array('YEAR(%s) = %s AND MONTH(%s) = %s', 'created_at' => array($year, intval($month)));
         else
@@ -18,4 +22,10 @@ class Controller_Blog_Archive extends Controller_Template_Blog {
         $this->set_filename('blog/articles_collection');
     }
 
+    private function index()
+    {
+        $this->layout = NULL;
+        Media::bundle('backbone');
+        Media::bundle('blog_archives');
+    }
 }

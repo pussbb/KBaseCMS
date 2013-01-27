@@ -3,7 +3,7 @@
 echo '<section>';
     echo '<header>';
         echo '<h1>';
-            echo tr('Archive');
+            echo tr('Archives');
             echo '<i class="icon-bookmark pull-right"></i>';
         echo '</h1>';
     echo '</header>';
@@ -19,7 +19,7 @@ echo '<section>';
         else
             $tree[$year][$month] = ++$tree[$year][$month];
     }
-    $tree = Arr::merge($tree, array('2012' => array('01' => 2)));
+
     arsort($tree);
     echo '<ul class="recent archive-list">';
     foreach($tree as $year => $months) {

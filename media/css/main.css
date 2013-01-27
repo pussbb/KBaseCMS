@@ -119,10 +119,6 @@ hr.dotted {
   font-size: 16px;
   border-radius: 5px;
 }
-.post a,
-.sidebar a {
-  color: #C6C6C6;
-}
 .post header h1 a,
 .sidebar header h1 a {
   color: white;
@@ -133,20 +129,22 @@ hr.dotted {
 .sidebar header h1 a:focus {
   color: #79A60E;
 }
-.sidebar .recent a {
+.post a,
+.sidebar a {
   color: #79A60E;
 }
-.sidebar .recent a:hover,
-.sidebar .recent a:focus {
+.post a:hover,
+.sidebar a:hover,
+.post a:focus,
+.sidebar a:focus {
   color: #999;
+}
+.post a.read-more,
+.sidebar a.read-more {
+  color: #C6C6C6;
 }
 .sidebar .recent .post-date {
   font-style: italic;
-  display: block;
-  /*
-            margin-top: 3px;
-            margin-bottom: 8px;*/
-
   color: #999;
 }
 .sidebar .recent p {
@@ -156,7 +154,7 @@ hr.dotted {
   margin: 3px 0;
 }
 article a.read-more {
-  margin-top: 10px;
+  margin: 10px;
 }
 footer#page-footer {
   position: absolute;

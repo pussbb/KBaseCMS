@@ -23,5 +23,28 @@ return array(
                 'blog/archive.block'
             )
         )
-    )
+    ),
+    'backbone' => array(
+        'css' => array(),
+        'js' => array(
+            'backbone/underscore-min',
+            'backbone/backbone-min'
+        ),
+    ),
+    'blog_archives' => array(
+        'css' => array(
+            'blog/archives' => '',
+        ),
+        'js' => array(
+            'blog/archives' => array(
+                'blog/archives/models/articles',
+                'blog/archives/models/months',
+                'blog/archives/models/years',
+                'blog/archives/views/articles',
+                'blog/archives/views/months',
+                'blog/archives/views/years',
+                'blog/archives/app',
+            )
+        ),
+    ),
 );
