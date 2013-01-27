@@ -3,7 +3,7 @@
 echo '<section>';
     echo '<header>';
         echo '<h1>';
-            echo tr('Archives');
+            echo HTML::anchor('blog/archive',tr('Archives'));
             echo '<i class="icon-bookmark pull-right"></i>';
         echo '</h1>';
     echo '</header>';

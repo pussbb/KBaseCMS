@@ -9,4 +9,5 @@ class MonthsList extends Backbone.Collection
     "#{url_base}blog/api_archives/months?year=#{@.year}"
 
 
+
 Months = new MonthsList

@@ -1,12 +1,12 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 echo '<div id="archives" class="row-fluid">';
     echo '<div class="span2">';
-        echo '<ul id="years-list" ></ul>';
+        echo '<ul id="years-list" > <li>Year</li> </ul>';
     echo '</div>';
     echo '<div class="span3">';
-        echo '<ul id="months-list"></ul>';
+        echo '<ul id="months-list"> <li>Month</li> </ul>';
     echo '</div>';
     echo '<div class="span4">';
-        echo '<ul id="articles-list"></ul>';
+        echo '<ul id="articles-list"><li id="stats"></li></ul>';
     echo '</div>';
 echo '</div>';

@@ -160,11 +160,13 @@
     };
 
     MonthView.prototype.render = function() {
-      this.$el.html(this.template(this.model.attributes));
+      this.$el.data('id', this.model.id).html(this.template(this.model.attributes));
       return this;
     };
 
     MonthView.prototype.showArticles = function() {
+      $('months-list li.active').removeClass('active');
+      this.$el.addClass('active');
       Articles.each(function(m) {
         return m.clear();
       });
@@ -208,6 +210,7 @@
     };
 
     YearView.prototype.showMonths = function() {
+      this.$el.addClass('active');
       Months.each(function(m) {
         return m.clear();
       });
@@ -223,7 +226,10 @@
   })(Backbone.View);
 
   $(function() {
-    var App, AppView;
+    var App, AppView, articlesList, mothList, yearList;
+    yearList = $("#years-list");
+    mothList = $("#months-list");
+    articlesList = $("#articles-list");
     AppView = (function(_super) {
       var el_tag;
 
@@ -242,6 +248,8 @@
 
         this.addOne = __bind(this.addOne, this);
 
+        this.render = __bind(this.render, this);
+
         this.initialize = __bind(this.initialize, this);
         return AppView.__super__.constructor.apply(this, arguments);
       }
@@ -250,11 +258,29 @@
 
       AppView.prototype.el = $(el_tag);
 
+      AppView.prototype.statsTemplate = _.template("    <% if (total && month) { %>      TOTAL <%= total %> ARTICLES DURING <%= month %>    <% } %>    ");
+
       AppView.prototype.initialize = function() {
+        this.yearList = yearList;
+        this.monthList = mothList;
+        this.articlesList = articlesList;
         Years.bind("reset", this.addAll);
         Months.bind("reset", this.addAllMonths);
         Articles.bind("reset", this.addAllArticles);
+        Articles.bind("all", this.render);
+        Months.bind("all", this.render);
+        Years.bind("all", this.render);
         return Years.fetch();
+      };
+
+      AppView.prototype.render = function() {
+        var id, _ref;
+        id = $('li.active', this.monthList).data('id');
+        console.log(id);
+        return this.$('li#stats').html(this.statsTemplate({
+          total: Articles.length,
+          month: (_ref = Months.get(id)) != null ? _ref.get('name') : void 0
+        }));
       };
 
       AppView.prototype.addOne = function(todo) {
@@ -262,7 +288,7 @@
         view = new YearView({
           model: todo
         });
-        return this.$("#years-list").append(view.render().el);
+        return this.yearList.append(view.render().el);
       };
 
       AppView.prototype.addAll = function() {
@@ -274,7 +300,7 @@
         view = new MonthView({
           model: month
         });
-        return this.$("#months-list").append(view.render().el);
+        return this.monthList.append(view.render().el);
       };
 
       AppView.prototype.addAllMonths = function() {
@@ -286,7 +312,7 @@
         view = new ArticlesView({
           model: article
         });
-        return this.$("#articles-list").append(view.render().el);
+        return this.articlesList.append(view.render().el);
       };
 
       AppView.prototype.addAllArticles = function() {

@@ -11,6 +11,7 @@ class YearView extends Backbone.View
     return @;
 
   showMonths: ->
+    this.$el.addClass 'active'
     Months.each (m)->
       m.clear()
 

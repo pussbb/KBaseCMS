@@ -11,8 +11,8 @@
   border-radius: 5px;
 }
 #archives ul {
-  margin: 0px 15%;
   width: 100%;
+  margin: 0 0 10px 0px;
 }
 #archives ul li {
   line-height: 35px;

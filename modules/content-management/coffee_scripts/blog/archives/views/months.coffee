@@ -11,11 +11,12 @@ class MonthView extends Backbone.View
     @model.view = @;
 
   render: =>
-    @.$el.html(@.template(@.model.attributes));
+    @.$el.data('id', @model.id).html(@.template(@.model.attributes));
     return @;
 
   showArticles: ->
-#     this.$el.addClass 'active'
+    $('months-list li.active').removeClass 'active'
+    this.$el.addClass 'active'
     Articles.each (m)->
       m.clear()
     Articles.year = @model.collection.year
