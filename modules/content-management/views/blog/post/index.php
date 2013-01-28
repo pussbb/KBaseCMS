@@ -14,3 +14,9 @@ echo '<section class="post">';
 
     echo View::factory('blog/post/footer', array('post' => $article));
 echo '</section>';
+
+echo View::factory('blog/comments/form',
+    array('model' => new Model_Blog_Post_Comment(array('post_id' => $article->id)))
+);
+
+echo View::factory('blog/comments/collection', array('post' => $article));

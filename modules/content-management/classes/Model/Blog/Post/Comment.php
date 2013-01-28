@@ -10,11 +10,13 @@ class Model_Blog_Post_Comment extends Model
             'post' => array(
                 Model::HAS_ONE,
                 'Model_Blog_Post',
-                'post_id',
+                'id',
+                'post_id'
             ),
             'author' => array(
                 Model::HAS_ONE,
                 'Model_User',
+                'id',
                 'author_id',
             ),
         );
