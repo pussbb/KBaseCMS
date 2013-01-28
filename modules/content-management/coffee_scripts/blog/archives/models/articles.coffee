@@ -9,5 +9,8 @@ class ArticlesList extends Backbone.Collection
   url: ->
     "#{url_base}blog/api_archives/articles?year=#{@.year}&month=#{@.month}"
 
+  clear: =>
+    @each (m)->
+      m.clear()
 
 Articles = new ArticlesList

@@ -11,15 +11,18 @@ class Controller_News extends Controller_Core {
         $this->offset = Arr::get($_REQUEST, 'page');
 
         $this->news_items = Model_News::find_all(
-            array('with'=>'author', 'total_count' => TRUE),
+            array('with'=> 'author', 'total_count' => TRUE),
             $this->limit,
             $this->offset
         );
+
+        $this->set_title(tr('News'));
 
     }
 
     public function action_view()
     {
         $this->news = Model_News::find($this->request->param('id'));
+        $this->set_title($this->news->title);
     }
 }

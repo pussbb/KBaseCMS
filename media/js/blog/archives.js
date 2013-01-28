@@ -26,6 +26,7 @@
     __extends(ArticlesList, _super);
 
     function ArticlesList() {
+      this.clear = __bind(this.clear, this);
       return ArticlesList.__super__.constructor.apply(this, arguments);
     }
 
@@ -33,6 +34,12 @@
 
     ArticlesList.prototype.url = function() {
       return "" + url_base + "blog/api_archives/articles?year=" + this.year + "&month=" + this.month;
+    };
+
+    ArticlesList.prototype.clear = function() {
+      return this.each(function(m) {
+        return m.clear();
+      });
     };
 
     return ArticlesList;
@@ -62,6 +69,7 @@
     __extends(MonthsList, _super);
 
     function MonthsList() {
+      this.clear = __bind(this.clear, this);
       return MonthsList.__super__.constructor.apply(this, arguments);
     }
 
@@ -69,6 +77,12 @@
 
     MonthsList.prototype.url = function() {
       return "" + url_base + "blog/api_archives/months?year=" + this.year;
+    };
+
+    MonthsList.prototype.clear = function() {
+      return this.each(function(m) {
+        return m.clear();
+      });
     };
 
     return MonthsList;
@@ -167,9 +181,7 @@
     MonthView.prototype.showArticles = function() {
       $('li.active', mothList).removeClass('active');
       this.$el.addClass('active');
-      Articles.each(function(m) {
-        return m.clear();
-      });
+      Articles.clear();
       Articles.year = this.model.collection.year;
       Articles.month = this.model.id;
       return Articles.fetch();
@@ -211,12 +223,8 @@
 
     YearView.prototype.showMonths = function() {
       this.$el.addClass('active');
-      Months.each(function(m) {
-        return m.clear();
-      });
-      Articles.each(function(m) {
-        return m.clear();
-      });
+      Months.clear();
+      Articles.clear();
       Months.year = this.model.id;
       return Months.fetch();
     };

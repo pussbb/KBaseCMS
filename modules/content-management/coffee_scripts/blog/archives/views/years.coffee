@@ -12,11 +12,7 @@ class YearView extends Backbone.View
 
   showMonths: ->
     this.$el.addClass 'active'
-    Months.each (m)->
-      m.clear()
-
-    Articles.each (m)->
-      m.clear()
-
+    Months.clear()
+    Articles.clear()
     Months.year = @model.id
     Months.fetch()

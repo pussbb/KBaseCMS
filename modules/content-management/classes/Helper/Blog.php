@@ -25,7 +25,9 @@ class Helper_Blog {
         {
             if ($lang->id !== $tr_content->language_id)
                 continue;
-            $article->update_params($tr_content->as_array());
+            $data = $tr_content->as_array();
+            unset($data['id']);
+            $article->update_params($data);
             return $article;
         }
         $article->update_params(Arr::get($article->contents, 0)->as_array());

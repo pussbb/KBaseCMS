@@ -8,6 +8,8 @@ class MonthsList extends Backbone.Collection
   url: ->
     "#{url_base}blog/api_archives/months?year=#{@.year}"
 
-
+  clear: =>
+    @.each (m)->
+      m.clear()
 
 Months = new MonthsList

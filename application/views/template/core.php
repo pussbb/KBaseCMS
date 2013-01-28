@@ -5,12 +5,14 @@
     echo '</header>';
 ?>
 
-    <div class="container">
-        <?php echo $content; ?>
-    </div> <!-- /container -->
+<div class="container">
+    <?php echo $content; ?>
+</div>
 
 <?php
     echo '<footer id="page-footer">';
         echo View::factory('template/footer', get_defined_vars())->render();
     echo '</footer>';
 ?>
+    </body>
+</html>

@@ -20,6 +20,7 @@ class Controller_Blog_Archive extends Controller_Template_Blog {
         ));
 
         $this->set_filename('blog/articles_collection');
+        $this->set_title(tr('Articles over a period %s %s ', array($year, Text::month_name($month))));
     }
 
     private function index()
@@ -27,5 +28,6 @@ class Controller_Blog_Archive extends Controller_Template_Blog {
         $this->layout = NULL;
         Media::bundle('backbone');
         Media::bundle('blog_archives');
+        $this->set_title(tr('Blog Archives'));
     }
 }
