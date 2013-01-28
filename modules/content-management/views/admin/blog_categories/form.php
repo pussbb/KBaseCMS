@@ -22,8 +22,17 @@ echo $form->textarea(array(
     'attr' => array( 'class' => 'span6'),
 ));
 
-$categories = Collection::for_select(Model_Blog_Category::find_all()->records, 'name') ;
-Arr::unshift($categories, NULL, tr('No parent'));
+$categories = array(
+    NULL => tr('No parent')
+);
+foreach(Model_Blog_Category::find_all()->records as $_item) {
+    if ($_item->parent_id)
+        continue;
+    $categories[$_item->id] = $_item->name;
+}
+
+////Collection::for_select(Model_Blog_Category::find_all()->records, 'name') ;
+///Arr::unshift($categories, NULL, tr('No parent'));
 
 echo $form->select(array(
     'name' => 'parent_id',

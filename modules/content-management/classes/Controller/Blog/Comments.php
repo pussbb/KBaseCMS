@@ -24,6 +24,7 @@ class Controller_Blog_Comments extends Controller_Template_Blog {
             return $this->redirect(URL::site('article/'.$this->model->post->uri));
         }
         $this->set_filename('blog/comments/form');
+        $this->set_title('Add comment');
     }
 
 }
