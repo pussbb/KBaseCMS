@@ -1,3 +1,4 @@
+mothList = null
 
 $ ->
   yearList = $("#years-list")
@@ -28,7 +29,6 @@ $ ->
 
     render: =>
       id = $('li.active', @monthList).data('id')
-      console.log id
       @.$('li#stats').html(@statsTemplate {
           total: Articles.length,
           month: Months.get(id)?.get('name')

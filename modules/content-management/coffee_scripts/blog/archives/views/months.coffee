@@ -15,7 +15,7 @@ class MonthView extends Backbone.View
     return @;
 
   showArticles: ->
-    $('months-list li.active').removeClass 'active'
+    $('li.active', mothList).removeClass 'active'
     this.$el.addClass 'active'
     Articles.each (m)->
       m.clear()
