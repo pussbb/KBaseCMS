@@ -18,8 +18,11 @@ class Controller_Blog_Comments extends Controller_Template_Blog {
             'post_id' => Arr::get($_REQUEST, 'post_id'),
         ));
 
-        if ($this->model->save())
-            return $this->redirect($this->request->referrer());
+        if ($this->model->save()) {
+            if ($this->is_ajax())
+                return $this->render_nothing();
+            return $this->redirect(URL::site('article/'.$this->model->post->uri));
+        }
         $this->set_filename('blog/comments/form');
     }
 

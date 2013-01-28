@@ -10,7 +10,7 @@ class Controller_Blog_Post extends Controller_Template_Blog {
             ));
             $this->set_title($this->article->title);
             $this->set_keywords($this->article->keywords);
-        } catch(Exception $e) {
+        } catch(Base_Db_Exception_RecordNotFound $e) {
             throw new HTTP_Exception_404();
         }
     }

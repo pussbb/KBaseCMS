@@ -93,7 +93,7 @@ Kohana::init(array(
 	'base_url'   => '/',
 	'index_file' => '',
 	'caching' => FALSE,
-	'profile' => FALSE,
+	'profile' => Kohana::$environment == Kohana::DEVELOPMENT,
 	'expose' => TRUE,
 ));
 

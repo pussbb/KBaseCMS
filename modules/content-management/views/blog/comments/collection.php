@@ -5,8 +5,6 @@ $comments = $post->comments(array('with' => 'author'));
 if ( ! $comments)
     return;
 
-foreach($comments as $comment){
-}
 echo '<section>';
     echo '<header>';
         echo '<h2>';
