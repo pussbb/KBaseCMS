@@ -12,10 +12,9 @@ class UI_Table_Posts extends UI {
                         'limit' => Arr::get($_REQUEST, $limit_key, $this->param('limit', $this->model->per_page)),
                         'offset' => Arr::get($_REQUEST, $offset_key, $this->param('offset')),
                         'total_count' => TRUE,
-                        'with' => array('author', 'contents'),
+                        'with' => array('contents'),
                     ));
     $labels = $this->model->labels();
-    $labels['author'] = Model_User::table_labels();
 
     return array(
         'titles' => Arr::extract($labels, $this->param('columns')),

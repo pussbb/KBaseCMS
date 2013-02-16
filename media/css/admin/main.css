@@ -15,7 +15,8 @@ a:hover {
 a.action {
   margin: 0px 4px;
 }
-.table th {
+.table th,
+.table td {
   text-align: center;
 }
 /* Header */

@@ -10,7 +10,6 @@ class Model_Blog_Post extends Model
             'author' => array(
                 Model::HAS_ONE,
                 'Model_User',
-                'id',
                 'author_id',
             ),
             'comments' => array(
@@ -31,7 +30,6 @@ class Model_Blog_Post extends Model
             'category' => array(
                 Model::BELONGS_TO,
                 'Model_Blog_Category',
-                'id',
                 'category_id'
             )
         );
@@ -43,6 +41,7 @@ class Model_Blog_Post extends Model
             'id' => tr('ID'),
             'title' => tr('Title'),
             'created_at' => tr('Created at'),
+            'uri' => tr('URI'),
         );
     }
 }
