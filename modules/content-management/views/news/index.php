@@ -17,16 +17,13 @@ foreach($news_items->records as $news_item) {
     echo View::factory('news/view', array('news' => $news_item))->render();
 
 }
-
-$uri = Request::current()->uri();
-
 $count = ($offset*$limit)+count($news_items->records);
 echo '<nav>';
         if ($count < $news_items->count) {
             if (!isset($_REQUEST['limit']))
                 $limit = NULL;
             echo HTML::anchor(
-                $uri.URL::query(array('page' => $offset+1, 'limit' => $limit)),
+                'news'.URL::query(array('page' => $offset+1, 'limit' => $limit)),
                 tr('Previous news'),
                 array('class' => 'read-more btn btn-inverse btn-small')
             );
@@ -40,7 +37,7 @@ echo '<nav>';
                 $limit = NULL;
 
             echo HTML::anchor(
-                $uri.URL::query(array('page' => $offset, 'limit' => $limit)),
+                'news'.URL::query(array('page' => $offset, 'limit' => $limit)),
                 tr('Next news'),
                 array('class' => 'read-more btn btn-inverse btn-small pull-right')
             );

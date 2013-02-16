@@ -47,10 +47,10 @@
                             'width' => 32,
                             'height' => 32,
                         ));
-                        $uri = Text::reduce_slashes($lang->code.$request_uri.URL::query());
+                        $uri = Text::reduce_slashes($lang->code.'/'.$request_uri.URL::query());
                         echo '<li class="icons">';
                             echo Html::anchor(
-                                URL::_site($uri),
+                                URL::site($uri),
                                 $label
                             );
                         echo '</li>';

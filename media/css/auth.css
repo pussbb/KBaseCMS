@@ -1,7 +1,9 @@
 #authbox {
+  color: #000;
   width: 30%;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
   display: block;
   min-height: 196px;
   background: #ffffff;

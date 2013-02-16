@@ -33,12 +33,14 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
         ));
 
         $id = Arr::get($_REQUEST, 'id');
+
         if ($id)
             $this->model->id = $id;
 
         if ($this->model->save())
         {
-//             $contents = array();
+            $content_saved = 0;
+            $contents = array();
             foreach(Arr::get($_REQUEST, 'post') as $lang_id => $content)
             {
                 $content_model = new Model_Blog_Post_Content(array(
@@ -52,14 +54,25 @@ class Controller_Admin_Blog_Posts extends Controller_Template_Admin {
 
                 if ($content['id'])
                     $content_model->id = $content['id'];
-                $content_model->save();
-//                 var_dump($content_model->errors());;
-//                 $contents[] = $content_model;
+
+                if ( $content_model->save())
+                    $content_saved++;
+                $contents[] = $content_model;
             }
+            $this->model->contents = $contents;
+            if ( ! $content_saved ) {
+                $this->set_filename('admin/blog_posts/form');
+                if ( ! $id )
+                    $this->model->destroy();
+                return;
+            }
+
             if ($this->request->is_ajax())
                 return $this->render_nothing();
             self::redirect(URL::site('admin/blog_posts'));
+            return;
         }
+        $this->set_filename('admin/blog_posts/form');
     }
 
     public function action_destroy()

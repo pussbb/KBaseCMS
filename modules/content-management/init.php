@@ -11,7 +11,7 @@ Route::set('blog', '(<lang>)(/)blog(/<controller>)(/<action>(/<id>))', array(
    'action'     => 'index',
 ));
 
-Route::set('archive_blog', 'blog/<year>(/<month>)', array(
+Route::set('archive_blog', '(<lang>)(/)blog/<year>(/<month>)', array(
         'year' => '\d{4}',
         'month' => '\d{1,2}',
         'lang' => $uri_check_codes,

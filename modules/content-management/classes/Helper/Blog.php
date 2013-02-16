@@ -34,7 +34,7 @@ class Helper_Blog {
         return $article;
     }
 
-    public static function find_by($filter, $limit = 15)
+    public static function find_by($filter, $limit = 10)
     {
         $limit = Arr::get($_REQUEST, 'limit', $limit);
         $offset = Arr::get($_REQUEST, 'page', 1);
@@ -73,6 +73,7 @@ class Helper_Blog {
         $count = (($offset-1)*self::$limit)+self::$limit;
         if ($count >= self::$count || self::$count == 0)
             return;
+
         return HTML::anchor(
             Request::current()->uri().URL::query(array('page' => ++$offset, 'limit' => self::url_limit_value())),
             tr('Previous posts'),

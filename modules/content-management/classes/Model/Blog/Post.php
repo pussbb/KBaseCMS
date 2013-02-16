@@ -44,4 +44,11 @@ class Model_Blog_Post extends Model
             'uri' => tr('URI'),
         );
     }
+
+    public function rules()
+    {
+        return array(
+            'uri' => array('unique'),
+        );
+    }
 }
