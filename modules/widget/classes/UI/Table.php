@@ -2,37 +2,49 @@
 
 class UI_Table extends UI {
 
-  public function __construct(array $params)
-  {
-      parent::__construct($params);
-      if ( ! is_object($this->model) && ! $this->model instanceof Base_Model)
-        throw new Kohana_Exception('Not valid model');
-  }
+//     public function __construct(array $params)
+//     {
+//
+//     }
 
-  private function view_data()
-  {
-    $model = $this->model;
-    $limit_key = $model::module_name().'_limit';
-    $offset_key = $model ::module_name().'_offset';
+    private function request_param($key)
+    {
+        $name = call_user_func(array($this->model, 'module_name')).'_'.$key;
+        return Arr::get($_REQUEST, $name, $this->param($key));
+    }
 
-    $records = $model::find_all(array(
-                        'limit' => Arr::get($_REQUEST, $limit_key, $this->param('limit', $this->model->per_page)),
-                        'offset' => Arr::get($_REQUEST, $offset_key, $this->param('offset')),
-                        'total_count' => TRUE,
-                    ));
+    public function limit()
+    {
+        $value = $this->request_param('limit');
+        return $value === 0 ? NULL : $value;
+    }
 
-    return array(
-        'titles' => Arr::extract($this->model->labels(), $this->param('columns')),
-        'columns' => $this->param('columns'),
-        'records' => $records->records,
-        'total' => $records->count,
-        'per_page' => $records->per_page,
-        'actions' => $this->param('actions', array())
-    );
+    public function offset()
+    {
+        return $this->request_param('offset');
+    }
+
+    private function simple()
+    {
+        $model = $this->model;
+        $records = $model::find_all(array(
+            'limit' => $this->limit(),
+            'offset' => $this->offset(),
+            'total_count' => TRUE,
+        ));
+        $model = new $model;
+        return array(
+            'titles' => Arr::extract($model->labels(), $this->param('columns')),
+            'columns' => $this->param('columns'),
+            'records' => $records->records,
+            'total' => $records->count,
+            'per_page' => $records->per_page,
+            'actions' => $this->param('actions', array())
+        );
   }
 
   public function _render()
   {
-    return View::factory('ui/table', $this->view_data())->render();
+    return View::factory('ui/table', $this->simple())->render();
   }
 }

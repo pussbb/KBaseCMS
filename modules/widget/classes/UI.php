@@ -9,14 +9,7 @@ abstract class UI {
   public function __construct(array $params)
   {
       $this->params = $params;
-      $model = Arr::get($params, 'model');
-      if ($model)
-      {
-        if ( ! $model instanceof Base_Model)
-            $this->model = $this->new_model($model);
-        else
-            $this->model = $model;
-      }
+      $this->model = Helper_Model::class_name(Arr::get($params, 'model'));
   }
 
   protected function param($key, $default = NULL)

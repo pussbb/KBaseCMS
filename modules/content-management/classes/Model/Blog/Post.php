@@ -51,4 +51,5 @@ class Model_Blog_Post extends Model
             'uri' => array('unique'),
         );
     }
+
 }
