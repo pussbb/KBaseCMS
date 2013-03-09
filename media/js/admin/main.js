@@ -137,7 +137,6 @@
           return;
         }
         contentLinkElement = $this;
-        console.log(contentLinkElement);
         return content.show().html(data);
       }).error(function() {
         if (jxhr.status === 403) {
@@ -162,7 +161,5 @@
       });
     });
   });
-
-  $(function() {});
 
 }).call(this);

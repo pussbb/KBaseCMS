@@ -42,7 +42,7 @@ class Controller_Admin_News extends Controller_Template_Admin {
     }
 
     public function action_destroy()
-    {return  $this->render_nothing();
+    {
         if ( ! $this->is_delete())
             throw new HTTP_Exception_403(tr('Access deny'));
 

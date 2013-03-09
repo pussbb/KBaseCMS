@@ -46,7 +46,6 @@ $ ->
             .append data
         return
       contentLinkElement = $this
-      console.log contentLinkElement
       content.show().html data
     )
     .error ()->
