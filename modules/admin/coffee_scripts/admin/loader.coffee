@@ -5,7 +5,7 @@ $ ->
 
   $('body').on 'click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]:not([href^="javascript"]):not([href^="#"]):not([target="_blank"])', (e)->
     e.preventDefault()
-    $this = $(this)
+    $this = $(@)
     return if ! $this.prop 'href'
     content.hide()
     detailsContainer.hide()
@@ -17,8 +17,7 @@ $ ->
 
     if IS.object jxhr
       jxhr.abort()
-
-    jxhr = $.get( $(this).attr('href'), (data)->
+    jxhr = $.get( $this.attr('href'), $this.data('request'),(data)->
       requestInfo.hide().html()
 
       if $this.attr('class')?.match /action_(new|edit)/

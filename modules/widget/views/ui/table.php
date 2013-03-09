@@ -32,8 +32,27 @@ echo '<table class="table table-bordered data-table">';
         }
     echo '</tbody>';
     echo '<tfoot>';
-        echo '<tr>';
-          echo '<td colspan="40">'.tr('Per page: ').$per_page.'</td>';
+        $colspan = floor((count($columns)+1)/2);
+        echo '<tr class="form-inline">';
+            echo '<td colspan="'.$colspan.'" class="text-left" >';
+                echo Form::label($limit_key, tr('Per page: '), array('class' => 'control-label'));
+                echo Form::select(
+                    $limit_key,
+                    array(10 => 10,20 => 20,50 => 50,100 => 100),
+                    $limit,
+                    array('class' => 'input-mini limit', )
+                );
+            echo '</td>';
+
+            $pages = array();
+            for($i = 1; $i <= ceil($total/$limit); $i++)
+            {
+                $pages[] = $i;
+            }
+            echo '<td colspan="'.$colspan.'" class="text-left">';
+                echo Form::label($offset_key, tr('Page: '), array('class' => 'control-label'));
+                echo Form::select($offset_key, $pages , $offset);
+            echo '</td>';
         echo '</tr>';
     echo '</tfoot>';
 
