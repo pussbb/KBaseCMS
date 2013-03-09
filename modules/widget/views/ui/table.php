@@ -32,9 +32,13 @@ echo '<table class="table table-bordered data-table">';
         }
     echo '</tbody>';
     echo '<tfoot>';
-        $colspan = floor((count($columns)+1)/2);
         echo '<tr class="form-inline">';
-            echo '<td colspan="'.$colspan.'" class="text-left" >';
+            echo '<td colspan="50" class="text-center" >';
+                echo '<span class="text-left">';
+                    echo tr('Total: ');
+                    echo $total;
+                echo '</span>';
+                echo str_repeat('&nbsp;', 10);
                 echo Form::label($limit_key, tr('Per page: '), array('class' => 'control-label'));
                 echo Form::select(
                     $limit_key,
@@ -42,16 +46,22 @@ echo '<table class="table table-bordered data-table">';
                     $limit,
                     array('class' => 'input-mini limit', )
                 );
-            echo '</td>';
 
-            $pages = array();
-            for($i = 1; $i <= ceil($total/$limit); $i++)
-            {
-                $pages[] = $i;
-            }
-            echo '<td colspan="'.$colspan.'" class="text-left">';
+                echo str_repeat('&nbsp;', 10);
+                $pages = array();
+                for($i = 1; $i <= ceil($total/$limit); $i++)
+                {
+                    $pages[] = $i;
+                }
+
                 echo Form::label($offset_key, tr('Page: '), array('class' => 'control-label'));
-                echo Form::select($offset_key, $pages , $offset);
+                echo Form::select(
+                    $offset_key,
+                    $pages ,
+                    $offset,
+                    array('class' => 'offset input-mini')
+                );
+
             echo '</td>';
         echo '</tr>';
     echo '</tfoot>';

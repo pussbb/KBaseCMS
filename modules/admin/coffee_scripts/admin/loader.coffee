@@ -1,4 +1,8 @@
 
+destroyFormContainer = ()->
+  formContainer.formControll 'destroy'
+  formContainer.hide().html ''
+
 $ ->
 
   jxhr = null
@@ -10,9 +14,8 @@ $ ->
     content.hide()
     detailsContainer.hide()
     formContainer.hide()
-    if ! formContainer.is ':empty'
-        formContainer.formControll 'destroy'
-        formContainer.hide().html ''
+    destroyFormContainer()
+
     requestInfo.show().pseudoAjaxLoadingProgress {timeout: 500}
 
     if IS.object jxhr
@@ -25,12 +28,12 @@ $ ->
         formContainer.trigger 'form_loaded'
         formContainer.formControll {
           onCancel: ()->
-            formContainer.formControll 'destroy'
-            formContainer.hide().html ''
+            destroyFormContainer()
             content.show()
           onSuccess: ()->
-            formContainer.formControll 'destroy'
-            formContainer.hide().html ''
+            destroyFormContainer()
+            if ! contentLinkElement
+                contentLinkElement = $("a[href*=\"#{location.pathname}\"]")
             contentLinkElement.trigger 'click'
             content.show()
           onLoad: ()->

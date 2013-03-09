@@ -9,3 +9,8 @@ $ ->
 
   $('body').on 'paste', 'input.page-uri', (e)->
     e.preventDefault()
+
+  $('body .container').on 'click', '.cke_contents a', (e)->
+    e.stopImmediatePropagation()
+    e.preventDefault()
+    e.stopPropagation()
