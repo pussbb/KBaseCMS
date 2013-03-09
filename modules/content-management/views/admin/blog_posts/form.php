@@ -15,14 +15,12 @@ echo $form->input(array(
     'attr' => array( 'class' => 'span6 page-uri' ),
 ));
 
-$categories = Collection::for_select(Model_Blog_Category::find_all()->records, 'name') ;
-
 echo $form->select(array(
     'name' => 'category_id',
     'value' => Object::property($model, 'category_id'),
     'label' => tr('Category'),
     'attr' => array( 'class' => 'span6'),
-    'buttons' => $categories
+    'buttons' => Helper_Blog_Categories::tree_for_select(FALSE)
 ));
 
 $content = Object::property($model, 'contents');
