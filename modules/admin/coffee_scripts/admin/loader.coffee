@@ -1,17 +1,7 @@
 
 $ ->
 
-  contentLinkElement = null
   jxhr = null
-
-  $(container).on 'click', 'ul.nav.nav-tabs a', (e)->
-    e.preventDefault()
-    $(this).tab 'show'
-
-  $('body').on 'click', 'a.details-close', (e)->
-    detailsContainer.html ''
-    detailsContainer.hide()
-    content.show()
 
   $('body').on 'click', 'a[href!="#"][data-toggle!="confirm"][data-click!=""][data-dismiss!=""]:not([href^="javascript"]):not([href^="#"]):not([target="_blank"])', (e)->
     e.preventDefault()
@@ -56,6 +46,7 @@ $ ->
             .append data
         return
       contentLinkElement = $this
+      console.log contentLinkElement
       content.show().html data
     )
     .error ()->

@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-echo '<table class="table table-bordered">';
+echo '<table class="table table-bordered data-table">';
     echo '<thead>';
       echo '<tr>';
       foreach(Arr::flatten($titles) as $title) {
@@ -17,21 +17,7 @@ echo '<table class="table table-bordered">';
       echo '</tr>';
     echo '</thead>';
     echo '<tbody>';
-        foreach($records as $record) {
-            echo '<tr>';
-                foreach($columns as $column) {
-                    echo '<td>'.Collection::property($record, $column).'</td>';
-                }
-                if($actions)
-                {
-                  echo '<td>';
-                    foreach($actions as $action) {
-                        echo Helper_Actions::action($record, $action);
-                    }
-                  echo '</td>';
-                }
-            echo '</tr>';
-        }
+
         if ( ! $records)
         {
             echo '<tr class="alert alert-info">';
@@ -39,6 +25,10 @@ echo '<table class="table table-bordered">';
                     echo tr('Nothing to display');
                 echo '</td>';
             echo '</tr>';
+        }
+        else
+        {
+            echo View::factory($collection_view, get_defined_vars());
         }
     echo '</tbody>';
     echo '<tfoot>';

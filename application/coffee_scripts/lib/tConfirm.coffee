@@ -2,7 +2,7 @@
 $ ->
 
   $.fn.tConfirm = (options)->
-    this.each (key, value)->
+    this.each ->
       self = $(this)
       options = $.extend true, $.fn.tConfirm.defaults, options
       self.tDialog {
@@ -26,7 +26,7 @@ $ ->
                     self.tDialog 'hideProccess', 'Opps some error ocured'
                   self.tDialog 'close'
                   parent = self.parent()
-
+                  self.trigger 'itemremoved'
                   switch new String(parent.prop("tagName")).toLowerCase()
                     when 'td' then parent.closest('tr').remove()
                     when 'li' then if parent.hasClass 'can_remove' then parent.remove()

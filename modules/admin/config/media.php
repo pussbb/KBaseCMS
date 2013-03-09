@@ -10,7 +10,8 @@ return array(
             'admin/main' => array(
               'admin/init',
               'admin/sidebar',
-              'admin/loader'
+              'admin/loader',
+              'admin/table',
             ),
         ),
     ),

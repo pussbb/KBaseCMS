@@ -2,10 +2,21 @@
 
 class UI_Table extends UI {
 
-//     public function __construct(array $params)
-//     {
-//
-//     }
+    private $data = NULL;
+
+    public function __construct(array $params)
+    {
+        parent::__construct($params);
+        $this->data = array(
+            'columns' => $this->param('columns'),
+            'records' => array(),
+            'total' => 0,
+            'per_page' => 0,
+            'titles' => array(),
+            'collection_view' => 'ui/table/rows',
+            'actions' => $this->param('actions', array())
+        );
+    }
 
     private function request_param($key)
     {
@@ -24,27 +35,35 @@ class UI_Table extends UI {
         return $this->request_param('offset');
     }
 
-    private function simple()
+    public function data()
     {
         $model = $this->model;
-        $records = $model::find_all(array(
+        $filter = Arr::merge(array(
             'limit' => $this->limit(),
             'offset' => $this->offset(),
             'total_count' => TRUE,
-        ));
+        ), $this->param('filter', array()));
+
+        $records = $model::find_all($filter);
         $model = new $model;
-        return array(
-            'titles' => Arr::extract($model->labels(), $this->param('columns')),
-            'columns' => $this->param('columns'),
-            'records' => $records->records,
-            'total' => $records->count,
-            'per_page' => $records->per_page,
-            'actions' => $this->param('actions', array())
+        $titles = $this->param('titles');
+        if ( ! $titles)
+            $titles = Arr::extract($model->labels(), $this->param('columns'));
+
+        return Arr::merge(
+            $this->data,
+            array(
+                'titles' => $titles,
+                'records' => $records->records,
+                'total' => $records->count,
+                'per_page' => $records->per_page,
+            )
         );
   }
 
   public function _render()
   {
-    return View::factory('ui/table', $this->simple())->render();
+    return View::factory('ui/table', $this->data())->render();
   }
+
 }
