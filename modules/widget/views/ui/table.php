@@ -3,9 +3,11 @@
 echo '<table class="table table-bordered data-table">';
     echo '<thead>';
       echo '<tr>';
-      foreach(Arr::flatten($titles) as $title) {
+      foreach(Arr::flatten($titles) as $index => $title) {
           echo '<th>';
             echo $title;
+            echo '<i class="icon-angle-up"></i>';
+            echo '<i class="icon-angle-down"></i>';
           echo '</th>';
       }
       if ($actions)

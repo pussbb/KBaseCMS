@@ -32,8 +32,7 @@ $ ->
             content.show()
           onSuccess: ()->
             destroyFormContainer()
-            if ! contentLinkElement
-                contentLinkElement = $("a[href*=\"#{location.pathname}\"]")
+            findContentLink() if ! contentLinkElement
             contentLinkElement.trigger 'click'
             content.show()
           onLoad: ()->

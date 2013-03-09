@@ -1,5 +1,7 @@
 root = exports ? this
 contentLinkElement = null
+findContentLink = ->
+  contentLinkElement = $("a[href*=\"#{location.pathname}\"]")
 
 $ ->
   widget = $('div.some-table').tWidget()
@@ -23,10 +25,14 @@ $ ->
     detailsContainer.hide()
     content.show()
 
-# table item removed so reload page
+# table manipulations
   $(document).on 'itemremoved', 'table.data-table a.action_destroy', (e)->
+    table = $(e.target).closest 'table'
     if ! contentLinkElement
-      location.reload()
+      findContentLink()
+
+    if $('tbody tr', table).length <= 1 and $('select.offset option:last', table).is ':selected'
+      $('select.limit', table ).trigger 'change'
       return
     contentLinkElement.trigger 'click'
 
