@@ -5,23 +5,25 @@ echo '<br/><br/>';
 echo  UI_Table::render(array(
     'model'=> 'blog_post',
     'columns' => array(
-        'id' => array(),
+        'id' => array(
+            'title' => tr('id')
+        ),
         'uri' => array(
             'callback' => function($x){
                 return HTML::anchor('article/'.$x, $x, array('target' => '_blank'));
             },
-            'class' => 'text-left'
+            'class' => 'text-left',
+            'title' => tr('URI')
         ),
-        'created_at' => array(),
-        'author.login' => array(),
-        'category.name' => array()
-    ),
-    'titles' => array(
-        tr('id'),
-        tr('URI'),
-        tr('Created at'),
-        tr('Author'),
-        tr('Category'),
+        'created_at' => array(
+            'title' => tr('Created at')
+        ),
+        'author.login' => array(
+            'title' => tr('Author')
+        ),
+        'category.name' => array(
+            'title' => tr('Category')
+        )
     ),
     'actions' => array('destroy',  'edit',  ),
     'filter' => array('with' => array('contents', 'author', 'category')),

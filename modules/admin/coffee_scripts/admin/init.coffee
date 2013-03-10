@@ -53,3 +53,11 @@ $ ->
     contentLinkElement.data 'request', data
     contentLinkElement.trigger 'click'
 
+  $(document).on 'click', 'table.data-table thead th a', (e)->
+    e.preventDefault()
+    sortData = $(@).data 'sort'
+    return if ! sortData
+    requestData = contentLinkElement.data 'request' || {}
+    requestData = $.extend requestData, sortData
+    contentLinkElement.data 'request', requestData
+    contentLinkElement.trigger 'click'

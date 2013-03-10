@@ -1,13 +1,39 @@
 <?php defined('SYSPATH') or die('No direct script access.');
+$sort_field = $order[0];
+$sort_dir = $order[1];
 
 echo '<table class="table table-bordered data-table">';
     echo '<thead>';
       echo '<tr>';
-      foreach(Arr::flatten($titles) as $index => $title) {
+      foreach($titles as $index => $title) {
           echo '<th>';
             echo $title;
-            echo '<i class="icon-angle-up"></i>';
-            echo '<i class="icon-angle-down"></i>';
+            echo '<span class="sort">';
+                $large_icon = '';
+                if ($index === $sort_field && $sort_dir === 'ASC')
+                    $large_icon = 'icon-large';
+                echo HTML::anchor(
+                    '#',
+                    "<i class=\"icon-angle-up $large_icon\"></i>",
+                    array(
+                        'title' => 'Sort ASC',
+                        'rel' => 'tooltip',
+                        'data-sort' => json_encode(array($sort_key => $index, $sort_dir_key => 'ASC'))
+                    )
+                );
+                $large_icon = '';
+                if ($index === $sort_field && $sort_dir === 'DESC')
+                    $large_icon = 'icon-large';
+                echo HTML::anchor(
+                    '#',
+                    "<i class=\"icon-angle-down $large_icon\"></i>",
+                    array(
+                        'title' => 'Sort DESC',
+                        'rel' => 'tooltip',
+                        'data-sort' => json_encode(array($sort_key => $index, $sort_dir_key => 'DESC'))
+                    )
+                );
+            echo '</span>';
           echo '</th>';
       }
       if ($actions)

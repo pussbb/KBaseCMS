@@ -195,6 +195,12 @@ a.action {
   display: table;
   margin: -10px 0 10px;
 }
+span.sort {
+  margin-left: 5px;
+}
+span.sort a {
+  margin-left: 3px;
+}
 /* Footer */
 #footer {
   text-align: center;

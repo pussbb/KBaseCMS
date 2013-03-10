@@ -2,24 +2,38 @@
 
 class UI_Table extends UI {
 
-    private $data = NULL;
+    private $data = array();
 
     public function __construct(array $params)
     {
         parent::__construct($params);
         $this->model = new $this->model;
+
+//         var_dump($this->model->order());
+
+        $titles = array();
+        $columns = $this->param('columns');
+
+        if ( ! Arr::is_assoc($columns))
+            $titles = Arr::extract($this->model->labels(), $columns);
+        else
+            $titles = array_combine(array_keys($columns), Arr::path($columns, '*.title'));
+
         $this->data = array(
-            'columns' => $this->param('columns'),
+            'columns' => $columns,
             'records' => array(),
             'total' => 0,
             'per_page' => 0,
-            'titles' => array(),
+            'titles' => $titles,
             'collection_view' => 'ui/table/rows',
             'limit_key' => $this->request_param_name('limit'),
             'offset_key' => $this->request_param_name('offset'),
             'limit' => $this->limit(),
             'offset' => $this->offset(),
-            'actions' => $this->param('actions', array())
+            'actions' => $this->param('actions', array()),
+            'sort_key' => $this->request_param_name('sort_field'),
+            'sort_dir_key' => $this->request_param_name('sort_dir'),
+
         );
     }
 
@@ -44,6 +58,16 @@ class UI_Table extends UI {
         return (int)$this->request_param('offset');
     }
 
+    public function sort()
+    {
+        $order_field = $this->request_param('sort_field');
+        $order_dir = $this->request_param('sort_dir');
+        if ( ! array_key_exists($order_field, Arr::get($this->data, 'titles', array()))
+            || ! in_array($order_dir, array('ASC', 'DESC')))
+            return $this->model->order();
+        return array($order_field, $order_dir);
+    }
+
     public function data()
     {
         $model = $this->model;
@@ -56,19 +80,16 @@ class UI_Table extends UI {
             'limit' => $limit ,
             'offset' => $offset,
             'total_count' => TRUE,
+            'order_by' => $this->sort(),
         ), $this->param('filter', array()));
 
         $records = $model::find_all($filter);
 
-        $titles = $this->param('titles');
-        if ( ! $titles)
-            $titles = Arr::extract($model->labels(), $this->param('columns'));
-
         return Arr::merge(
             $this->data,
             array(
-                'titles' => $titles,
                 'records' => $records->records,
+                'order' => $this->sort(),
                 'total' => $records->count,
                 'per_page' => $records->per_page,
             )

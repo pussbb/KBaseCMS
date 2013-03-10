@@ -233,7 +233,12 @@ a.action {
     }
 }
 
-
+span.sort {
+    margin-left: 5px;
+    a {
+        margin-left: 3px;
+    }
+}
 
 /* Footer */
 #footer {
@@ -245,28 +250,33 @@ a.action {
 form {
     margin-bottom: 0;
 }
-.form-horizontal .control-group {
-    border-top: 1px solid #ffffff;
-    border-bottom: 1px solid #eeeeee;
-    margin-bottom: 0;
-}
-.form-horizontal .control-group:last-child {
-    border-bottom: 0;
-}
-.form-horizontal .control-label {
-    padding-top: 15px;
-    width: 180px;
-}
-.form-horizontal .controls {
-    margin-left: 200px;
-    padding: 10px 0;
-}
-.form-horizontal input[type=text], .form-horizontal input[type=password], .form-horizontal textarea {
-    width: 80%;
-}
-.form-horizontal .form-actions {
-    margin-top: 0;
-    margin-bottom: 0;
+.form-horizontal {
+    .control-group {
+        border-top: 1px solid #ffffff;
+        border-bottom: 1px solid #eeeeee;
+        margin-bottom: 0;
+    }
+    .control-group:last-child {
+        border-bottom: 0;
+    }
+    .control-label {
+        padding-top: 15px;
+        width: 180px;
+    }
+    .controls {
+        margin-left: 200px;
+        padding: 10px 0;
+    }
+
+    input[type=text],
+    input[type=password],
+    textarea {
+        width: 80%;
+    }
+    .form-actions {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 }
 .help-block, .help-inline {
     color: #999999;
