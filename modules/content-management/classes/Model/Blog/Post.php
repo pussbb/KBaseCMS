@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Model_Blog_Post extends Model
+class Model_Blog_Post extends Base_Model
 {
     protected $order = array('created_at', 'DESC');
 
@@ -8,27 +8,27 @@ class Model_Blog_Post extends Model
     {
         return array(
             'author' => array(
-                Model::HAS_ONE,
+                self::HAS_ONE,
                 'Model_User',
                 'author_id',
             ),
             'comments' => array(
-                Model::HAS_MANY,
+                self::HAS_MANY,
                 'Model_Blog_Post_Comment',
                 'post_id',
             ),
             'total_comments' => array(
-                Model::STAT,
+                self::STAT,
                 'Model_Blog_Post_Comment',
                 'post_id',
             ),
             'contents' => array(
-                Model::HAS_MANY,
+                self::HAS_MANY,
                 'Model_Blog_Post_Content',
                 'post_id',
             ),
             'category' => array(
-                Model::BELONGS_TO,
+                self::BELONGS_TO,
                 'Model_Blog_Category',
                 'category_id'
             )

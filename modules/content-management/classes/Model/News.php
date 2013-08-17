@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Model_News extends Model
+class Model_News extends Base_Model
 {
     protected $order = array('created_at', 'ASC');
 
@@ -8,7 +8,7 @@ class Model_News extends Model
     {
         return array(
             'author' => array(
-                Model::HAS_ONE,
+                self::HAS_ONE,
                 'Model_User',
                 'author_id',
             ),

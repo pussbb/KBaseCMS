@@ -1,18 +1,18 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Model_Blog_Category extends Model
+class Model_Blog_Category extends Base_Model
 {
 
     public function relations()
     {
         return array(
             'posts' => array(
-                Model::HAS_MANY,
+                self::HAS_MANY,
                 'Model_Blog_Post',
                 'category_id',
             ),
             'articles_count' => array(
-                Model::STAT,
+                self::STAT,
                 'Model_Blog_Post',
                 'category_id',
             ),

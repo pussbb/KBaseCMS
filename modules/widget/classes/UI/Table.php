@@ -9,8 +9,6 @@ class UI_Table extends UI {
         parent::__construct($params);
         $this->model = new $this->model;
 
-//         var_dump($this->model->order());
-
         $titles = array();
         $columns = $this->param('columns');
 

@@ -16,7 +16,7 @@ echo '<table class="table table-bordered data-table">';
                     '#',
                     "<i class=\"icon-angle-up $large_icon\"></i>",
                     array(
-                        'title' => 'Sort ASC',
+                        'title' => tr('Ascending sort'),
                         'rel' => 'tooltip',
                         'data-sort' => json_encode(array($sort_key => $index, $sort_dir_key => 'ASC'))
                     )
@@ -28,7 +28,7 @@ echo '<table class="table table-bordered data-table">';
                     '#',
                     "<i class=\"icon-angle-down $large_icon\"></i>",
                     array(
-                        'title' => 'Sort DESC',
+                        'title' => tr('Descending sort'),
                         'rel' => 'tooltip',
                         'data-sort' => json_encode(array($sort_key => $index, $sort_dir_key => 'DESC'))
                     )
