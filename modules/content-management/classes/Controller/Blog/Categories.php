@@ -7,7 +7,7 @@ class Controller_Blog_Categories extends Controller_Template_Blog {
     {
         $id = $this->request->param('id');
 
-        $this->category = Model_Blog_Category::find($id);
+        $this->category = Model_Blog_Category::find((int)$id);
         $category_sql = Model_Blog_Category::select_query('id', array(
                 'id' => $id,
                 '|| parent_id' => $id,

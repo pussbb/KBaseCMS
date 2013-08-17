@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
-$uri_check_codes = Language::uri_check_codes();
+$uri_check_codes = Base_Language::uri_check_codes();
 
 Route::set('blog', '(<lang>)(/)blog(/<controller>)(/<action>(/<id>))', array(
         'id' => '[a-zA-Z0-9_/]+',

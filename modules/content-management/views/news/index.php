@@ -19,7 +19,7 @@ foreach($news_items->records as $news_item) {
 }
 $count = ($offset*$limit)+count($news_items->records);
 echo '<nav>';
-        if ($count < $news_items->count) {
+        if ($count < $news_items->total_count) {
             if (!isset($_REQUEST['limit']))
                 $limit = NULL;
             echo HTML::anchor(

@@ -88,7 +88,7 @@ class UI_Table extends UI {
             array(
                 'records' => $records->records,
                 'order' => $this->sort(),
-                'total' => $records->count,
+                'total' => $records->total_count,
                 'per_page' => $records->per_page,
             )
         );

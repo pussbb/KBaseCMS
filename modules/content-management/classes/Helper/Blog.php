@@ -52,7 +52,7 @@ class Helper_Blog {
         ), self::$default_filter);
 
         $result = Model_Blog_Post::find_all($filter);
-        self::$count = $result->count;
+        self::$count = $result->total_count;
 
         $records = array();
         foreach($result->records as $key => $item) {

@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 Route::set('admin', '(<lang>)(/)admin(/<controller>)(/<action>(/<id>))', array(
-  'lang' => Language::uri_check_codes(),
+  'lang' => Base_Language::uri_check_codes(),
   ))
     ->defaults(array(
         'directory' => 'admin',
