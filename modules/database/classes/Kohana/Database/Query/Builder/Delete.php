@@ -13,14 +13,6 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where 
 	// DELETE FROM ...
 	protected $_table;
 
-        // JOIN ...
-    protected $_join = array();
-
-
-
-    // The last JOIN statement created
-    protected $_last_join;
-
 	/**
 	 * Set the table for a delete.
 	 *
@@ -52,51 +44,6 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where 
 		return $this;
 	}
 
-
-    /**
-     * Adds addition tables to "JOIN ...".
-     *
-     * @param   mixed   $table  column name or array($column, $alias) or object
-     * @param   string  $type   join type (LEFT, RIGHT, INNER, etc)
-     * @return  $this
-     */
-    public function join($table, $type = NULL)
-    {
-        $this->_join[] = $this->_last_join = new Database_Query_Builder_Join($table, $type);
-
-        return $this;
-    }
-
-    /**
-     * Adds "ON ..." conditions for the last created JOIN statement.
-     *
-     * @param   mixed   $c1  column name or array($column, $alias) or object
-     * @param   string  $op  logic operator
-     * @param   mixed   $c2  column name or array($column, $alias) or object
-     * @return  $this
-     */
-    public function on($c1, $op, $c2)
-    {
-        $this->_last_join->on($c1, $op, $c2);
-
-        return $this;
-    }
-
-    /**
-     * Adds "USING ..." conditions for the last created JOIN statement.
-     *
-     * @param   string  $columns  column name
-     * @return  $this
-     */
-    public function using($columns)
-    {
-        $columns = func_get_args();
-
-        call_user_func_array(array($this->_last_join, 'using'), $columns);
-
-        return $this;
-    }
-
 	/**
 	 * Compile the SQL query and return it.
 	 *
@@ -112,18 +59,8 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where 
 		}
 
 		// Start a deletion query
-		$query = 'DELETE ';
-		if (is_array($this->_table)) {
-            $query .= $db->quote_table($this->_table[1]);
-		}
+		$query = 'DELETE FROM '.$db->quote_table($this->_table);
 
-		$query .=' FROM '.$db->quote_table($this->_table);
-
-		if ( ! empty($this->_join))
-        {
-            // Add tables to join
-            $query .= ' '.$this->_compile_join($db, $this->_join);
-        }
 		if ( ! empty($this->_where))
 		{
 			// Add deletion conditions
