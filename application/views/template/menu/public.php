@@ -50,7 +50,7 @@
                         $uri = Text::reduce_slashes($lang->code.'/'.$request_uri.URL::query());
                         echo '<li class="icons">';
                             echo Html::anchor(
-                                URL::site($uri),
+                                URL::site($uri, TRUE, TRUE, FALSE),
                                 $label
                             );
                         echo '</li>';
