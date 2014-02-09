@@ -4,7 +4,7 @@ return array
 (
     'default' => array
     (
-        'type'       => 'MySQL',
+        'type'       => 'MySQLi',
         'connection' => array(
             /**
              * The following options are available for MySQL:
@@ -19,14 +19,14 @@ return array
              * Ports and sockets may be appended to the hostname.
              */
             'hostname'   => 'localhost',
-            'database'   => 'speeddial',
+            'database'   => 'speedial',
             'username'   => 'root',
             'password'   => 'root',
             'persistent' => FALSE,
         ),
         'table_prefix' => '',
         'charset'      => 'utf8',
-        'caching'      => FALSE,
+        'caching'      => TRUE,
     ),
     'alternate' => array(
         'type'       => 'PDO',
