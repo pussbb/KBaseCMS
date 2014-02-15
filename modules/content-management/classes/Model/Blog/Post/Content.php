@@ -7,7 +7,7 @@ class Model_Blog_Post_Content extends Base_Model
     {
         return array(
             'post' => array(
-                self::HAS_ONE,
+                self::BELONGS_TO,
                 'Model_Blog_Post',
                 'post_id',
             ),

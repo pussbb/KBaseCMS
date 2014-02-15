@@ -6,7 +6,7 @@ class Controller_Welcome extends Controller_Core {
 
     public function action_index()
     {
-
+        $this->append_js_template('sdfsdf', 'dfgfdgfdg');
     }
 
 } // End Welcome

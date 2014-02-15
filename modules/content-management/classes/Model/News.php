@@ -8,7 +8,7 @@ class Model_News extends Base_Model
     {
         return array(
             'author' => array(
-                self::HAS_ONE,
+                self::BELONGS_TO,
                 'Model_User',
                 'author_id',
             ),

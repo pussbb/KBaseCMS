@@ -8,7 +8,7 @@ echo '<hr class="double">';
 foreach($news_items->records as $news_item) {
 
     $read_more = '<br>'.HTML::anchor(
-        Helper_Model::url($news_item, 'view'),
+        Helper_Model::url($news_item, 'view', $news_item->id),
         tr('Read more'),
         array('class' => 'read-more btn btn-inverse btn-small')
     );
